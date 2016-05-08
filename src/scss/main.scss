@@ -1,3 +1,42 @@
-body {
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600);
 
+body {
+	font-family: 'Source Sans Pro', 'Helvetica', 'Arial', sans-serif;
+}
+
+.maincontent {
+	max-width: 1200px;
+	margin: 30px auto;
+	padding: 30px;
+	background-color: #eee;
+}
+
+.form-row {
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+.form-col-25 {
+	float: left;
+	width: 25%;
+}
+.form-col-50 {
+	float: left;
+	width: 50%;
+}
+
+.stat-table {
+	border-spacing: 0;
+
+	th {
+		font-weight: bold;
+	}
+	th, td {
+		min-width: 40px;
+		padding: 4px;
+		text-align: center;
+	}
+	tr.table-sumline td {
+		border-top: 1px solid #000;
+	}
 }
