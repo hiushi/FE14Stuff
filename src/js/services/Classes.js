@@ -2,6 +2,7 @@ app.service('Classes', function() {
 
 	var classes = {
 		"Nohr_Prince": {
+			"key": "Nohr_Prince",
 			"name": "Nohr Prince",
 			"promotesTo": ["Nohr_Noble", "Hoshido_Noble"],
 			"promotesFrom": null,
@@ -17,6 +18,7 @@ app.service('Classes', function() {
 		},
 
 		"Nohr_Princess": {
+			"key": "Nohr_Princess",
 			"name": "Nohr Princess",
 			"promotesTo": ["Nohr_Noble", "Hoshido_Noble"],
 			"promotesFrom": null,
@@ -32,6 +34,7 @@ app.service('Classes', function() {
 		},
 
 		"Hoshido_Noble": {
+			"key": "Hoshido_Noble",
 			"name": "Hoshido Noble",
 			"promotesTo": null,
 			"promotesFrom": ["Nohr_Prince", "Nohr_Princess"],
@@ -45,6 +48,7 @@ app.service('Classes', function() {
 		},
 
 		"Nohr_Noble": {
+			"key": "Nohr_Noble",
 			"name": "Nohr Noble",
 			"promotesTo": null,
 			"promotesFrom": ["Nohr_Prince", "Nohr_Princess"],
@@ -58,6 +62,7 @@ app.service('Classes', function() {
 		},	
 
 		"Samurai": {
+			"key": "Samurai",
 			"name": "Samurai",
 			"promotesTo": ["Swordmaster", "Master_of_Arms"],
 			"promotesFrom": null,
@@ -71,6 +76,7 @@ app.service('Classes', function() {
 		},
 
 		"Swordmaster": {
+			"key": "Swordmaster",
 			"name": "Swordmaster",
 			"promotesTo": null,
 			"promotesFrom": ["Samurai"],
@@ -85,6 +91,7 @@ app.service('Classes', function() {
 		},
 
 		"Master_of_Arms": {
+			"key": "Master_of_Arms",
 			"name": "Master of Arms",
 			"promotesTo": null,
 			"promotesFrom": ["Samurai", "Villager"],
@@ -98,6 +105,7 @@ app.service('Classes', function() {
 		},	
 
 		"Villager": {
+			"key": "Villager",
 			"name": "Villager",
 			"promotesTo": ["Master_of_Arms", "Merchant"],
 			"promotesFrom": null,
@@ -111,6 +119,7 @@ app.service('Classes', function() {
 		},
 
 		"Merchant": {
+			"key": "Merchant",
 			"name": "Merchant",
 			"promotesTo": null,
 			"promotesFrom": ["Apothecary", "Villager"],
@@ -124,6 +133,7 @@ app.service('Classes', function() {
 		},	
 
 		"Apothecary": {
+			"key": "Apothecary",
 			"name": "Apothecary",
 			"promotesTo": ["Merchant", "Mechanist"],
 			"promotesFrom": null,
@@ -137,6 +147,7 @@ app.service('Classes', function() {
 		},
 
 		"Oni_Savage": {
+			"key": "Oni_Savage",
 			"name": "Oni Savage",
 			"promotesTo": ["Oni_Chieftain", "Blacksmith"],
 			"promotesFrom": null,
@@ -150,6 +161,7 @@ app.service('Classes', function() {
 		},
 
 		"Oni_Chieftain": {
+			"key": "Oni_Chieftain",
 			"name": "Oni Chieftain",
 			"promotesTo": null,
 			"promotesFrom": ["Oni_Savage"],
@@ -163,6 +175,7 @@ app.service('Classes', function() {
 		},	
 
 		"Blacksmith": {
+			"key": "Blacksmith",
 			"name": "Blacksmith",
 			"promotesTo": null,
 			"promotesFrom": ["Oni_Savage"],
@@ -176,6 +189,7 @@ app.service('Classes', function() {
 		},	
 
 		"Spear_Fighter": {
+			"key": "Spear_Fighter",
 			"name": "Spear Fighter",
 			"promotesTo": ["Spear_Master", "Basara"],
 			"promotesFrom": null,
@@ -189,6 +203,7 @@ app.service('Classes', function() {
 		},
 
 		"Spear_Master": {
+			"key": "Spear_Master",
 			"name": "Spear Master",
 			"promotesTo": null,
 			"promotesFrom": ["Spear_Fighter"],
@@ -203,6 +218,7 @@ app.service('Classes', function() {
 		},	
 
 		"Basara": {
+			"key": "Basara",
 			"name": "Basara",
 			"promotesTo": null,
 			"promotesFrom": ["Spear_Fighter", "Diviner"],
@@ -216,6 +232,7 @@ app.service('Classes', function() {
 		},	
 
 		"Diviner": {
+			"key": "Diviner",
 			"name": "Diviner",
 			"promotesTo": ["Onmyoji", "Basara"],
 			"promotesFrom": null,
@@ -229,7 +246,8 @@ app.service('Classes', function() {
 		},	
 
 		"Onmyoji": {
-			"name": "Exorcist",
+			"key": "Onmyoji",
+			"name": "Onmyoji",
 			"promotesTo": null,
 			"promotesFrom": ["Diviner", "Monk", "Shrine_Maiden"],
 			"classTier": "tier2",
@@ -242,6 +260,7 @@ app.service('Classes', function() {
 		},
 
 		"Monk": {
+			"key": "Monk",
 			"name": "Monk",
 			"promotesTo": ["Great_Master", "Onmyoji"],
 			"promotesFrom": null,
@@ -258,6 +277,7 @@ app.service('Classes', function() {
 		},
 
 		"Shrine_Maiden": {
+			"key": "Shrine_Maiden",
 			"name": "Shrine Maiden",
 			"promotesTo": ["Priestess", "Onmyoji"],
 			"promotesFrom": null,
@@ -274,6 +294,7 @@ app.service('Classes', function() {
 		},
 
 		"Great_Master": {
+			"key": "Great_Master",
 			"name": "Great Master",
 			"promotesTo": null,
 			"promotesFrom": ["Monk"],
@@ -289,6 +310,7 @@ app.service('Classes', function() {
 		},
 
 		"Priestess": {
+			"key": "Priestess",
 			"name": "Priestess",
 			"promotesTo": null,
 			"promotesFrom": ["Shrine_Maiden"],
@@ -304,6 +326,7 @@ app.service('Classes', function() {
 		},
 
 		"Sky_Knight": {
+			"key": "Sky_Knight",
 			"name": "Sky Knight",
 			"promotesTo": ["Falcon_Knight", "Kinshi_Knight"],
 			"promotesFrom": null,
@@ -317,6 +340,7 @@ app.service('Classes', function() {
 		},
 
 		"Falcon_Knight": {
+			"key": "Falcon_Knight",
 			"name": "Falcon Knight",
 			"promotesTo": null,
 			"promotesFrom": ["Sky_Knight"],
@@ -330,6 +354,7 @@ app.service('Classes', function() {
 		},
 
 		"Kinshi_Knight": {
+			"key": "Kinshi_Knight",
 			"name": "Kinshi Knight",
 			"promotesTo": null,
 			"promotesFrom": ["Sky_Knight", "Archer"],
@@ -343,6 +368,7 @@ app.service('Classes', function() {
 		},
 		
 		"Archer": {
+			"key": "Archer",
 			"name": "Archer",
 			"promotesTo": ["Sniper", "Kinshi_Knight"],
 			"promotesFrom": null,
@@ -356,6 +382,7 @@ app.service('Classes', function() {
 		},
 
 		"Sniper": {
+			"key": "Sniper",
 			"name": "Sniper",
 			"promotesTo": null,
 			"promotesFrom": ["Archer"],
@@ -370,6 +397,7 @@ app.service('Classes', function() {
 		},
 
 		"Ninja": {
+			"key": "Ninja",
 			"name": "Ninja",
 			"promotesTo": ["Master_Ninja", "Mechanist"],
 			"promotesFrom": null,
@@ -383,6 +411,7 @@ app.service('Classes', function() {
 		},
 
 		"Master_Ninja": {
+			"key": "Master_Ninja",
 			"name": "Master Ninja",
 			"promotesTo": null,
 			"promotesFrom": ["Ninja"],
@@ -397,6 +426,7 @@ app.service('Classes', function() {
 		},	
 
 		"Mechanist": {
+			"key": "Mechanist",
 			"name": "Mechanist",
 			"promotesTo": null,
 			"promotesFrom": ["Ninja", "Apothecary"],
@@ -410,6 +440,7 @@ app.service('Classes', function() {
 		},	
 
 		"Kitsune": {
+			"key": "Kitsune",
 			"name": "Kitsune",
 			"promotesTo": ["Nine-Tails"],
 			"promotesFrom": null,
@@ -423,6 +454,7 @@ app.service('Classes', function() {
 		},
 
 		"Nine-Tails": {
+			"key": "Nine-Tails",
 			"name": "Nine-Tails",
 			"promotesTo": null,
 			"promotesFrom": ["Kitsune"],
@@ -437,6 +469,7 @@ app.service('Classes', function() {
 		},
 
 		"Cavalier": {
+			"key": "Cavalier",
 			"name": "Cavalier",
 			"promotesTo": ["Paladin", "Great_Knight"],
 			"promotesFrom": null,
@@ -450,6 +483,7 @@ app.service('Classes', function() {
 		},
 
 		"Paladin": {
+			"key": "Paladin",
 			"name": "Paladin",
 			"promotesTo": null,
 			"promotesFrom": ["Cavalier"],
@@ -463,6 +497,7 @@ app.service('Classes', function() {
 		},
 
 		"Great_Knight": {
+			"key": "Great_Knight",
 			"name": "Great Knight",
 			"promotesTo": null,
 			"promotesFrom": ["Cavalier", "Knight"],
@@ -476,6 +511,7 @@ app.service('Classes', function() {
 		},
 
 		"Knight": {
+			"key": "Knight",
 			"name": "Knight",
 			"promotesTo": ["General", "Great_Knight"],
 			"promotesFrom": null,
@@ -489,6 +525,7 @@ app.service('Classes', function() {
 		},
 
 		"General": {
+			"key": "General",
 			"name": "General",
 			"promotesTo": null,
 			"promotesFrom": ["Knight"],
@@ -502,6 +539,7 @@ app.service('Classes', function() {
 		},
 
 		"Fighter": {
+			"key": "Fighter",
 			"name": "Fighter",
 			"promotesTo": ["Berserker", "Hero"],
 			"promotesFrom": null,
@@ -515,6 +553,7 @@ app.service('Classes', function() {
 		},
 
 		"Berserker": {
+			"key": "Berserker",
 			"name": "Berserker",
 			"promotesTo": null,
 			"promotesFrom": ["Fighter"],
@@ -529,6 +568,7 @@ app.service('Classes', function() {
 		},
 
 		"Mercenary": {
+			"key": "Mercenary",
 			"name": "Mercenary",
 			"promotesTo": ["Hero", "Bow_Knight"],
 			"promotesFrom": null,
@@ -542,6 +582,7 @@ app.service('Classes', function() {
 		},
 
 		"Hero": {
+			"key": "Hero",
 			"name": "Hero",
 			"promotesTo": null,
 			"promotesFrom": ["Mercenary", "Fighter"],
@@ -555,6 +596,7 @@ app.service('Classes', function() {
 		},
 
 		"Bow_Knight": {
+			"key": "Bow_Knight",
 			"name": "Bow Knight",
 			"promotesTo": null,
 			"promotesFrom": ["Outlaw", "Mercenary"],
@@ -568,6 +610,7 @@ app.service('Classes', function() {
 		},
 
 		"Outlaw": {
+			"key": "Outlaw",
 			"name": "Outlaw",
 			"promotesTo": ["Adventurer", "Bow_Knight"],
 			"promotesFrom": null,
@@ -581,6 +624,7 @@ app.service('Classes', function() {
 		},
 
 		"Adventurer": {
+			"key": "Adventurer",
 			"name": "Adventurer",
 			"promotesTo": null,
 			"promotesFrom": ["Outlaw"],
@@ -594,6 +638,7 @@ app.service('Classes', function() {
 		},
 
 		"Wyvern_Rider": {
+			"key": "Wyvern_Rider",
 			"name": "Wyvern Rider",
 			"promotesTo": ["Wyvern_Lord", "Malig_Knight"],
 			"promotesFrom": null,
@@ -607,6 +652,7 @@ app.service('Classes', function() {
 		},
 
 		"Wyvern_Lord": {
+			"key": "Wyvern_Lord",
 			"name": "Wyvern Lord",
 			"promotesTo": null,
 			"promotesFrom": ["Wyvern_Rider"],
@@ -620,6 +666,7 @@ app.service('Classes', function() {
 		},
 
 		"Malig_Knight": {
+			"key": "Malig_Knight",
 			"name": "Malig Knight",
 			"promotesTo": null,
 			"promotesFrom": ["Wyvern_Rider"],
@@ -633,6 +680,7 @@ app.service('Classes', function() {
 		},
 
 		"Dark_Mage": {
+			"key": "Dark_Mage",
 			"name": "Dark Mage",
 			"promotesTo": ["Sorcerer", "Dark_Knight"],
 			"promotesFrom": null,
@@ -646,6 +694,7 @@ app.service('Classes', function() {
 		},
 
 		"Sorcerer": {
+			"key": "Sorcerer",
 			"name": "Sorcerer",
 			"promotesTo": null,
 			"promotesFrom": ["Dark_Mage"],
@@ -660,6 +709,7 @@ app.service('Classes', function() {
 		},
 
 		"Dark_Knight": {
+			"key": "Dark_Knight",
 			"name": "Dark Knight",
 			"promotesTo": null,
 			"promotesFrom": ["Dark_Mage"],
@@ -673,6 +723,7 @@ app.service('Classes', function() {
 		},
 
 		"Troubadour_F": {
+			"key": "Troubadour_F",
 			"name": "Troubadour",
 			"promotesTo": ["Strategist", "Maid"],
 			"promotesFrom": null,
@@ -689,6 +740,7 @@ app.service('Classes', function() {
 		},
 
 		"Troubadour_M": {
+			"key": "Troubadour_M",
 			"name": "Troubadour",
 			"promotesTo": ["Strategist", "Butler"],
 			"promotesFrom": null,
@@ -705,6 +757,7 @@ app.service('Classes', function() {
 		},
 
 		"Strategist": {
+			"key": "Strategist",
 			"name": "Strategist",
 			"promotesTo": null,
 			"promotesFrom": ["Troubadour_F", "Troubadour_M"],
@@ -718,6 +771,7 @@ app.service('Classes', function() {
 		},
 
 		"Maid": {
+			"key": "Maid",
 			"name": "Maid",
 			"promotesTo": null,
 			"promotesFrom": ["Troubadour_F"],
@@ -733,7 +787,8 @@ app.service('Classes', function() {
 		},	
 
 		"Butler": {
-			"name": "Maid",
+			"key": "Butler",
+			"name": "Butler",
 			"promotesTo": null,
 			"promotesFrom": ["Troubadour_M"],
 			"classTier": "tier2",
@@ -748,6 +803,7 @@ app.service('Classes', function() {
 		},	
 
 		"Wolfskin": {
+			"key": "Wolfskin",
 			"name": "Wolfskin",
 			"promotesTo": ["Wolfssegner"],
 			"promotesFrom": null,
@@ -761,6 +817,7 @@ app.service('Classes', function() {
 		},
 
 		"Wolfssegner": {
+			"key": "Wolfssegner",
 			"name": "Wolfssegner",
 			"promotesTo": null,
 			"promotesFrom": ["Wolfskin"],
@@ -775,6 +832,7 @@ app.service('Classes', function() {
 		},
 
 		"Songstress": {
+			"key": "Songstress",
 			"name": "Songstress",
 			"promotesTo": null,
 			"promotesFrom": null,
@@ -789,6 +847,7 @@ app.service('Classes', function() {
 		},
 
 		"Dread_Fighter": {
+			"key": "Dread_Fighter",
 			"name": "Dread Fighter",
 			"promotesTo": null,
 			"promotesFrom": null,
@@ -802,6 +861,7 @@ app.service('Classes', function() {
 		},
 
 		"Dark_Falcon": {
+			"key": "Dark_Falcon",
 			"name": "Dark Falcon",
 			"promotesTo": null,
 			"promotesFrom": null,
@@ -815,6 +875,7 @@ app.service('Classes', function() {
 		},
 
 		"Ballistician": {
+			"key": "Ballistician",
 			"name": "Ballistician",
 			"promotesTo": null,
 			"promotesFrom": null,
@@ -829,6 +890,7 @@ app.service('Classes', function() {
 		},
 
 		"Witch": {
+			"key": "Witch",
 			"name": "Witch",
 			"promotesTo": null,
 			"promotesFrom": null,
@@ -844,6 +906,7 @@ app.service('Classes', function() {
 		},
 
 		"Lodestar": {
+			"key": "Lodestar",
 			"name": "Lodestar",
 			"promotesTo": null,
 			"promotesFrom": null,
@@ -859,6 +922,7 @@ app.service('Classes', function() {
 		},
 
 		"Vanguard": {
+			"key": "Vanguard",
 			"name": "Vanguard",
 			"promotesTo": null,
 			"promotesFrom": null,
@@ -873,6 +937,7 @@ app.service('Classes', function() {
 		},
 
 		"Great_Lord": {
+			"key": "Great_Lord",
 			"name": "Great Lord",
 			"promotesTo": null,
 			"promotesFrom": null,
@@ -887,6 +952,7 @@ app.service('Classes', function() {
 		},
 
 		"Grandmaster": {
+			"key": "Grandmaster",
 			"name": "Grandmaster",
 			"promotesTo": null,
 			"promotesFrom": null,
@@ -944,8 +1010,14 @@ app.service('Classes', function() {
 
 
 	this.getClasses = function() {
-		return classes;
+		return angular.copy(classes);
 	};
+
+
+	this.getPromotions = function(classKey) {
+		return classes[classKey].promotesTo;
+	};
+
 
 
 

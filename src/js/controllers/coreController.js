@@ -16,7 +16,7 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 
 
 		vm.form = {};
-
+		vm.model = {};
 
 		var getCharacter = vm.getCharacter = function(charKey) {
 			return angular.copy(CHARS[charKey]);
@@ -28,71 +28,101 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 		};
 
 		var avatarRequired = vm.avatarRequired = function() {
-			return isAvatar(vm.unit) || isAvatar(vm.fixedParent) || isAvatar(vm.varParent);
+			return isAvatar(vm.model.unit) || isAvatar(vm.model.fixedParent) || isAvatar(vm.model.varParent);
+		};
+
+		var getAllClasses = vm.getAllClasses = function(charKey) {
+			var unit = getCharacter(charKey);
+			var classList = utils.getClassSet(charKey);
+			if (!classList) return;
+
+			var classMap = utils.createClassMap(classList);
+			return classMap;
+		};
+
+		var selectClass = vm.selectClass = function(unitClass) {
+			if (unitClass) vm.model.unitClass = unitClass;
+
+			calcFullGrowths(vm.model.unit);
+			calcCaps(vm.model.unit);
 		};
 
 
 		vm.selectUnit = function() {
-			vm.form = { 
-				unit: vm.form.unit,
-				avatarBoon: vm.form.avatarBoon,
-				avatarBane: vm.form.avatarBane,
-				avatarTalent: vm.form.avatarTalent
-			};
-			vm.fixedParent = null;
-			vm.varParent = null;
 
-			vm.unit = getCharacter(vm.form.unit);
+			var unit = vm.model.unit;
 
-			if (vm.unit.gen == 2) {
-				vm.form.fixedParent = vm.unit.parent;
-				vm.fixedParent = getCharacter(vm.form.fixedParent);
+			vm.model.fixedParent = null;
+			vm.model.varParent = null;
+
+
+			// initialize form fields where applicable
+			selectClass(getAllClasses(unit.key)[unit.startingClass]);
+
+			if (vm.model.unit.gen == 2) {
+				vm.model.fixedParent = getCharacter(unit.parent);
 			}
 
-			if (avatarRequired()) calcAvatarMods();
+			if (avatarRequired()) {
+				calcAvatarMods();
+			}
 
 		};
 
 		vm.selectAvatarBoon = function() {
-			vm.avatarBoon = vm.form.avatarBoon;
+			// vm.model.avatarBoon = vm.form.avatarBoon;
 			calcAvatarMods();
 			calcChildMods();
+			calcChildGrowths();
+			calcFullGrowths();
+			calcCaps();
 		};
 		vm.selectAvatarBane = function() {
-			vm.avatarBane = vm.form.avatarBane;
+			// vm.model.avatarBane = vm.form.avatarBane;
 			calcAvatarMods();
 			calcChildMods();
+			calcChildGrowths();
+			calcFullGrowths();
+			calcCaps();
 		};
 
 		vm.selectAvatarTalent = function() {
-			vm.avatarTalent = vm.form.avatarTalent;
+			// vm.model.avatarTalent = vm.form.avatarTalent;
 		};
 
 		vm.selectVarParent = function() {
-			vm.varParent = getCharacter(vm.form.varParent);
 			if (avatarRequired()) calcAvatarMods();
 
-			vm.form.varGrandparent = vm.varGrandparent = null;
-			vm.form.fixedGrandparent = vm.fixedGrandparent = null;
+			vm.model.varGrandparent = null;
+			vm.model.fixedGrandparent = null;
 
-			if (vm.varParent.gen == 1) {
+			if (vm.model.varParent.gen == 1) {
 				calcChildMods();
+				calcChildGrowths();
+				calcFullGrowths();
+				calcCaps();
 			}
-			else if (vm.varParent.gen == 2) {
+			else if (vm.model.varParent.gen == 2) {
 
-				vm.form.fixedGrandparent = vm.varParent.parent;
-				vm.fixedGrandparent = getCharacter(vm.form.fixedGrandparent);
-				// calcChildMods(vm.varParent);
+				// vm.form.fixedGrandparent = vm.model.varParent.parent;
+				vm.model.fixedGrandparent = getCharacter(vm.model.varParent.parent);
+				// calcChildMods(vm.model.varParent);
 			}
 
 		};
 
 		// only applies to 3rd gen Kana
 		vm.selectVarGrandparent = function() {
-			vm.varGrandparent = getCharacter(vm.form.varGrandparent);
-			calcChildMods(vm.varParent);
-			calcChildMods(vm.unit);
+			calcChildMods(vm.model.varParent);
+			calcChildMods(vm.model.unit);
+
+			calcChildGrowths(vm.model.varParent);
+			calcChildGrowths(vm.model.unit);
+			calcFullGrowths();
+			calcCaps();
 		};
+
+
 
 		vm.getSSupports = function(charKey) {
 			var supportsList = Characters.getSSupports(charKey);
@@ -131,60 +161,142 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 
 
 
-		function calcAvatarMods() {
-			if (!vm.avatarBoon || !vm.avatarBane) return;
 
-			vm.avatarBases = angular.copy(vm.AVATAR_MODS.bases.Base);
-			Object.keys(vm.avatarBases).forEach(function(stat) {
-				vm.avatarBases[stat] += (vm.AVATAR_MODS.bases.Boon[stat] + vm.AVATAR_MODS.bases.Bane[stat]);
+
+		function calcAvatarMods() {
+			if (!vm.model.avatarBoon || !vm.model.avatarBane) return;
+
+			vm.model.avatarBases = angular.copy(vm.AVATAR_MODS.bases.Base);
+			Object.keys(vm.model.avatarBases).forEach(function(stat) {
+				vm.model.avatarBases[stat] += (vm.AVATAR_MODS.bases.Boon[stat] + vm.AVATAR_MODS.bases.Bane[stat]);
 			});
 
-			vm.avatarGrowths = angular.copy(vm.AVATAR_MODS.growths.Base);
-			vm.avatarCaps = angular.copy(vm.AVATAR_MODS.caps.Base);
-			Object.keys(vm.avatarGrowths).forEach(function(stat) {
-				vm.avatarGrowths[stat] += (vm.AVATAR_MODS.growths.Boon[vm.avatarBoon][stat] + vm.AVATAR_MODS.growths.Bane[vm.avatarBane][stat]);
+			vm.model.avatarGrowths = angular.copy(vm.AVATAR_MODS.growths.Base);
+			vm.model.avatarCaps = angular.copy(vm.AVATAR_MODS.caps.Base);
+			Object.keys(vm.model.avatarGrowths).forEach(function(stat) {
+				vm.model.avatarGrowths[stat] += (vm.AVATAR_MODS.growths.Boon[vm.model.avatarBoon][stat] + vm.AVATAR_MODS.growths.Bane[vm.model.avatarBane][stat]);
 
 				if (stat != 'HP')
-					vm.avatarCaps[stat] += (vm.AVATAR_MODS.caps.Boon[vm.avatarBoon][stat] + vm.AVATAR_MODS.caps.Bane[vm.avatarBane][stat]);
+					vm.model.avatarCaps[stat] += (vm.AVATAR_MODS.caps.Boon[vm.model.avatarBoon][stat] + vm.AVATAR_MODS.caps.Bane[vm.model.avatarBane][stat]);
 			});
 
 			var avatar;
-			if (isAvatar(vm.unit)) avatar = vm.unit;
-			else if (isAvatar(vm.fixedParent)) avatar = vm.fixedParent;
-			else if (isAvatar(vm.varParent)) avatar = vm.varParent;
+			if (isAvatar(vm.model.unit)) avatar = vm.model.unit;
+			else if (isAvatar(vm.model.fixedParent)) avatar = vm.model.fixedParent;
+			else if (isAvatar(vm.model.varParent)) avatar = vm.model.varParent;
 
-			avatar.bases = vm.avatarBases;
-			avatar.growths = vm.avatarGrowths;
-			avatar.mods = vm.avatarCaps;
+			avatar.bases = vm.model.avatarBases;
+			avatar.growths = vm.model.avatarGrowths;
+			avatar.mods = vm.model.avatarCaps;
 
 
 		};
 
 		function calcChildMods(child) {
-			if (!vm.fixedParent || !vm.varParent) return;
-			if (!child) child = vm.unit;
+			if (!vm.model.fixedParent || !vm.model.varParent) return;
+			if (!child) child = vm.model.unit;
 
 			var childMods = {};
 			Object.keys(vm.CHILD_MOD_BONUS).forEach(function(stat) {
 
 				// parent of 3rd gen Kana
-				if (child == vm.varParent) {
-					childMods[stat] = vm.fixedGrandparent.mods[stat] + vm.varGrandparent.mods[stat];
+				if (child == vm.model.varParent) {
+					childMods[stat] = vm.model.fixedGrandparent.mods[stat] + vm.model.varGrandparent.mods[stat];
 				}
 
-				// 3rd gen Kana or regular 2nd gen child
+				// 3rd gen Kana
+				else if (vm.model.varParent.gen == 2) {
+					childMods[stat] = vm.model.fixedParent.mods[stat] + vm.model.varParent.calculatedMods[stat];
+				}
+
+				// regular 2nd gen child
 				else {
-					childMods[stat] = vm.fixedParent.mods[stat] + vm.varParent.mods[stat];
+					if (!vm.model.varParent.mods || typeof vm.model.varParent.mods[stat] != 'number') return;
+					childMods[stat] = vm.model.fixedParent.mods[stat] + vm.model.varParent.mods[stat];
 				}
 
 				// only get the child mod bonus if not 3rd gen Kana
-				if (vm.varParent.gen == 1 || child == vm.varParent) childMods[stat] += vm.CHILD_MOD_BONUS[stat];
+				if (vm.model.varParent.gen == 1 || child == vm.model.varParent) childMods[stat] += vm.CHILD_MOD_BONUS[stat];
 			});
 
-			child.mods = childMods;
+			if (!Object.keys(childMods).length) return;
+			child.calculatedMods = childMods;
 
 		};
 
+		function calcChildGrowths(child) {
+			if (!vm.model.varParent) return;
+			if (!child) child = vm.model.unit;
+
+			var childGrowths = {};
+			Object.keys(child.growths).forEach(function(stat) {
+
+				// parent of 3rd gen kana
+				if (child == vm.model.varParent) {
+					childGrowths[stat] = (vm.model.varGrandparent.growths[stat] + child.growths[stat]) / 2;
+				}
+
+				// 3rd gen Kana
+				else if (vm.model.varParent.gen == 2) {
+					childGrowths[stat] = (vm.model.varParent.calculatedGrowths[stat] + child.growths[stat]) / 2;
+				}
+				
+				// regular 2nd gen child
+				else {
+					if (!vm.model.varParent.growths || typeof vm.model.varParent.growths[stat] != 'number') return;
+					childGrowths[stat] = (vm.model.varParent.growths[stat] + child.growths[stat]) / 2;
+				}
+
+			});
+
+			if (!Object.keys(childGrowths).length) return;
+			child.calculatedGrowths = childGrowths;
+		};
+
+		function calcFullGrowths(unit) {
+			if (!vm.model.unitClass) return;
+			if (!unit) unit = vm.model.unit;
+
+			var fullGrowths = {};
+			Object.keys(unit.growths).forEach(function(stat) {
+
+				if (unit.gen == 1) {
+					fullGrowths[stat] = unit.growths[stat] + vm.model.unitClass.growths[stat];
+				}
+				else if (unit.gen == 2) {
+					if (!unit.calculatedGrowths || typeof unit.calculatedGrowths[stat] != 'number') return;
+					fullGrowths[stat] = unit.calculatedGrowths[stat] + vm.model.unitClass.growths[stat];
+				}
+
+			});
+
+			if (!Object.keys(fullGrowths).length) return;
+			unit.calculatedFullGrowths = fullGrowths;
+		};
+
+		function calcCaps(unit) {
+			if (!vm.model.unitClass) return;
+			if (!unit) unit = vm.model.unit;
+
+			var caps = {};
+			Object.keys(vm.model.unitClass.maxStats).forEach(function(stat) {
+
+				if (unit.gen == 1) {
+					caps[stat] = (unit.mods[stat] || 0) + vm.model.unitClass.maxStats[stat];
+				}
+				else if (unit.gen == 2) {
+					if (stat == "HP") caps[stat] = vm.model.unitClass.maxStats["HP"];
+					else {
+						if (!unit.calculatedMods || typeof unit.calculatedMods[stat] != 'number') return;
+						caps[stat] = (unit.calculatedMods[stat] || 0) + vm.model.unitClass.maxStats[stat];				
+					}
+				}
+
+			});
+
+			if (Object.keys(caps).length <= 1) return;
+			unit.calculatedCaps = caps;
+		};
 
 
 	}
