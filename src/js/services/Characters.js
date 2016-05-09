@@ -957,6 +957,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 35, "Str": 45, "Mag": 5, "Skl": 45, "Spd": 35, "Lck": 25, "Def": 35, "Res": 25},
 			"personalSkill": "Perfect_Pitch",
 			"baseClass1": "Sky_Knight",
+			"baseClass2": "Troubadour_M",
 
 		},
 
@@ -974,6 +975,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 45, "Str": 45, "Mag": 30, "Skl": 20, "Spd": 30, "Lck": 30, "Def": 30, "Res": 35},
 			"personalSkill": "Born_Steward",
 			"baseClass1": "Troubadour_M",
+			"baseClass2": "Cavalier",
 
 		},
 
@@ -991,6 +993,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 35, "Str": 35, "Mag": 10, "Skl": 55, "Spd": 50, "Lck": 35, "Def": 25, "Res": 35},
 			"personalSkill": "Mischievous",
 			"baseClass1": "Cavalier",
+			"baseClass2": "Mercenary",
 
 		},
 
@@ -1008,6 +1011,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 45, "Str": 35, "Mag": 5, "Skl": 55, "Spd": 35, "Lck": 50, "Def": 30, "Res": 20},
 			"personalSkill": "Lucky_Charm",
 			"baseClass1": "Apothecary",
+			"baseClass2": "Ninja",
 
 		},
 
@@ -1025,6 +1029,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 50, "Str": 50, "Mag": 0, "Skl": 40, "Spd": 35, "Lck": 35, "Def": 45, "Res": 30},
 			"personalSkill": "Noble_Cause",
 			"baseClass1": "Spear_Fighter",
+			"baseClass2": "Samurai",
 
 		},
 
@@ -1042,6 +1047,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 45, "Str": 40, "Mag": 0, "Skl": 45, "Spd": 50, "Lck": 45, "Def": 40, "Res": 15},
 			"personalSkill": "Optimistic",
 			"baseClass1": "Archer",
+			"baseClass2": "Spear_Fighter",
 
 		},
 
@@ -1059,6 +1065,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 40, "Str": 45, "Mag": 50, "Skl": 55, "Spd": 45, "Lck": 50, "Def": 30, "Res": 20},
 			"personalSkill": "Sweet_Tooth",
 			"baseClass1": "Ninja",
+			"baseClass2": "Samurai",
 
 		},
 
@@ -1076,6 +1083,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 35, "Str": 30, "Mag": 15, "Skl": 35, "Spd": 55, "Lck": 60, "Def": 30, "Res": 50},
 			"personalSkill": "Playthings",
 			"baseClass1": "Kitsune",
+			"baseClass2": "Diviner",
 
 		},
 
@@ -1093,6 +1101,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 50, "Str": 40, "Mag": 0, "Skl": 40, "Spd": 40, "Lck": 25, "Def": 30, "Res": 20},
 			"personalSkill": "Calm",
 			"baseClass1": "Samurai",
+			"baseClass2": "Oni_Savage",
 
 		},
 
@@ -1110,6 +1119,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 45, "Str": 40, "Mag": 35, "Skl": 45, "Spd": 50, "Lck": 50, "Def": 30, "Res": 20},
 			"personalSkill": "Haiku",
 			"baseClass1": "Shrine_Maiden",
+			"baseClass2": "Apothecary",
 
 		},
 
@@ -1127,6 +1137,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 55, "Str": 35, "Mag": 15, "Skl": 40, "Spd": 40, "Lck": 45, "Def": 35, "Res": 20},
 			"personalSkill": "Prodigy",
 			"baseClass1": "Sky_Knight",
+			"baseClass2": "Samurai",
 
 		},
 
@@ -1144,6 +1155,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 40, "Str": 15, "Mag": 60, "Skl": 10, "Spd": 50, "Lck": 30, "Def": 25, "Res": 35},
 			"personalSkill": "Vendetta",
 			"baseClass1": "Diviner",
+			"baseClass2": "Oni_Savage",
 
 		},
 
@@ -1161,6 +1173,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 40, "Str": 45, "Mag": 5, "Skl": 45, "Spd": 45, "Lck": 45, "Def": 35, "Res": 20},
 			"personalSkill": "Gallant",
 			"baseClass1": "Cavalier",
+			"baseClass2": "Wyvern_Rider",
 
 		},
 
@@ -1178,6 +1191,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 55, "Str": 15, "Mag": 65, "Skl": 20, "Spd": 35, "Lck": 25, "Def": 25, "Res": 55},
 			"personalSkill": "Fierce_Counter",
 			"baseClass1": "Troubadour_M",
+			"baseClass2": "Dark_Mage",
 
 		},
 
@@ -1195,6 +1209,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 40, "Str": 50, "Mag": 0, "Skl": 40, "Spd": 30, "Lck": 55, "Def": 45, "Res": 35},
 			"personalSkill": "Guarded_Bravery",
 			"baseClass1": "Knight",
+			"baseClass2": "Fighter",
 
 		},
 
@@ -1212,6 +1227,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 50, "Str": 50, "Mag": 0, "Skl": 40, "Spd": 40, "Lck": 35, "Def": 45, "Res": 30},
 			"personalSkill": "Goody_Basket",
 			"baseClass1": "Wolfskin",
+			"baseClass2": "Fighter",
 
 		},
 
@@ -1229,6 +1245,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 30, "Str": 30, "Mag": 5, "Skl": 45, "Spd": 40, "Lck": 75, "Def": 55, "Res": 15},
 			"personalSkill": "Fortunate_Son",
 			"baseClass1": "Wyvern_Rider",
+			"baseClass2": "Fighter",
 
 		},
 
@@ -1246,6 +1263,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 45, "Str": 15, "Mag": 45, "Skl": 40, "Spd": 45, "Lck": 65, "Def": 20, "Res": 30},
 			"personalSkill": "Bibliophile",
 			"baseClass1": "Dark_Mage",
+			"baseClass2": "Samurai",
 
 		},
 
@@ -1263,6 +1281,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 25, "Str": 60, "Mag": 0, "Skl": 35, "Spd": 35, "Lck": 45, "Def": 35, "Res": 40},
 			"personalSkill": "Sisterhood",
 			"baseClass1": "Mercenary",
+			"baseClass2": "Ninja",
 
 		},
 
@@ -1280,6 +1299,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 30, "Str": 45, "Mag": 30, "Skl": 35, "Spd": 40, "Lck": 50, "Def": 25, "Res": 45},
 			"personalSkill": "Daydream",
 			"baseClass1": "Outlaw",
+			"baseClass2": "Dark_Mage",
 
 		},
 

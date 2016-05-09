@@ -10,7 +10,7 @@
 		<div class="maincontent" ng-controller="coreCtrl as g">
 
 		<form name="g.form">
-<!-- 			<pre style="height: 150px; border: 1px solid black; overflow: scroll; font-size: 10px; font-family: 'Monaco'">{{ g.model | json }}</pre> -->
+<!-- 			<pre style="height: 150px; border: 1px solid black; overflow: scroll; font-size: 10px; font-family: 'Monaco'">{{ g.model.selectedSkills | json }}</pre> -->
 
 			<div class="form-row">
 				<div class="form-col-25">
@@ -75,9 +75,14 @@
 			<div class="form-row" ng-if="g.model.unit">
 				<div class="form-col-25">
 					<label>Class: </label>
-					<select ng-model="g.model.unitClass" ng-change="g.selectClass()"
+					<select ng-model="g.model.unitClass" ng-change="g.selectClass()" name="unitClass"
 						ng-options="class as class.name for (classKey, class) in g.model.availableClasses"></select>
 				</div>
+			</div>
+
+			<div class="form-row">
+				<input type="checkbox" id="enableDLC" name="enableDLC" ng-model="g.model.enableDLC" ng-change="g.toggleDLC()">
+				<label for="enableDLC">Enable DLC</label>
 			</div>
 
 			<div class="form-row">
@@ -276,6 +281,28 @@
 						</table>
 					</div>
 
+				</div>
+
+			</div>
+
+			<div class="form-row">
+
+				<div ng-if="g.model.unit">
+					<h4 class="form-heading">Skills</h4>
+					<div>
+
+						<div ng-repeat="(classKey, class) in g.model.availableClasses" ng-if="class.classTier == 'tier1'" 
+							class="form-col-25">
+							<span>{{class.name}} Tree</span>
+							<ul>
+								<li ng-repeat="(skillKey, skill) in g.model.availableSkillsByClassTree[classKey]" class="selectable-skill">
+									<i class="icon-skill icon-skill-{{g.formatSkillName(skillKey)}}" ng-click="g.toggleSkill(skillKey, skill)"></i>
+									<span ng-class="{'selected': !!g.model.selectedSkills[skillKey]}" ng-click="g.toggleSkill(skillKey, skill)">{{ skill.name }}</span>
+								</li>
+							</ul>
+						</div>
+
+					</div>
 				</div>
 
 			</div>

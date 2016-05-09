@@ -13,7 +13,10 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 		vm.AVATAR_TALENTS = Classes.AVATAR_TALENTS;
 
 
-		vm.model = {};
+		vm.model = {
+			enableDLC: false,
+			selectedSkills: {}
+		};
 
 		var getCharacter = vm.getCharacter = function(charKey) {
 			return angular.copy(CHARS[charKey]);
@@ -88,7 +91,7 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 						if (fatherSecondaryKey) {
 							var fatherSecondary = Classes.getClassByGender(fatherSecondaryKey, unit.gender);
 
-							if (fatherSecondary && fatherSecondary.sealAccess) {
+							if (fatherSecondary && fatherSecondary.inheritAccess) {
 
 								if (inheritedClasses.indexOf(fatherSecondary.key) == -1)
 									fatherClassKey = fatherSecondary.key;
@@ -118,7 +121,7 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 						if (motherSecondaryKey) {
 							var motherSecondary = Classes.getClassByGender(motherSecondaryKey, unit.gender);
 
-							if (motherSecondary && motherSecondary.sealAccess) {
+							if (motherSecondary && motherSecondary.inheritAccess) {
 
 								if (inheritedClasses.indexOf(motherSecondary.key) == -1)
 									motherClassKey = motherSecondary.key;
@@ -189,17 +192,16 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 					// get friend's primary class (if it can be passed via seal)
 					var friendPrimaryKey = friend.baseClass1;
 					var friendPrimary = Classes.getClassByGender(friendPrimaryKey, unit.gender);
-					var friendSecondaryKey, friendSecondary;
 
 					if (friendPrimary && friendPrimary.sealAccess && unit.baseClass1 != friendPrimary.key)
 						friendClassKey = friendPrimary.key;
 					// if friend and unit have the same primary class, get friend's secondary class (if passable)
 					else {
 						friendSecondaryKey = friend.baseClass2;
-						if (isAvatar(friend)) friendSecondaryKey = vm.model.avatarTalent;
+						if (isAvatar(friend)) var friendSecondaryKey = vm.model.avatarTalent;
 
 						if (friendSecondaryKey) {
-							friendSecondary = Classes.getClassByGender(friendSecondaryKey, unit.gender);
+							var friendSecondary = Classes.getClassByGender(friendSecondaryKey, unit.gender);
 
 							if (friendSecondary && friendSecondary.sealAccess) {
 
@@ -222,17 +224,104 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 
 			}
 
-			var dlcClasses = Classes.DLC_CLASSES;
-			dlcClasses.forEach(function(dlcClassKey) {
-				var dlcClass = Classes.getClass(dlcClassKey);
-				if (dlcClass.gender && dlcClass.gender != unit.gender) return;
-				else classList.push(dlcClassKey);
-			});
+			if (vm.model.enableDLC) {
+				var dlcClasses = Classes.DLC_CLASSES;
+				dlcClasses.forEach(function(dlcClassKey) {
+					var dlcClass = Classes.getClass(dlcClassKey);
+					if (dlcClass.gender && dlcClass.gender != unit.gender) return;
+					else classList.push(dlcClassKey);
+				});			
+			}
+
 
 
 			var classMap = utils.createClassMap(classList);
 			return classMap;
 		};
+
+		var getAllSkills = vm.getAllSkills = function(charKey) {
+			var skillKeyList = [];
+			var classes = vm.model.availableClasses;
+			if (classes) {
+				Object.keys(classes).forEach(function(unitClassKey) {
+					skillKeyList = skillKeyList.concat(classes[unitClassKey].skills);
+				});
+			}
+
+			var skillMap = utils.createSkillMap(skillKeyList);
+			return skillMap;
+
+		};
+
+
+
+		var getAvailableSkillsByClassTree = vm.getAvailableSkillsByClassTree = function(charKey) {
+
+			if (!vm.model.availableClasses) return;
+			var classes = vm.model.availableClasses;
+			var classTrees = Object.keys(classes)
+				.filter(function(unitClass) {
+					return classes[unitClass].classTier == 'tier1';
+				});
+
+			var asbct = {};
+
+			classTrees.forEach(function(baseClassKey) {
+				var skillKeyList = utils.getSkillsByClassTree(baseClassKey);
+				if (!skillKeyList) return;
+
+				var skillKeyMap = utils.createSkillMap(skillKeyList);
+
+				if (!asbct[baseClassKey]) asbct[baseClassKey] = {};
+
+				skillKeyList.forEach(function(skillKey) {
+					var skillExists = false;
+					for (var i=0; i<Object.keys(asbct).length; i++) {
+						var classTreeKey = Object.keys(asbct)[i];
+						for (var j=0; j<Object.keys(asbct[classTreeKey]).length; j++) {
+							var existingSkillKey = Object.keys(asbct[classTreeKey])[j];
+							if (existingSkillKey == skillKey) {
+								skillExists = true;
+								break;
+							}
+						}
+						if (skillExists) break;
+					}
+					if (!skillExists) asbct[baseClassKey][skillKey] = skillKeyMap[skillKey];
+
+				});
+			});
+
+			return asbct;
+		};
+
+		var updateSkills = vm.updateSkills = function() {
+			var accessibleSkillKeyList = [];
+
+			var selectedSkills = vm.model.selectedSkills;
+			var asbct = vm.model.availableSkillsByClassTree;
+
+			Object.keys(asbct).forEach(function(baseClassKey) {
+				Object.keys(asbct[baseClassKey]).forEach(function(skillKey) {
+					accessibleSkillKeyList.push(skillKey);
+				});
+			});
+
+			Object.keys(selectedSkills).forEach(function(skillKey) {
+				if (accessibleSkillKeyList.indexOf(skillKey) == -1) {
+					delete selectedSkills[skillKey];
+				}
+			});
+
+		};
+
+		function setAllClasses(charKey) {
+			vm.model.availableClasses = getAllClasses(charKey);
+		}
+		function setAvailableSkillsByClassTree(charKey) {
+			vm.model.availableSkillsByClassTree = getAvailableSkillsByClassTree(charKey);
+			updateSkills();
+		}
 
 		var selectClass = vm.selectClass = function(unitClass) {
 			if (unitClass) vm.model.unitClass = unitClass;
@@ -258,7 +347,8 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 				calcAvatarMods();
 			}
 
-			vm.model.availableClasses = getAllClasses(unit.key);
+			setAllClasses(unit.key);
+			setAvailableSkillsByClassTree(unit.key);
 
 			// initialize form fields where applicable
 			selectClass(vm.model.availableClasses[unit.startingClass]);
@@ -281,7 +371,9 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 		};
 
 		vm.selectAvatarTalent = function() {
-			vm.model.availableClasses = getAllClasses(vm.model.unit.key);
+			setAllClasses(vm.model.unit.key);
+			// vm.model.availableSkills = getAllSkills(vm.model.unit.key);
+			setAvailableSkillsByClassTree(vm.model.unit.key);
 		};
 
 		vm.selectVarParent = function() {
@@ -303,7 +395,9 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 				// calcChildMods(vm.model.varParent);
 			}
 
-			vm.model.availableClasses = getAllClasses(vm.model.unit.key);
+			setAllClasses(vm.model.unit.key);
+			// vm.model.availableSkills = getAllSkills(vm.model.unit.key);
+			setAvailableSkillsByClassTree(vm.model.unit.key);
 
 		};
 
@@ -317,16 +411,22 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 			calcFullGrowths();
 			calcCaps();
 
-			vm.model.availableClasses = getAllClasses(vm.model.unit.key);
+			setAllClasses(vm.model.unit.key);
+			// vm.model.availableSkills = getAllSkills(vm.model.unit.key);
+			setAvailableSkillsByClassTree(vm.model.unit.key);
 		};
 
 
 		vm.selectSSupport = function() {
-			vm.model.availableClasses = getAllClasses(vm.model.unit.key);
+			setAllClasses(vm.model.unit.key);
+			// vm.model.availableSkills = getAllSkills(vm.model.unit.key);
+			setAvailableSkillsByClassTree(vm.model.unit.key);
 		};
 
 		vm.selectAPlusSupport = function() {
-			vm.model.availableClasses = getAllClasses(vm.model.unit.key);
+			setAllClasses(vm.model.unit.key);
+			// vm.model.availableSkills = getAllSkills(vm.model.unit.key);
+			setAvailableSkillsByClassTree(vm.model.unit.key);
 		};
 
 		vm.getSSupports = function(charKey) {
@@ -364,6 +464,26 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 
 		};
 
+		vm.toggleSkill = function(skillKey, skill) {
+			if (vm.model.selectedSkills[skillKey]) {
+				delete vm.model.selectedSkills[skillKey];
+			}
+			else if (Object.keys(vm.model.selectedSkills).length < 5) {
+				vm.model.selectedSkills[skillKey] = skill;
+			}
+		};
+
+
+
+		vm.toggleDLC = function() {
+			if (!vm.model.unit) return;
+			setAllClasses(vm.model.unit.key);
+			setAvailableSkillsByClassTree(vm.model.unit.key);
+		};
+
+		vm.formatSkillName = function(skillKey) {
+			return skillKey.replace(/\+/g, '');
+		};
 
 
 		function addClasses(classKeyList, newClassKey, unit) {
@@ -374,7 +494,7 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 				var newClass = Classes.getClass(newClassKey);
 
 				if (newClass.gender && newClass.gender != unit.gender) {
-					newClass = newClass.genderEquivalent;
+					newClassKey = newClass.genderEquivalent;
 				}
 
 				if (classKeyList.indexOf(newClassKey) == -1) {

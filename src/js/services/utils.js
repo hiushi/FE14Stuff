@@ -5,7 +5,9 @@ app.service('utils', ['Characters', 'Classes', 'Skills',
 			classes = Classes.getClasses(),
 			skills = Skills.getAllSkills();
 
-		this.createCharacterMap = function(charKeyList) {
+		var self = this;
+
+		self.createCharacterMap = function(charKeyList) {
 			var map = {};
 			charKeyList.forEach(function(charKey) {
 				map[charKey] = chars[charKey];
@@ -13,7 +15,7 @@ app.service('utils', ['Characters', 'Classes', 'Skills',
 			return map;
 		};
 
-		this.createClassMap = function(classKeyList) {
+		self.createClassMap = function(classKeyList) {
 			var map = {};
 			classKeyList.forEach(function(classKey) {
 				map[classKey] = classes[classKey];
@@ -21,8 +23,15 @@ app.service('utils', ['Characters', 'Classes', 'Skills',
 			return map;
 		};
 
+		self.createSkillMap = function(skillKeyList) {
+			var map = {};
+			skillKeyList.forEach(function(skillKey) {
+				map[skillKey] = skills[skillKey];
+			});
+			return map;
+		};
 
-		this.getClassSet = function(charKey) {
+		self.getClassSet = function(charKey) {
 			var unit = Characters.getCharacter(charKey);
 			var baseClassKeyList = Characters.getBaseClasses(charKey);
 
@@ -35,6 +44,20 @@ app.service('utils', ['Characters', 'Classes', 'Skills',
 			});
 			return fullClassKeyList;
 		};
+
+		self.getSkillsByClassTree = function(baseClassKey) {
+			var baseClass = Classes.getClass(baseClassKey);
+			var promotions = Classes.getPromotions(baseClassKey).map(Classes.getClass);
+			var fullClassList = [baseClass].concat(promotions);
+
+			var skillKeyList = [];
+			fullClassList.forEach(function(unitClass) {
+				skillKeyList = skillKeyList.concat(unitClass.skills);
+			});
+			return skillKeyList;
+		};
+
+
 
 	}
 ])

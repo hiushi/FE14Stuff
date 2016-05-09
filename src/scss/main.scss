@@ -75,6 +75,24 @@ body {
 	}
 }
 
+li.selectable-skill {
+	list-style: none;
+	i {
+		cursor: pointer;
+	}
+
+	span {
+		line-height: 24px;
+		cursor: pointer;
+
+		&.selected {
+			color: #0000ff;	
+		}
+	}
+}
+
+
+@import "skill-icons";
 
 
 
