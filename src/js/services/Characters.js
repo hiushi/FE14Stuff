@@ -592,7 +592,7 @@ app.service('Characters', function() {
 			"growths": {"HP": 40, "Str": 50, "Mag": 25, "Skl": 50, "Spd": 55, "Lck": 25, "Def": 35, "Res": 45},
 			"mods": {"Str": 1, "Mag": -1, "Skl": 1, "Spd": 1, "Lck": -2, "Def": 1, "Res": 0},
 			"personalSkill": "Roses_Thorn",
-			"baseClass1": "Malig_Knight",
+			"baseClass1": "Wyvern_Rider",
 			"baseClass2": "Dark_Mage",
 		},
 

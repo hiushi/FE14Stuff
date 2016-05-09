@@ -13,6 +13,7 @@ app.service('Classes', function() {
 			"maxStats": {"HP": 40, "Str": 23, "Mag": 17, "Skl": 19, "Spd": 21, "Lck": 22, "Def": 21, "Res": 19},
 			"gender": "M",
 			"genderEquivalent": "Nohr_Princess",
+			"parallel": null,
 			"sealAccess": false,
 			"inheritAccess": true,
 		},
@@ -29,6 +30,7 @@ app.service('Classes', function() {
 			"maxStats": {"HP": 40, "Str": 23, "Mag": 17, "Skl": 19, "Spd": 21, "Lck": 22, "Def": 21, "Res": 19},
 			"gender": "F",
 			"genderEquivalent": "Nohr_Prince",
+			"parallel": null,
 			"sealAccess": false,
 			"inheritAccess": true,
 		},
@@ -71,6 +73,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 17, "Str": 4, "Mag": 0, "Skl": 5, "Spd": 8, "Lck": 3, "Def": 3, "Res": 3},
 			"growths": {"HP": 10, "Str": 10, "Mag": 0, "Skl": 15, "Spd": 20, "Lck": 15, "Def": 0, "Res": 10},
 			"maxStats": {"HP": 40, "Str": 20, "Mag": 16, "Skl": 23, "Spd": 25, "Lck": 24, "Def": 18, "Res": 20},
+			"parallel": "Mercenary",
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -114,6 +117,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 17, "Str": 5, "Mag": 0, "Skl": 4, "Spd": 5, "Lck": 3, "Def": 4, "Res": 0},
 			"growths": {"HP": 10, "Str": 10, "Mag": 0, "Skl": 10, "Spd": 10, "Lck": 20, "Def": 10, "Res": 0},
 			"maxStats": {"HP": 35, "Str": 19, "Mag": 15, "Skl": 19, "Spd": 19, "Lck": 22, "Def": 18, "Res": 15},
+			"parallel": "Apothecary",
 			"sealAccess": false,
 			"inheritAccess": false,
 		},
@@ -142,6 +146,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 18, "Str": 6, "Mag": 0, "Skl": 4, "Spd": 4, "Lck": 2, "Def": 6, "Res": 2},
 			"growths": {"HP": 20, "Str": 20, "Mag": 0, "Skl": 10, "Spd": 10, "Lck": 5, "Def": 10, "Res": 5},
 			"maxStats": {"HP": 45, "Str": 24, "Mag": 15, "Skl": 19, "Spd": 19, "Lck": 21, "Def": 23, "Res": 20},
+			"parallel": null,
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -156,6 +161,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 18, "Str": 6, "Mag": 1, "Skl": 2, "Spd": 5, "Lck": 0, "Def": 7, "Res": 1},
 			"growths": {"HP": 20, "Str": 20, "Mag": 10, "Skl": 0, "Spd": 10, "Lck": 0, "Def": 20, "Res": 0},
 			"maxStats": {"HP": 45, "Str": 24, "Mag": 19, "Skl": 16, "Spd": 20, "Lck": 17, "Def": 23, "Res": 18},
+			"parallel": "Fighter",
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -198,6 +204,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 17, "Str": 6, "Mag": 0, "Skl": 6, "Spd": 6, "Lck": 2, "Def": 5, "Res": 2},
 			"growths": {"HP": 15, "Str": 15, "Mag": 0, "Skl": 15, "Spd": 15, "Lck": 5, "Def": 10, "Res": 5},
 			"maxStats": {"HP": 40, "Str": 22, "Mag": 15, "Skl": 23, "Spd": 22, "Lck": 21, "Def": 22, "Res": 21},
+			"parallel": "Knight",
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -241,6 +248,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 15, "Str": 0, "Mag": 4, "Skl": 5, "Spd": 6, "Lck": 1, "Def": 1, "Res": 3},
 			"growths": {"HP": 0, "Str": 5, "Mag": 15, "Skl": 10, "Spd": 10, "Lck": 5, "Def": 0, "Res": 10},
 			"maxStats": {"HP": 35, "Str": 17, "Mag": 22, "Skl": 20, "Spd": 23, "Lck": 19, "Def": 16, "Res": 20},
+			"parallel": "Dark_Mage",
 			"sealAccess": true,
 			"inheritAccess": true,
 		},	
@@ -272,6 +280,7 @@ app.service('Classes', function() {
 			"bonus": {"Ddg": 10},
 			"gender": "M",
 			"genderEquivalent": "Shrine_Maiden",
+			"parallel": null,
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -289,6 +298,7 @@ app.service('Classes', function() {
 			"bonus": {"Ddg": 10},
 			"gender": "F",
 			"genderEquivalent": "Monk",
+			"parallel": null,
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -335,6 +345,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 16, "Str": 3, "Mag": 0, "Skl": 5, "Spd": 7, "Lck": 4, "Def": 2, "Res": 6},
 			"growths": {"HP": 0, "Str": 10, "Mag": 0, "Skl": 10, "Spd": 15, "Lck": 20, "Def": 0, "Res": 20},
 			"maxStats": {"HP": 35, "Str": 19, "Mag": 16, "Skl": 21, "Spd": 23, "Lck": 25, "Def": 18, "Res": 25},
+			"parallel": "Wyvern_Rider",
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -377,6 +388,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 17, "Str": 5, "Mag": 0, "Skl": 7, "Spd": 5, "Lck": 2, "Def": 4, "Res": 1},
 			"growths": {"HP": 10, "Str": 15, "Mag": 0, "Skl": 15, "Spd": 15, "Lck": 5, "Def": 10, "Res": 0},
 			"maxStats": {"HP": 40, "Str": 21, "Mag": 15, "Skl": 23, "Spd": 21, "Lck": 20, "Def": 20, "Res": 17},
+			"parallel": "Outlaw",
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -406,6 +418,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 16, "Str": 3, "Mag": 0, "Skl": 8, "Spd": 8, "Lck": 1, "Def": 3, "Res": 3},
 			"growths": {"HP": 5, "Str": 5, "Mag": 0, "Skl": 20, "Spd": 20, "Lck": 0, "Def": 5, "Res": 15},
 			"maxStats": {"HP": 35, "Str": 17, "Mag": 15, "Skl": 25, "Spd": 25, "Lck": 18, "Def": 19, "Res": 20},
+			"parallel": "Cavalier",
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -449,6 +462,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 16, "Str": 5, "Mag": 1, "Skl": 6, "Spd": 8, "Lck": 4, "Def": 1, "Res": 4},	
 			"growths": {"HP": 10, "Str": 10, "Mag": 0, "Skl": 15, "Spd": 20, "Lck": 10, "Def": 0, "Res": 20},
 			"maxStats": {"HP": 40, "Str": 20, "Mag": 18, "Skl": 23, "Spd": 24, "Lck": 24, "Def": 18, "Res": 23},
+			"parallel": "Apothecary",
 			"sealAccess": false,
 			"inheritAccess": true,
 		},
@@ -478,6 +492,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 17, "Str": 6, "Mag": 0, "Skl": 5, "Spd": 5, "Lck": 3, "Def": 5, "Res": 3},		
 			"growths": {"HP": 10, "Str": 15, "Mag": 0, "Skl": 10, "Spd": 10, "Lck": 15, "Def": 10, "Res": 5},
 			"maxStats": {"HP": 40, "Str": 22, "Mag": 15, "Skl": 21, "Spd": 20, "Lck": 24, "Def": 22, "Res": 21},
+			"parallel": "Ninja",
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -520,6 +535,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 19, "Str": 8, "Mag": 0, "Skl": 5, "Spd": 3, "Lck": 3, "Def": 8, "Res": 1},		
 			"growths": {"HP": 20, "Str": 20, "Mag": 0, "Skl": 15, "Spd": 5, "Lck": 10, "Def": 20, "Res": 0},
 			"maxStats": {"HP": 45, "Str": 24, "Mag": 15, "Skl": 22, "Spd": 17, "Lck": 22, "Def": 26, "Res": 18},
+			"parallel": "Spear_Fighter",
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -548,6 +564,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 19, "Str": 7, "Mag": 0, "Skl": 6, "Spd": 6, "Lck": 2, "Def": 4, "Res": 1},		
 			"growths": {"HP": 20, "Str": 20, "Mag": 0, "Skl": 15, "Spd": 15, "Lck": 5, "Def": 5, "Res": 0},
 			"maxStats": {"HP": 45, "Str": 25, "Mag": 15, "Skl": 23, "Spd": 22, "Lck": 21, "Def": 19, "Res": 18},
+			"parallel": "Oni_Savage",
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -577,6 +594,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 17, "Str": 5, "Mag": 0, "Skl": 7, "Spd": 6, "Lck": 2, "Def": 5, "Res": 2},		
 			"growths": {"HP": 10, "Str": 15, "Mag": 0, "Skl": 20, "Spd": 15, "Lck": 5, "Def": 10, "Res": 5},
 			"maxStats": {"HP": 40, "Str": 22, "Mag": 15, "Skl": 24, "Spd": 22, "Lck": 20, "Def": 21, "Res": 19},
+			"parallel": "Samurai",
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -619,6 +637,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 16, "Str": 3, "Mag": 1, "Skl": 4, "Spd": 8, "Lck": 1, "Def": 2, "Res": 4},		
 			"growths": {"HP": 0, "Str": 10, "Mag": 5, "Skl": 10, "Spd": 20, "Lck": 0, "Def": 0, "Res": 20},
 			"maxStats": {"HP": 35, "Str": 19, "Mag": 18, "Skl": 20, "Spd": 24, "Lck": 18, "Def": 17, "Res": 22},
+			"parallel": "Archer",
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -647,6 +666,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 17, "Str": 6, "Mag": 0, "Skl": 5, "Spd": 4, "Lck": 2, "Def": 7, "Res": 0},		
 			"growths": {"HP": 10, "Str": 15, "Mag": 5, "Skl": 10, "Spd": 10, "Lck": 5, "Def": 20, "Res": 0},
 			"maxStats": {"HP": 40, "Str": 22, "Mag": 17, "Skl": 21, "Spd": 20, "Lck": 19, "Def": 24, "Res": 15},
+			"parallel": "Sky_Knight",
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -689,6 +709,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 16, "Str": 0, "Mag": 6, "Skl": 3, "Spd": 3, "Lck": 1, "Def": 3, "Res": 5},		
 			"growths": {"HP": 0, "Str": 10, "Mag": 20, "Skl": 0, "Spd": 10, "Lck": 0, "Def": 5, "Res": 10},
 			"maxStats": {"HP": 35, "Str": 19, "Mag": 24, "Skl": 16, "Spd": 19, "Lck": 18, "Def": 19, "Res": 22},
+			"parallel": "Diviner",
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -735,6 +756,7 @@ app.service('Classes', function() {
 			"bonus": {"Ddg": 10},
 			"gender": "F",
 			"genderEquivalent": "Troubadour_M",
+			"parallel": null,
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -752,6 +774,7 @@ app.service('Classes', function() {
 			"bonus": {"Ddg": 10},
 			"gender": "M",
 			"genderEquivalent": "Troubadour_F",
+			"parallel": null,
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -812,6 +835,7 @@ app.service('Classes', function() {
 			"bases": {"HP": 19, "Str": 8, "Mag": 0, "Skl": 4, "Spd": 6, "Lck": 0, "Def": 4, "Res": 0},		
 			"growths": {"HP": 20, "Str": 20, "Mag": 0, "Skl": 5, "Spd": 15, "Lck": 5, "Def": 10, "Res": 0},
 			"maxStats": {"HP": 45, "Str": 24, "Mag": 15, "Skl": 18, "Spd": 22, "Lck": 17, "Def": 21, "Res": 15},
+			"parallel": "Outlaw",
 			"sealAccess": false,
 			"inheritAccess": true,
 		},
@@ -842,6 +866,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 0, "Str": 10, "Mag": 0, "Skl": 20, "Spd": 20, "Lck": 20, "Def": 0, "Res": 0},
 			"maxStats": {"HP": 45, "Str": 28, "Mag": 27, "Skl": 31, "Spd": 31, "Lck": 35, "Def": 27, "Res": 28},
 			"gender": "F",
+			"parallel": "Troubadour_F",
 			"sealAccess": false,
 			"inheritAccess": false,
 		},
@@ -1013,6 +1038,31 @@ app.service('Classes', function() {
 		return angular.copy(classes);
 	};
 
+	this.getClass = function(classKey) {
+		return angular.copy(classes[classKey]);
+	};
+
+	this.getClassByGender = function(classKey, gender) {
+		var unitClass = classes[classKey];
+		if (unitClass.gender && unitClass.gender != gender && unitClass.genderEquivalent) {
+			unitClass = classes[unitClass.genderEquivalent];
+		}
+		return angular.copy(unitClass);
+	};
+
+	this.getParallelClass = function(classKey) {
+		var parallelKey = classes[classKey].parallel;
+		return angular.copy(classes[parallelKey]);
+	};
+
+	this.getParallelClassByGender = function(classKey, gender) {
+		var parallelKey = classes[classKey].parallel;
+		var parallelClass = classes[parallelKey];
+		if (parallelClass.gender && parallelClass.gender != gender && parallelClass.genderEquivalent) {
+			parallelClass = classes[parallelClass.genderEquivalent];
+		}
+		return angular.copy(parallelClass);
+	};
 
 	this.getPromotions = function(classKey) {
 		return classes[classKey].promotesTo;
