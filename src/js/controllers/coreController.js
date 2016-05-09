@@ -37,10 +37,12 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 			var classList = utils.getClassSet(charKey);
 			if (!classList) return;
 
-			// if avatar, add talent class
+			// if avatar, every non-special class is theoretically possible
 			if (isAvatar(unit)) {
-				var talentKey = vm.model.avatarTalent;
-				if (talentKey) addClasses(classList, talentKey, unit);
+				var usableClasses = Classes.AVATAR_TALENTS[unit.gender];
+				Object.keys(usableClasses).forEach(function(classKey) {
+					addClasses(classList, classKey, unit);
+				});
 			}
 
 			// everyone else besides avatar
@@ -219,6 +221,13 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 				}
 
 			}
+
+			var dlcClasses = Classes.DLC_CLASSES;
+			dlcClasses.forEach(function(dlcClassKey) {
+				var dlcClass = Classes.getClass(dlcClassKey);
+				if (dlcClass.gender && dlcClass.gender != unit.gender) return;
+				else classList.push(dlcClassKey);
+			});
 
 
 			var classMap = utils.createClassMap(classList);

@@ -1033,6 +1033,8 @@ app.service('Classes', function() {
 		},
 	};
 
+	this.DLC_CLASSES = ["Dread_Fighter", "Dark_Falcon", "Ballistician", "Witch", "Lodestar", "Vanguard", "Great_Lord", "Grandmaster"];
+
 
 	this.getClasses = function() {
 		return angular.copy(classes);
