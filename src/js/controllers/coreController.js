@@ -1,5 +1,5 @@
-app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills',
-	function($scope, utils, Characters, Classes, Skills) {
+app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills', '$location',
+	function($scope, utils, Characters, Classes, Skills, $location) {
 
 		var vm = this;
 
@@ -642,10 +642,45 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 		};
 
 
+
+		function getQueryParams() {
+			var queryString = window.location.search.substring(1);
+			var params = queryString.split('&');
+
+			var queryMap = {};
+			params.forEach(function(param) {
+				var pair = param.split('=');
+				var field = pair[0];
+				var value = pair[1];
+				if (field) queryMap[field] = value;
+			});
+			return queryMap;
+		}
+
+
+		function init() {
+			vm.queryParams = getQueryParams();
+
+			if (vm.queryParams.unit) {
+				var unit = vm.CHARS[vm.queryParams.unit];
+				if (unit) {
+					vm.model.unit = unit;
+					vm.selectUnit();
+				}
+			}
+			if (vm.queryParams.SSupport) {
+				var SSupport = vm.getSSupports(vm.queryParams.SSupport);
+				if (SSupport) {
+					vm.model.SSupport = SSupport;
+					vm.selectSSupport();
+				}
+			}
+		}
+
+		init();
+
+
 	}
-
-
-
 ]);
 
 
