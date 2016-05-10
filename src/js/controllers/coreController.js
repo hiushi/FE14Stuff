@@ -261,7 +261,8 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 			var classes = vm.model.availableClasses;
 			var classTrees = Object.keys(classes)
 				.filter(function(unitClass) {
-					return classes[unitClass].classTier == 'tier1';
+					var tier = classes[unitClass].classTier;
+					return tier == 'tier1' || tier == 'special';
 				});
 
 			var asbct = {};
@@ -320,6 +321,7 @@ app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills'
 		}
 		function setAvailableSkillsByClassTree(charKey) {
 			vm.model.availableSkillsByClassTree = getAvailableSkillsByClassTree(charKey);
+			console.log(vm.model.availableSkillsByClassTree);
 			updateSkills();
 		}
 

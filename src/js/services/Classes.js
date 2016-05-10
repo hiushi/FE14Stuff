@@ -1068,7 +1068,7 @@ app.service('Classes', function() {
 	};
 
 	this.getPromotions = function(classKey) {
-		return classes[classKey].promotesTo;
+		return classes[classKey].promotesTo || [];
 	};
 
 

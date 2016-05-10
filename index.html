@@ -289,12 +289,12 @@
 
 				<div ng-if="g.model.unit">
 					<h4 class="form-heading">Skills</h4>
-					<div>
+					<div class="form-row">
 
-						<div ng-repeat="(classKey, class) in g.model.availableClasses" ng-if="class.classTier == 'tier1'" 
+						<div ng-repeat="(classKey, class) in g.model.availableClasses" ng-if="class.classTier == 'tier1' || class.classTier == 'special'" 
 							class="form-col-25">
-							<span>{{class.name}} Tree</span>
-							<ul>
+							<span>{{class.name}} </span><span ng-show="class.classTier == 'tier1'">Tree</span>
+							<ul class="classtree-skill-list">
 								<li ng-repeat="(skillKey, skill) in g.model.availableSkillsByClassTree[classKey]" class="selectable-skill">
 									<i class="icon-skill icon-skill-{{g.formatSkillName(skillKey)}}" ng-click="g.toggleSkill(skillKey, skill)"></i>
 									<span ng-class="{'selected': !!g.model.selectedSkills[skillKey]}" ng-click="g.toggleSkill(skillKey, skill)">{{ skill.name }}</span>
