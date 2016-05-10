@@ -12,6 +12,7 @@
 }
 body {
   font-family: 'Source Sans Pro', 'Helvetica', 'Arial', sans-serif;
+  font-size: 16px;
 }
 
 .maincontent {
@@ -20,10 +21,24 @@ body {
   padding: 30px;
   background-color: #eee;
 }
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .maincontent {
+    padding: 20px;
+  }
+}
+@media screen and (max-width: 374px) {
+  .maincontent {
+    padding: 10px;
+  }
+}
 
 .form-row {
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
   overflow: hidden;
+}
+
+.form-section {
+  margin-bottom: 20px;
 }
 
 .form-heading {
@@ -41,8 +56,24 @@ body {
   width: 50%;
 }
 
+@media screen and (max-width: 767px) {
+  .form-mobile-50 {
+    width: 50%;
+  }
+
+  .form-mobile-100 {
+    width: 100%;
+  }
+}
 .stat-table {
   border-spacing: 0;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+@media screen and (max-width: 767px) {
+  .stat-table {
+    padding: 0;
+  }
 }
 .stat-table th {
   font-weight: bold;
@@ -51,6 +82,13 @@ body {
   min-width: 40px;
   padding: 4px;
   text-align: center;
+  font-size: 16px;
+}
+@media screen and (max-width: 1023px) {
+  .stat-table th, .stat-table td {
+    min-width: 0;
+    font-size: 14px;
+  }
 }
 .stat-table tr.table-sumline td {
   border-top: 1px solid #000;
@@ -69,8 +107,14 @@ body {
 }
 
 .classtree-skill-list {
-  height: 144px;
-  margin-bottom: 40px;
+  float: left;
+  width: 230px;
+  margin-bottom: 20px;
+}
+@media screen and (min-width: 768px) {
+  .classtree-skill-list {
+    height: 196px;
+  }
 }
 
 li.selectable-skill {

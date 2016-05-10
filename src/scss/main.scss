@@ -16,6 +16,10 @@
 
 body {
 	font-family: 'Source Sans Pro', 'Helvetica', 'Arial', sans-serif;
+	font-size: 16px;
+	// @media screen and (max-width: 767px) {
+	// 	font-size: 14px;
+	// }
 }
 
 .maincontent {
@@ -23,16 +27,32 @@ body {
 	margin: 30px auto;
 	padding: 30px;
 	background-color: #eee;
+
+	@media screen and (min-width: 375px) and (max-width: 767px) {
+		padding: 20px;
+	}
+	@media screen and (max-width: 374px) {
+		padding: 10px;
+	}
 }
 
 .form-row {
-	margin-bottom: 20px;
+	margin: 0 auto 20px;
 	overflow: hidden;
+}
+
+.form-section {
+	margin-bottom: 20px;
 }
 
 .form-heading {
 	font-size: 20px;
 	margin: 10px 0;
+	// padding: 0 30px;
+	
+	// @media screen and (max-width: 767px) {
+	// 	padding: 0;
+	// }
 }
 
 .form-col-25 {
@@ -44,8 +64,24 @@ body {
 	width: 50%;
 }
 
+@media screen and (max-width: 767px) {
+	.form-mobile-50 {
+		width: 50%;
+	}
+	.form-mobile-100 {
+		width: 100%;
+	}
+}
+
+
 .stat-table {
 	border-spacing: 0;
+	margin: 0 auto;
+	padding: 0 30px;
+
+	@media screen and (max-width: 767px) {
+		padding: 0;
+	}
 
 	th {
 		font-weight: bold;
@@ -54,6 +90,15 @@ body {
 		min-width: 40px;
 		padding: 4px;
 		text-align: center;
+		font-size: 16px;
+
+		@media screen and (max-width: 1023px) {
+			min-width: 0;
+			font-size: 14px;
+		}
+		// @media screen and (max-width: 374px) {
+		// 	font-size: 14px;
+		// }
 	}
 	tr.table-sumline td {
 		border-top: 1px solid #000;
@@ -73,11 +118,21 @@ body {
 			font-weight: bold;
 		}
 	}
+
+
 }
 
 .classtree-skill-list {
-	height: 144px;
-	margin-bottom: 40px;
+	float: left;
+	width: 230px;
+	margin-bottom: 20px;
+
+	@media screen and (min-width: 768px) {
+		height: 196px;
+	}
+	@media screen and (max-width: 767px) {
+		// width: 180px;
+	}
 }
 
 li.selectable-skill {

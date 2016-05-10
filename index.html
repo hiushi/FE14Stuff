@@ -1,5 +1,7 @@
 <html lang="en">
 	<head>
+		<title>Fire Emblem Fates Optimization</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 		<link rel="stylesheet" href="dist/css/normalize.css">
 		<link rel="stylesheet" href="dist/css/main.css">
 	</head>
@@ -13,7 +15,7 @@
 <!-- 			<pre style="height: 150px; border: 1px solid black; overflow: scroll; font-size: 10px; font-family: 'Monaco'">{{ g.model | json }}</pre> -->
 
 			<div class="form-row">
-				<div class="form-col-25">
+				<div class="form-col-25 form-mobile-50">
 					<label>Selected Unit: </label>
 					<select ng-model="g.model.unit" ng-change="g.selectUnit()" name="unit" 
 						ng-options="unit as unit.name for (unitKey, unit) in g.CHARS"
@@ -21,13 +23,13 @@
 				</div>
 
 				<div ng-show="g.model.unit && g.avatarRequired()">
-					<div class="form-col-25">
+					<div class="form-col-25 form-mobile-50">
 						<label>Avatar Boon: </label>
 						<select ng-model="g.model.avatarBoon" ng-change="g.selectAvatarBoon()" name="avatarBoon"
 							ng-options="stat as description for (stat, description) in g.AVATAR_MODS.descriptions.Boon"></select>
 					</div>
 
-					<div class="form-col-25">
+					<div class="form-col-25 form-mobile-50">
 						<label>Avatar Bane: </label>
 						<select ng-model="g.model.avatarBane" ng-change="g.selectAvatarBane()" name="avatarBane"
 							ng-options="stat as description for (stat, description) in g.AVATAR_MODS.descriptions.Bane"></select>
@@ -35,7 +37,7 @@
 
 				</div>
 				<div ng-show="g.model.unit && (g.avatarRequired() || g.isAvatar(g.model.SSupport))">
-					<div class="form-col-25">
+					<div class="form-col-25 form-mobile-50">
 						<label>Avatar Talent: </label>
 						<select ng-model="g.model.avatarTalent" ng-change="g.selectAvatarTalent()" name="avatarTalent"
 							ng-options="class as description for (class, description) in g.AVATAR_TALENTS[g.model.unit.gender]"></select>
@@ -44,13 +46,13 @@
 			</div>
 
 			<div class="form-row" ng-if="g.model.unit.gen == 2">
-				<div class="form-col-25">
+				<div class="form-col-25 form-mobile-50">
 					<label>Parent: </label>
 					<select ng-model="g.model.varParent" ng-change="g.selectVarParent()" name="varParent"
 						ng-options="varParent as varParent.name for (varParentKey, varParent) in g.getVarParents(g.model.unit.key)"></select>
 				</div>
 
-				<div class="form-col-25" ng-if="g.model.varParent.gen == 2">
+				<div class="form-col-25 form-mobile-50" ng-if="g.model.varParent.gen == 2">
 					<label>Grandparent: </label>
 					<select ng-model="g.model.varGrandparent" ng-change="g.selectVarGrandparent()" name="varGrandparent"
 						ng-options="varGrandparent as varGrandparent.name for (varGrandparentKey, varGrandparent) in g.getVarParents(g.model.varParent.key)"></select>
@@ -59,13 +61,13 @@
 			</div>
 
 			<div class="form-row" ng-if="g.model.unit">
-				<div class="form-col-25">
+				<div class="form-col-25 form-mobile-50">
 					<label>S Support: </label>
 					<select ng-model="g.model.SSupport" ng-change="g.selectSSupport()" name="SSupport"
 						ng-options="support as support.name for (supportKey, support) in g.getSSupports(g.model.unit.key)"></select>
 				</div>
 
-				<div class="form-col-25" ng-if="g.model.unit.APlusSupport && g.model.unit.name.indexOf('Avatar') == -1">
+				<div class="form-col-25 form-mobile-50" ng-if="g.model.unit.APlusSupport && g.model.unit.name.indexOf('Avatar') == -1">
 					<label>A+ Support: </label>
 					<select ng-model="g.model.APlusSupport" ng-change="g.selectAPlusSupport()" name="APlusSupport"
 						ng-options="support as support.name for (supportKey, support) in g.getAPlusSupports(g.model.unit.key)"></select>
@@ -73,7 +75,7 @@
 			</div>
 
 			<div class="form-row" ng-if="g.model.unit">
-				<div class="form-col-25">
+				<div class="form-col-25 form-mobile-50">
 					<label>Class: </label>
 					<select ng-model="g.model.unitClass" ng-change="g.selectClass()" name="unitClass"
 						ng-options="class as class.name for (classKey, class) in g.model.availableClasses"></select>
@@ -86,7 +88,7 @@
 			</div>
 
 			<div class="form-row">
-				<div class="form-col-50" ng-if="(!g.avatarRequired() || (g.avatarRequired() && g.model.avatarBoon && g.model.avatarBane)) && (g.model.unit.gen == 1 || (g.model.unit.gen == 2 && g.model.varParent))">
+				<div class="form-col-50 form-mobile-100 form-section" ng-if="(!g.avatarRequired() || (g.avatarRequired() && g.model.avatarBoon && g.model.avatarBane)) && (g.model.unit.gen == 1 || (g.model.unit.gen == 2 && g.model.varParent))">
 
 					<div ng-if="g.model.unit.gen == 1">
 						<h4 class="form-heading">Mods</h4>
@@ -164,7 +166,7 @@
 
 				</div>
 
-				<div class="form-col-50">
+				<div class="form-col-50 form-mobile-100 form-section">
 					
 					<div ng-if="g.model.unit.gen == 1 && (!g.avatarRequired() || (g.avatarRequired() && g.model.avatarBoon && g.model.avatarBane))">
 						<h4 class="form-heading">Growths</h4>
@@ -249,7 +251,7 @@
 
 				</div>
 
-				<div class="form-col-50">
+				<div class="form-col-50 form-mobile-100 form-section">
 					
 					<div ng-if="g.model.unit && g.model.unitClass && (g.model.unit.mods || g.model.unit.calculatedMods) && (!g.avatarRequired() || (g.avatarRequired() && g.model.avatarBoon && g.model.avatarBane))">
 						<h4 class="form-heading">Caps</h4>
@@ -292,7 +294,7 @@
 					<div class="form-row">
 
 						<div ng-repeat="(classKey, class) in g.model.availableClasses" ng-if="class.classTier == 'tier1' || class.classTier == 'special'" 
-							class="form-col-25">
+							class="classtree-skill-list">
 							<span>{{class.name}} </span><span ng-show="class.classTier == 'tier1'">Tree</span>
 							<ul class="classtree-skill-list">
 								<li ng-repeat="(skillKey, skill) in g.model.availableSkillsByClassTree[classKey]" class="selectable-skill">
