@@ -65,72 +65,6 @@ body {
     width: 100%;
   }
 }
-.stat-table {
-  border-spacing: 0;
-  margin: 0 auto;
-  padding: 0 30px;
-}
-@media screen and (max-width: 767px) {
-  .stat-table {
-    padding: 0;
-  }
-}
-.stat-table th {
-  font-weight: bold;
-}
-.stat-table th, .stat-table td {
-  min-width: 40px;
-  padding: 4px;
-  text-align: center;
-  font-size: 16px;
-}
-@media screen and (max-width: 1023px) {
-  .stat-table th, .stat-table td {
-    min-width: 0;
-    font-size: 14px;
-  }
-}
-.stat-table tr.table-sumline td {
-  border-top: 1px solid #000;
-}
-.stat-table td.pos {
-  color: #086;
-}
-.stat-table td.neg {
-  color: #900;
-}
-.stat-table td.neu {
-  color: #555;
-}
-.stat-table td.stat-total {
-  font-weight: bold;
-}
-
-.classtree-skill-list {
-  float: left;
-  width: 230px;
-  margin-bottom: 20px;
-}
-@media screen and (min-width: 768px) {
-  .classtree-skill-list {
-    height: 196px;
-  }
-}
-
-li.selectable-skill {
-  list-style: none;
-}
-li.selectable-skill i {
-  cursor: pointer;
-}
-li.selectable-skill span {
-  line-height: 24px;
-  cursor: pointer;
-}
-li.selectable-skill span.selected {
-  color: #0000ff;
-}
-
 .icon-skill {
   position: relative;
   display: inline-block;
@@ -969,4 +903,68 @@ li.selectable-skill span.selected {
 
 .icon-skill-Beast_Shield {
   background: url(../../assets/images/fe14_skills.png) -480px -216px;
+}
+
+#build-planner .stat-table {
+  border-spacing: 0;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+@media screen and (max-width: 767px) {
+  #build-planner .stat-table {
+    padding: 0;
+  }
+}
+#build-planner .stat-table th {
+  font-weight: bold;
+}
+#build-planner .stat-table th, #build-planner .stat-table td {
+  min-width: 40px;
+  padding: 4px;
+  text-align: center;
+  font-size: 16px;
+}
+@media screen and (max-width: 1023px) {
+  #build-planner .stat-table th, #build-planner .stat-table td {
+    min-width: 0;
+    font-size: 14px;
+  }
+}
+#build-planner .stat-table tr.table-sumline td {
+  border-top: 1px solid #000;
+}
+#build-planner .stat-table td.pos {
+  color: #086;
+}
+#build-planner .stat-table td.neg {
+  color: #900;
+}
+#build-planner .stat-table td.neu {
+  color: #555;
+}
+#build-planner .stat-table td.stat-total {
+  font-weight: bold;
+}
+#build-planner .classtree-skill-list {
+  float: left;
+  width: 230px;
+  margin-bottom: 20px;
+}
+@media screen and (min-width: 768px) {
+  #build-planner .classtree-skill-list {
+    height: 196px;
+  }
+}
+#build-planner li.selectable-skill {
+  list-style: none;
+}
+#build-planner li.selectable-skill i {
+  cursor: pointer;
+}
+#build-planner li.selectable-skill span {
+  line-height: 24px;
+  cursor: pointer;
+}
+#build-planner li.selectable-skill span.selected {
+  color: #0000ff;
 }

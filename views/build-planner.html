@@ -1,0 +1,305 @@
+		<div class="maincontent" ng-controller="coreCtrl as g">
+
+		<form name="g.form">
+<!-- 			<pre style="height: 150px; border: 1px solid black; overflow: scroll; font-size: 10px; font-family: 'Monaco'">{{ g.model | json }}</pre> -->
+
+			<div class="form-row">
+				<div class="form-col-25 form-mobile-50">
+					<label>Selected Unit: </label>
+					<select ng-model="g.model.unit" ng-change="g.selectUnit()" name="unit" 
+						ng-options="unit as unit.name for (unitKey, unit) in g.CHARS"
+					></select>
+				</div>
+
+				<div ng-show="g.model.unit && g.avatarRequired()">
+					<div class="form-col-25 form-mobile-50">
+						<label>Avatar Boon: </label>
+						<select ng-model="g.model.avatarBoon" ng-change="g.selectAvatarBoon()" name="avatarBoon"
+							ng-options="stat as description for (stat, description) in g.AVATAR_MODS.descriptions.Boon"></select>
+					</div>
+
+					<div class="form-col-25 form-mobile-50">
+						<label>Avatar Bane: </label>
+						<select ng-model="g.model.avatarBane" ng-change="g.selectAvatarBane()" name="avatarBane"
+							ng-options="stat as description for (stat, description) in g.AVATAR_MODS.descriptions.Bane"></select>
+					</div>
+
+				</div>
+				<div ng-show="g.model.unit && (g.avatarRequired() || g.isAvatar(g.model.SSupport))">
+					<div class="form-col-25 form-mobile-50">
+						<label>Avatar Talent: </label>
+						<select ng-model="g.model.avatarTalent" ng-change="g.selectAvatarTalent()" name="avatarTalent"
+							ng-options="class as description for (class, description) in g.AVATAR_TALENTS[g.model.unit.gender]"></select>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-row" ng-if="g.model.unit.gen == 2">
+				<div class="form-col-25 form-mobile-50">
+					<label>Parent: </label>
+					<select ng-model="g.model.varParent" ng-change="g.selectVarParent()" name="varParent"
+						ng-options="varParent as varParent.name for (varParentKey, varParent) in g.getVarParents(g.model.unit.key)"></select>
+				</div>
+
+				<div class="form-col-25 form-mobile-50" ng-if="g.model.varParent.gen == 2">
+					<label>Grandparent: </label>
+					<select ng-model="g.model.varGrandparent" ng-change="g.selectVarGrandparent()" name="varGrandparent"
+						ng-options="varGrandparent as varGrandparent.name for (varGrandparentKey, varGrandparent) in g.getVarParents(g.model.varParent.key)"></select>
+				</div>
+
+			</div>
+
+			<div class="form-row" ng-if="g.model.unit">
+				<div class="form-col-25 form-mobile-50">
+					<label>S Support: </label>
+					<select ng-model="g.model.SSupport" ng-change="g.selectSSupport()" name="SSupport"
+						ng-options="support as support.name for (supportKey, support) in g.getSSupports(g.model.unit.key)"></select>
+				</div>
+
+				<div class="form-col-25 form-mobile-50" ng-if="g.model.unit.APlusSupport && g.model.unit.name.indexOf('Avatar') == -1">
+					<label>A+ Support: </label>
+					<select ng-model="g.model.APlusSupport" ng-change="g.selectAPlusSupport()" name="APlusSupport"
+						ng-options="support as support.name for (supportKey, support) in g.getAPlusSupports(g.model.unit.key)"></select>
+				</div>
+			</div>
+
+			<div class="form-row" ng-if="g.model.unit">
+				<div class="form-col-25 form-mobile-50">
+					<label>Class: </label>
+					<select ng-model="g.model.unitClass" ng-change="g.selectClass()" name="unitClass"
+						ng-options="class as class.name for (classKey, class) in g.model.availableClasses"></select>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<input type="checkbox" id="enableDLC" name="enableDLC" ng-model="g.model.enableDLC" ng-change="g.toggleDLC()">
+				<label for="enableDLC">Enable DLC</label>
+			</div>
+
+			<div class="form-row">
+				<div class="form-col-50 form-mobile-100 form-section" ng-if="(!g.avatarRequired() || (g.avatarRequired() && g.model.avatarBoon && g.model.avatarBane)) && (g.model.unit.gen == 1 || (g.model.unit.gen == 2 && g.model.varParent))">
+
+					<div ng-if="g.model.unit.gen == 1">
+						<h4 class="form-heading">Mods</h4>
+						<table class="stat-table">
+							<tbody>
+								<tr>
+									<th></th>
+									<th ng-repeat="(statName, statValue) in g.model.unit.mods">{{ statName }}</th>
+								</tr>
+								<tr>
+									<td>Base mods:</td>
+									<td ng-repeat="(statName, statValue) in g.model.unit.mods"
+										class="stat-total"
+										ng-class="{'pos': statValue>0, 'neg': statValue<0, 'neu': statValue==0}">
+										{{ statValue | sign }}
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div ng-if="g.model.varParent.gen == 1 || (g.model.varParent.gen == 2 && g.model.varGrandparent)">
+						<h4 class="form-heading">Mods</h4>
+						<table class="stat-table">
+							<tbody>
+								<tr>
+									<th></th>
+									<th ng-repeat="(statName, statValue) in g.model.fixedParent.mods">{{ statName }}</th>
+								</tr>
+
+								<tr ng-if="g.model.varParent.gen == 2 && g.model.varGrandparent">
+									<td>{{ g.model.fixedGrandparent.name }}'s mods: </td>
+									<td ng-repeat="(statName, statValue) in g.model.fixedGrandparent.mods" ng-class="{'pos': statValue>0, 'neg': statValue<0, 'neu': statValue==0}">{{ statValue | sign }}</td>
+								</tr>
+								<tr ng-if="g.model.varParent.gen == 2 && g.model.varGrandparent">
+									<td>{{ g.model.varGrandparent.name }}'s mods: </td>
+									<td ng-repeat="(statName, statValue) in g.model.varGrandparent.mods" ng-class="{'pos': statValue>0, 'neg': statValue<0, 'neu': statValue==0}">{{ statValue | sign }}</td>
+								</tr>
+								<tr ng-if="g.model.varParent.gen == 2 && g.model.varGrandparent">
+									<td>Child mod bonus: </td>
+									<td ng-repeat="(statName, statValue) in g.CHILD_MOD_BONUS" ng-class="{'pos': statValue>0, 'neg': statValue<0, 'neu': statValue==0}">{{ statValue | sign }}</td>
+								</tr>
+								<tr ng-if="g.model.varParent.gen == 2 && g.model.varGrandparent" class="table-sumline">
+									<td>{{ g.model.varParent.name }}'s mods: </td>
+									<td ng-repeat="(statName, statValue) in g.model.varParent.calculatedMods" ng-class="{'pos': statValue>0, 'neg': statValue<0, 'neu': statValue==0}">{{ statValue | sign }}</td>
+								</tr>
+
+								<tr>
+									<td>{{ g.model.fixedParent.name }}'s mods: </td>
+									<td ng-repeat="(statName, statValue) in g.model.fixedParent.mods" ng-class="{'pos': statValue>0, 'neg': statValue<0, 'neu': statValue==0}">{{ statValue | sign }}</td>
+								</tr>
+								<tr ng-if="g.model.varParent.gen == 1">
+									<td>{{ g.model.varParent.name }}'s mods: </td>
+									<td ng-repeat="(statName, statValue) in g.model.varParent.mods" ng-class="{'pos': statValue>0, 'neg': statValue<0, 'neu': statValue==0}">{{ statValue | sign }}</td>
+								</tr>
+								<tr ng-if="g.model.varParent.gen == 1">
+									<td>Child mod bonus: </td>
+									<td ng-repeat="(statName, statValue) in g.CHILD_MOD_BONUS" ng-class="{'pos': statValue>0, 'neg': statValue<0, 'neu': statValue==0}">{{ statValue | sign }}</td>
+								</tr>
+								<tr class="table-sumline">
+									<td>Base mods: </td>
+									<td ng-repeat="(statName, statValue) in g.model.unit.calculatedMods" 
+										class="stat-total"
+										ng-class="{'pos': statValue>0, 'neg': statValue<0, 'neu': statValue==0}">
+										{{ statValue | sign }}
+									</td>
+								</tr>
+
+
+							</tbody>
+						</table>
+
+
+					</div>
+
+				</div>
+
+				<div class="form-col-50 form-mobile-100 form-section">
+					
+					<div ng-if="g.model.unit.gen == 1 && (!g.avatarRequired() || (g.avatarRequired() && g.model.avatarBoon && g.model.avatarBane))">
+						<h4 class="form-heading">Growths</h4>
+						<table class="stat-table">
+							<tbody>
+								<tr>
+									<th></th>
+									<th ng-repeat="(statName, statValue) in g.model.unit.growths">{{ statName }}</th>
+								</tr>
+								<tr>
+									<td>Base growths:</td>
+									<td ng-repeat="(statName, statValue) in g.model.unit.growths">{{ statValue }}</td>
+								</tr>
+
+								<tr ng-if="g.model.unitClass">
+									<td>Class growths: </td>
+									<td ng-repeat="(statName, statValue) in g.model.unitClass.growths">{{ statValue }}</td>
+								</tr>
+
+								<tr ng-if="g.model.unitClass" class="table-sumline">
+									<td>Full growths: </td>
+									<td ng-repeat="(statName, statValue) in g.model.unit.calculatedFullGrowths" class="stat-total">{{ statValue }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div ng-if="g.model.varParent.gen == 1 || (g.model.varParent.gen == 2 && g.model.varGrandparent) && g.model.unit.calculatedGrowths && (!g.avatarRequired() || (g.avatarRequired() && g.model.avatarBoon && g.model.avatarBane))">
+						<h4 class="form-heading">Growths</h4>
+						<table class="stat-table">
+							<tbody>
+								<tr>
+									<th></th>
+									<th ng-repeat="(statName, statValue) in g.model.fixedParent.growths">{{ statName }}</th>
+								</tr>
+
+
+								<tr ng-if="g.model.varParent.gen == 2 && g.model.varGrandparent">
+									<td>{{ g.model.varGrandparent.name }}'s growths: </td>
+									<td ng-repeat="(statName, statValue) in g.model.varGrandparent.growths">{{ statValue }}</td>
+								</tr>
+
+								<tr ng-if="g.model.varParent.gen == 2 && g.model.varGrandparent">
+									<td>{{ g.model.varParent.name }}'s base growths: </td>
+									<td ng-repeat="(statName, statValue) in g.model.varParent.growths">{{ statValue }}</td>
+								</tr>
+
+								<tr ng-if="g.model.varParent.gen == 2 && g.model.varGrandparent" class="table-sumline">
+									<td>{{ g.model.varParent.name }}'s actual growths: </td>
+									<td ng-repeat="(statName, statValue) in g.model.varParent.calculatedGrowths">{{ statValue }}</td>
+								</tr>
+
+								<tr ng-if="g.model.varParent.gen == 1">
+									<td>{{ g.model.varParent.name }}'s growths: </td>
+									<td ng-repeat="(statName, statValue) in g.model.varParent.growths">{{ statValue }}</td>
+								</tr>
+
+								<tr>
+									<td>{{ g.model.unit.name }}'s base growths: </td>
+									<td ng-repeat="(statName, statValue) in g.model.unit.growths">{{ statValue }}</td>
+								</tr>
+
+								<tr class="table-sumline">
+									<td>Actual growths: </td>
+									<td ng-repeat="(statName, statValue) in g.model.unit.calculatedGrowths">{{ statValue }}</td>
+								</tr>
+
+
+								<tr ng-if="g.model.unitClass">
+									<td>Class growths: </td>
+									<td ng-repeat="(statName, statValue) in g.model.unitClass.growths">{{ statValue }}</td>
+								</tr>
+
+								<tr ng-if="g.model.unitClass" class="table-sumline">
+									<td>Full growths: </td>
+									<td ng-repeat="(statName, statValue) in g.model.unit.calculatedFullGrowths" class="stat-total">{{ statValue }}</td>
+								</tr>
+
+							</tbody>
+						</table>
+
+					</div>
+
+				</div>
+
+				<div class="form-col-50 form-mobile-100 form-section">
+					
+					<div ng-if="g.model.unit && g.model.unitClass && (g.model.unit.mods || g.model.unit.calculatedMods) && (!g.avatarRequired() || (g.avatarRequired() && g.model.avatarBoon && g.model.avatarBane))">
+						<h4 class="form-heading">Caps</h4>
+						<table class="stat-table">
+							<tbody>
+								<tr>
+									<th></th>
+									<th ng-repeat="(statName, statValue) in g.model.unitClass.maxStats">{{ statName }}</th>
+								</tr>
+
+								<tr>
+									<td>Class caps:</td>
+									<td ng-repeat="(statName, statValue) in g.model.unitClass.maxStats">{{ statValue }}</td>
+								</tr>
+
+								<tr>
+									<td>Mods:</td>
+									<td class="neu">0</td>
+									<td ng-if="g.model.unit.gen == 1" ng-repeat="(statName, statValue) in g.model.unit.mods" ng-class="{'pos': statValue>0, 'neg': statValue<0, 'neu': statValue==0}">{{ statValue | sign }}</td>
+									<td ng-if="g.model.unit.gen == 2" ng-repeat="(statName, statValue) in g.model.unit.calculatedMods" ng-class="{'pos': statValue>0, 'neg': statValue<0, 'neu': statValue==0}">{{ statValue | sign }}</td>
+								</tr>
+
+								<tr class="table-sumline">
+									<td>Actual caps:</td>
+									<td ng-repeat="(statName, statValue) in g.model.unit.calculatedCaps" class="stat-total">{{ statValue }}</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="form-row">
+
+				<div ng-if="g.model.unit">
+					<h4 class="form-heading">Skills</h4>
+					<div class="form-row">
+
+						<div ng-repeat="(classKey, class) in g.model.availableClasses" ng-if="class.classTier == 'tier1' || class.classTier == 'special'" 
+							class="classtree-skill-list">
+							<span>{{class.name}} </span><span ng-show="class.classTier == 'tier1'">Tree</span>
+							<ul class="classtree-skill-list">
+								<li ng-repeat="(skillKey, skill) in g.model.availableSkillsByClassTree[classKey]" class="selectable-skill">
+									<i class="icon-skill icon-skill-{{g.formatSkillName(skillKey)}}" ng-click="g.toggleSkill(skillKey, skill)"></i>
+									<span ng-class="{'selected': !!g.model.selectedSkills[skillKey]}" ng-click="g.toggleSkill(skillKey, skill)">{{ skill.name }}</span>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+
+
+			</form>
+
+		</div>
