@@ -1,4 +1,4 @@
-app.controller('coreCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills', '$location',
+app.controller('buildPlannerCtrl', ['$scope', 'utils', 'Characters', 'Classes', 'Skills', '$location',
 	function($scope, utils, Characters, Classes, Skills, $location) {
 
 		var vm = this;

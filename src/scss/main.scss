@@ -13,13 +13,25 @@
 	src: url(../../assets/fonts/SourceSansPro-Semibold.ttf)
 }
 
+* {
+	@include box-sizing(border-box);
+}
 
 body {
 	font-family: 'Source Sans Pro', 'Helvetica', 'Arial', sans-serif;
 	font-size: 16px;
-	// @media screen and (max-width: 767px) {
-	// 	font-size: 14px;
-	// }
+	
+}
+
+$nav-height: 40px;
+
+
+
+#body-wrapper {
+	position: absolute;
+	top: $nav-height;
+	width: 100%;
+	min-height: calc(100vh - #{$nav-height});
 }
 
 .maincontent {
@@ -79,7 +91,9 @@ body {
 
 @import "skill-icons";
 
+@import "nav";
 @import "build-planner";
+@import "charts";
 
 
 

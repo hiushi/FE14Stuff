@@ -1,0 +1,47 @@
+<div class="maincontent" ng-show="$root.activeState == 'charts'" ng-controller="chartsCtrl as g">
+	
+<!-- 	<pre style="height: 150px; border: 1px solid black; overflow: scroll; font-size: 10px; font-family: 'Monaco'">{{ g[g.statsView] | json }}</pre>
+
+	<pre style="height: 150px; border: 1px solid black; overflow: scroll; font-size: 10px; font-family: 'Monaco'">{{ g.statsRows | json }}</pre> -->
+
+<!-- 	<pre style="height: 150px; border: 1px solid black; overflow: scroll; font-size: 10px; font-family: 'Monaco'">{{ g.statsParams | json }}</pre> -->
+
+
+	<div class="stats-filters">
+		<div class="statsfilter">
+			<input type="checkbox" id="statsfilter-tier1" name="statsfilter-tier1" ng-click="g.applyStatsFilter('tier1')">
+			<label for="statsfilter-tier1">Tier 1 Classes</label>
+		</div>
+		<div class="statsfilter">
+			<input type="checkbox" id="statsfilter-tier2" name="statsfilter-tier2" ng-click="g.applyStatsFilter('tier2')">
+			<label for="statsfilter-tier2">Tier 2 Classes</label>
+		</div>
+		<div class="statsfilter">
+			<input type="checkbox" id="statsfilter-tierSpecial" name="statsfilter-tierSpecial" ng-click="g.applyStatsFilter('tierSpecial')">
+			<label for="statsfilter-tierSpecial">Special Classes</label>
+		</div>
+	</div>
+
+<h4 class="form-heading">{{ g.colDisplayName[g.sm[g.sv].mode] }}</h4>
+<table class="stat-table">
+	<tbody>
+
+		<tr>
+			<th ng-click="g.sortBy('name')">Name</th>
+			<th ng-repeat="col in g.sm[g.statsView].cols"
+				ng-click="g.sortBy(col)">
+				<span>{{ g.colDisplayName[col] }}</span>
+			</th>
+		</tr>
+
+		<tr ng-repeat="(rowKey, obj) in g.statsRows">
+			<td ng-repeat="(colKey, value) in obj">
+				<span>{{ value }}</span>
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+
+
+</div>

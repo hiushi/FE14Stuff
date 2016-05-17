@@ -8,7 +8,17 @@
 	<body ng-app="FE14Stuff">
 		<script src="dist/js/app.js"></script>
 
-		<div id="build-planner" ng-include="'views/build-planner.html'"></div>
+		<div id="main-nav" ng-controller="navCtrl as n">
+			<ul class="nav-list">
+				<li><a ng-click="$root.changeState('buildPlanner')" ng-class="{'active': $root.activeState == 'buildPlanner'}">Build Planner</a></li>
+				<li><a ng-click="$root.changeState('charts')" ng-class="{'active': $root.activeState == 'charts'}">Charts</a></li>
+			</ul>
+		</div>
+		<div id="body-wrapper" ng-controller="coreCtrl as c">
+
+			<div id="build-planner" ng-include="'views/build-planner.html'"></div>
+			<div id="charts" ng-include="'views/charts.html'"></div>
+		</div>
 
 
 	</body>

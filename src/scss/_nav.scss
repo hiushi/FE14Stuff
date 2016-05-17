@@ -1,0 +1,39 @@
+#main-nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: $nav-height;
+	padding: 5px 20px;
+
+	background-color: #F8FAFF;
+	box-shadow: 0 3px 3px #aaa;
+	z-index: 9001;
+
+	.nav-list {
+		margin: 0;
+		padding: 5px 0;
+		// height: $nav-height - 20px;
+		line-height: $nav-height - 20px;
+
+		li {
+			display: inline-block;
+			list-style: none;
+			padding: 0 10px;
+			border-right: 1px solid #7889B1;
+		}
+		a {
+			color: #003CCE;
+			cursor: pointer;
+			@include transition(color 0.15s);
+
+			&:hover {
+				color: #769EFF;
+				@include transition(color 0.15s);
+			}
+		}
+		.active {
+			font-weight: bold;
+		}
+	}
+}

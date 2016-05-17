@@ -10,9 +10,22 @@
   font-weight: 600;
   src: url(../../assets/fonts/SourceSansPro-Semibold.ttf);
 }
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Source Sans Pro', 'Helvetica', 'Arial', sans-serif;
   font-size: 16px;
+}
+
+#body-wrapper {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  min-height: calc(100vh - 40px);
 }
 
 .maincontent {
@@ -905,6 +918,47 @@ body {
   background: url(../../assets/images/fe14_skills.png) -480px -216px;
 }
 
+#main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  padding: 5px 20px;
+  background-color: #F8FAFF;
+  box-shadow: 0 3px 3px #aaa;
+  z-index: 9001;
+}
+#main-nav .nav-list {
+  margin: 0;
+  padding: 5px 0;
+  line-height: 20px;
+}
+#main-nav .nav-list li {
+  display: inline-block;
+  list-style: none;
+  padding: 0 10px;
+  border-right: 1px solid #7889B1;
+}
+#main-nav .nav-list a {
+  color: #003CCE;
+  cursor: pointer;
+  -moz-transition: color 0.15s;
+  -o-transition: color 0.15s;
+  -webkit-transition: color 0.15s;
+  transition: color 0.15s;
+}
+#main-nav .nav-list a:hover {
+  color: #769EFF;
+  -moz-transition: color 0.15s;
+  -o-transition: color 0.15s;
+  -webkit-transition: color 0.15s;
+  transition: color 0.15s;
+}
+#main-nav .nav-list .active {
+  font-weight: bold;
+}
+
 #build-planner .stat-table {
   border-spacing: 0;
   margin: 0 auto;
@@ -967,4 +1021,27 @@ body {
 }
 #build-planner li.selectable-skill span.selected {
   color: #0000ff;
+}
+
+#charts table.stat-table {
+  border-spacing: 0;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+#charts table.stat-table tbody {
+  overflow: scroll;
+}
+#charts table.stat-table th {
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
+#charts table.stat-table th:hover {
+  color: #444;
+}
+#charts table.stat-table th, #charts table.stat-table td {
+  min-width: 40px;
+  padding: 4px;
+  text-align: center;
+  font-size: 16px;
 }
