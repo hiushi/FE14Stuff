@@ -9,16 +9,67 @@
 
 	<div class="stats-filters">
 		<div class="statsfilter">
-			<input type="checkbox" id="statsfilter-tier1" name="statsfilter-tier1" ng-click="g.applyStatsFilter('tier1')">
-			<label for="statsfilter-tier1">Tier 1 Classes</label>
+			<span class="filter-option">
+				<input type="checkbox" id="statsfilter-tier1" name="statsfilter-tier1" ng-click="g.applyStatsFilter('tier1')">
+				<label for="statsfilter-tier1">Tier 1 Classes</label>
+			</span>
+			<span class="filter-option">
+				<input type="checkbox" id="statsfilter-tier2" name="statsfilter-tier2" ng-click="g.applyStatsFilter('tier2')">
+				<label for="statsfilter-tier2">Tier 2 Classes</label>
+			</span>
+			<span class="filter-option">
+				<input type="checkbox" id="statsfilter-tierSpecial" name="statsfilter-tierSpecial" ng-click="g.applyStatsFilter('tierSpecial')">
+				<label for="statsfilter-tierSpecial">Special Classes</label>
+			</span>
 		</div>
+
 		<div class="statsfilter">
-			<input type="checkbox" id="statsfilter-tier2" name="statsfilter-tier2" ng-click="g.applyStatsFilter('tier2')">
-			<label for="statsfilter-tier2">Tier 2 Classes</label>
-		</div>
-		<div class="statsfilter">
-			<input type="checkbox" id="statsfilter-tierSpecial" name="statsfilter-tierSpecial" ng-click="g.applyStatsFilter('tierSpecial')">
-			<label for="statsfilter-tierSpecial">Special Classes</label>
+			<span>Can use: </span>
+
+			<span class="filter-option">
+				<input type="checkbox" id="statsfilter-anyWeapon" name="statsfilter-anyWeapon" ng-click="g.applyStatsFilter('anyWeapon')">
+				<label for="statsfilter-anyWeapon">Any</label>
+			</span>
+
+			<span class="filter-option">
+				<input type="checkbox" id="statsfilter-Sword" name="statsfilter-Sword" ng-click="g.applyStatsFilter('Sword')">
+				<label for="statsfilter-Sword">Sword/Katana</label>
+			</span>
+
+			<span class="filter-option">
+				<input type="checkbox" id="statsfilter-Lance" name="statsfilter-Lance" ng-click="g.applyStatsFilter('Lance')">
+				<label for="statsfilter-Lance">Lance/Naginata</label>
+			</span>
+
+			<span class="filter-option">
+				<input type="checkbox" id="statsfilter-Axe" name="statsfilter-Axe" ng-click="g.applyStatsFilter('Axe')">
+				<label for="statsfilter-Axe">Axe/Club</label>
+			</span>
+
+			<span class="filter-option">
+				<input type="checkbox" id="statsfilter-Dagger" name="statsfilter-Dagger" ng-click="g.applyStatsFilter('Dagger')">
+				<label for="statsfilter-Dagger">Dagger/Shuriken</label>			
+			</span>
+
+			<span class="filter-option">
+				<input type="checkbox" id="statsfilter-Bow" name="statsfilter-Bow" ng-click="g.applyStatsFilter('Bow')">
+				<label for="statsfilter-Bow">Bow/Yumi</label>
+			</span>
+
+			<span class="filter-option">
+				<input type="checkbox" id="statsfilter-Tome" name="statsfilter-Tome" ng-click="g.applyStatsFilter('Tome')">
+				<label for="statsfilter-Tome">Tome/Scroll</label>
+			</span>
+
+			<span class="filter-option">
+				<input type="checkbox" id="statsfilter-Staff" name="statsfilter-Staff" ng-click="g.applyStatsFilter('Staff')">
+				<label for="statsfilter-Staff">Staff/Rod</label>
+			</span>
+
+			<span class="filter-option">
+				<input type="checkbox" id="statsfilter-Stone" name="statsfilter-Stone" ng-click="g.applyStatsFilter('Stone')">
+				<label for="statsfilter-Stone">Dragonstone/Beaststone</label>
+			</span>
 		</div>
 	</div>
 
@@ -34,9 +85,10 @@
 			</th>
 		</tr>
 
-		<tr ng-repeat="(rowKey, obj) in g.statsRows">
+		<tr class="row" ng-repeat="(rowKey, obj) in g.statsRows"
+			ng-click="g.selectStatsRow(rowKey)" ng-class="{'selected': g.sm.selectedRows[rowKey]}">
 			<td ng-repeat="(colKey, value) in obj">
-				<span>{{ value }}</span>
+				<span ng-bind-html="value"></span>
 			</td>
 		</tr>
 
