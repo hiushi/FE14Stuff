@@ -55,6 +55,9 @@ app.controller('chartsCtrl',
 			selectedRows: {}
 		};
 
+		vm.changeStatsMode = function() {
+			buildStatsRows();
+		};
 
 		vm.selectStatsRow = function(rowKey) {
 			vm.statsModel.selectedRows[rowKey] = !vm.statsModel.selectedRows[rowKey];
@@ -122,18 +125,49 @@ app.controller('chartsCtrl',
 
 			});
 
-			// filter rows (union of all applied filters)
+			// filter rows
 			if (vm.statsParams.filters) {
 
-				if (vm.statsParams.filters)
-
-				var individualFilteredRows = vm.statsParams.filters.map(function(filter) {
-					return filterRows(rows, filter.fn);
+				// organize into supersets by filter group by taking the union
+				// of the filters within each group
+				var filterGroups = {};
+				vm.statsParams.filters.forEach(function(filter) {
+					if (!filterGroups[filter.group]) {
+						filterGroups[filter.group] = filterRows(rows, filter.fn);
+					} else {
+						angular.extend(filterGroups[filter.group], filterRows(rows, filter.fn));
+					}
 				});
 
+				// then take the intersection of the supersets
 
+				var filterGroupKeys = Object.keys(filterGroups);
+				var filterIntersection = filterGroups[filterGroupKeys[0]];
 
-				rows = angular.extend.apply(null, [{}].concat(individualFilteredRows));
+				for (var i=1; i<filterGroupKeys.length; i++) {
+					var nextFilterGroup = filterGroups[filterGroupKeys[i]];
+
+					for (var j=Object.keys(filterIntersection).length; j>=0; j--) {
+						var commonRowKey = Object.keys(filterIntersection)[j];
+
+						if (!nextFilterGroup.hasOwnProperty(commonRowKey)) {
+							delete filterIntersection[commonRowKey];
+						}
+						
+					}
+				}
+
+				// console.log('filterIntersection');
+				// console.log(filterIntersection);
+
+				rows = filterIntersection;
+
+				// var individualFilteredRows = vm.statsParams.filters.map(function(filter) {
+				// 	return filterRows(rows, filter.fn);
+				// });
+
+				// rows = angular.extend.apply(null, [{}].concat(individualFilteredRows));
+				
 			}
 
 			// sort rows
@@ -154,7 +188,7 @@ app.controller('chartsCtrl',
 
 				cols.forEach(function(col) {
 					if (rowObj[vm.statsModel[vm.statsView].mode] &&
-						rowObj[vm.statsModel[vm.statsView].mode][col]) {
+						rowObj[vm.statsModel[vm.statsView].mode][col] || rowObj[vm.statsModel[vm.statsView].mode][col] === 0) {
 
 						statsRows[rowName][col] = rowObj[vm.statsModel[vm.statsView].mode][col];
 					}
@@ -227,7 +261,7 @@ app.controller('chartsCtrl',
 				})
 				.sort(function(a, b) {
 					var sortNum = 0;
-					if (a[field]) {
+					if (a[field] || a[field] === 0) {
 
 						if (typeof a[field] == 'number' || typeof a[field] == 'string') {
 							if (a[field] > b[field]) sortNum = 1;
@@ -311,7 +345,7 @@ app.controller('chartsCtrl',
 					}
 					else {
 						var cat = vm.statsModel[vm.statsView].mode;
-						if (a[cat] && a[cat][field]) {
+						if (a[cat] && a[cat][field] || a[cat][field] === 0) {
 							if (a[cat][field] > b[cat][field]) sortNum = 1;
 							else if (a[cat][field] < b[cat][field]) sortNum = -1;
 						}

@@ -73,7 +73,16 @@
 		</div>
 	</div>
 
-<h4 class="form-heading">{{ g.colDisplayName[g.sm[g.sv].mode] }}</h4>
+<br>
+<!-- <h4 class="form-heading">{{ g.colDisplayName[g.sm[g.sv].mode] }}</h4> -->
+
+<span>Display: </span>
+<select name="statsMode" ng-model="g.sm[g.sv].mode" ng-change="g.changeStatsMode()">
+	<option value="maxStats">Class Caps</option>
+	<option value="bases">Class Bases</option>
+	<option value="growths">Class Growths</option>
+</select>
+
 <table class="stat-table">
 	<tbody>
 
