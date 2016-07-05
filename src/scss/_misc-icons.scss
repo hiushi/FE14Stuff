@@ -1,12 +1,5 @@
 
-.icon-weaponrank {
-	position: relative;
-	display: inline-block;
-	width: 16px;
-	height: 16px;
-	margin: 0 3px;
-	vertical-align: bottom;
-}
+
 
 .icon-weaponrank-Sword {
 	background: url(../../assets/images/misc_icons.png) 0px 0px;
@@ -32,3 +25,125 @@
 .icon-weaponrank-Stone {
 	background: url(../../assets/images/misc_icons.png) -112px 0px;
 }
+
+
+
+.icon-item-Sword {
+	background: url(../../assets/images/misc_icons.png) 0px -16px;
+}
+.icon-item-Lance {
+	background: url(../../assets/images/misc_icons.png) -16px -16px;
+}
+.icon-item-Axe {
+	background: url(../../assets/images/misc_icons.png) -32px -16px;
+}
+.icon-item-Dagger {
+	background: url(../../assets/images/misc_icons.png) -48px -16px;
+}
+.icon-item-Bow {
+	background: url(../../assets/images/misc_icons.png) -64px -16px;
+}
+.icon-item-Tome {
+	background: url(../../assets/images/misc_icons.png) -80px -16px;
+}
+.icon-item-Staff {
+	background: url(../../assets/images/misc_icons.png) -96px -16px;
+}
+.icon-item-Beaststone {
+	background: url(../../assets/images/misc_icons.png) -112px -16px;
+}
+.icon-item-Saw {
+	background: url(../../assets/images/misc_icons.png) -128px -16px;
+}
+.icon-item-Rock {
+	background: url(../../assets/images/misc_icons.png) -144px -16px;
+}
+.icon-item-Potion {
+	background: url(../../assets/images/misc_icons.png) -160px -16px;
+}
+.icon-item-Shield {
+	background: url(../../assets/images/misc_icons.png) -176px -16px;
+}
+.icon-item-Katana {
+	background: url(../../assets/images/misc_icons.png) 0px -32px;
+}
+.icon-item-Naginata {
+	background: url(../../assets/images/misc_icons.png) -16px -32px;
+}
+.icon-item-Club {
+	background: url(../../assets/images/misc_icons.png) -32px -32px;
+}
+.icon-item-Shuriken {
+	background: url(../../assets/images/misc_icons.png) -48px -32px;
+}
+.icon-item-Yumi {
+	background: url(../../assets/images/misc_icons.png) -64px -32px;
+}
+.icon-item-Scroll {
+	background: url(../../assets/images/misc_icons.png) -80px -32px;
+}
+.icon-item-Rod {
+	background: url(../../assets/images/misc_icons.png) -96px -32px;
+}
+.icon-item-Dragonstone {
+	background: url(../../assets/images/misc_icons.png) -112px -32px;
+}
+.icon-item-Fist {
+	background: url(../../assets/images/misc_icons.png) -128px -32px;
+}
+.icon-item-Breath {
+	background: url(../../assets/images/misc_icons.png) -144px -32px;
+}
+.icon-item-Item {
+	background: url(../../assets/images/misc_icons.png) -160px -32px;
+}
+.icon-item-StatBooster {
+	background: url(../../assets/images/misc_icons.png) -176px -32px;
+}
+
+.icon-equip-sign {
+	background: url(../../assets/images/misc_icons.png) -192px -32px;
+}
+
+.icon-weakness-Beast {
+	background: url(../../assets/images/misc_icons.png) -192px -16px;
+}
+.icon-weakness-Flying {
+	background: url(../../assets/images/misc_icons.png) -208px -16px;
+}
+.icon-weakness-Armor {
+	background: url(../../assets/images/misc_icons.png) -224px -16px;
+}
+.icon-weakness-Dragon {
+	background: url(../../assets/images/misc_icons.png) -240px -16px;
+}
+.icon-weakness-Monster {
+	background: url(../../assets/images/misc_icons.png) -256px -16px;
+}
+
+
+@each $wt in wtd, wta {
+	.icon-#{$wt} {
+		position: absolute;
+		width: 16px;
+		height: 16px;
+
+		@include animation(0.7s #{$wt}Animation step-end infinite);
+
+		@include keyframes(#{$wt}Animation) {
+			0% { background: url(../../assets/images/#{$wt}.png) 0px 0px; }
+			12.5% { background: url(../../assets/images/#{$wt}.png) -16px 0px; }
+			25% { background: url(../../assets/images/#{$wt}.png) -32px 0px; }
+			37.5% { background: url(../../assets/images/#{$wt}.png) -48px 0px; }
+			50% { background: url(../../assets/images/#{$wt}.png) 0px -16px; }
+			62.5% { background: url(../../assets/images/#{$wt}.png) -16px -16px; }
+			75% { background: url(../../assets/images/#{$wt}.png) -32px -16px; }
+			87.5% { background: url(../../assets/images/#{$wt}.png) -48px -16px; }
+		}
+	}
+}
+
+
+
+
+

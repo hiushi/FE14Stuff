@@ -94,7 +94,7 @@
 			</th>
 		</tr>
 
-		<tr class="row" ng-repeat="(rowKey, obj) in g.statsRows"
+		<tr class="table-row" ng-repeat="(rowKey, obj) in g.statsRows"
 			ng-click="g.selectStatsRow(rowKey)" ng-class="{'selected': g.sm.selectedRows[rowKey]}">
 			<td ng-repeat="(colKey, value) in obj">
 				<span ng-bind-html="value"></span>

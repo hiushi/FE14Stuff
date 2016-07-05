@@ -1,0 +1,248 @@
+
+.portrait {
+	position: relative;
+	display: inline-block;
+	width: 128px;
+	height: 128px;
+}
+
+.portrait-mirror {
+	@include transform(rotateY(180deg));
+}
+
+.portrait-Avatar_M {
+	background: url(../../assets/images/portraits.png) 0px 0px;
+}
+.portrait-Avatar_F {
+	background: url(../../assets/images/portraits.png) -128px 0px;
+}
+.portrait-Azura {
+	background: url(../../assets/images/portraits.png) -256px 0px;
+}
+.portrait-Gunter {
+	background: url(../../assets/images/portraits.png) -384px 0px;
+}
+.portrait-Felicia {
+	background: url(../../assets/images/portraits.png) -512px 0px;
+}
+.portrait-Jakob {
+	background: url(../../assets/images/portraits.png) -640px 0px;
+}
+.portrait-Kaze {
+	background: url(../../assets/images/portraits.png) -768px 0px;
+}
+.portrait-Silas {
+	background: url(../../assets/images/portraits.png) -896px 0px;
+}
+.portrait-Mozu {
+	background: url(../../assets/images/portraits.png) -1024px 0px;
+}
+.portrait-Rinkah {
+	background: url(../../assets/images/portraits.png) -1152px 0px;
+}
+.portrait-Sakura {
+	background: url(../../assets/images/portraits.png) 0px -128px;
+}
+.portrait-Hana {
+	background: url(../../assets/images/portraits.png) -128px -128px;
+}
+.portrait-Subaki {
+	background: url(../../assets/images/portraits.png) -256px -128px;
+}
+.portrait-Saizo {
+	background: url(../../assets/images/portraits.png) -384px -128px;
+}
+.portrait-Orochi {
+	background: url(../../assets/images/portraits.png) -512px -128px;
+}
+.portrait-Hinoka {
+	background: url(../../assets/images/portraits.png) -640px -128px;
+}
+.portrait-Azama {
+	background: url(../../assets/images/portraits.png) -768px -128px;
+}
+.portrait-Setsuna {
+	background: url(../../assets/images/portraits.png) -896px -128px;
+}
+.portrait-Hayato {
+	background: url(../../assets/images/portraits.png) -1024px -128px;
+}
+.portrait-Oboro {
+	background: url(../../assets/images/portraits.png) -1152px -128px;
+}
+.portrait-Hinata {
+	background: url(../../assets/images/portraits.png) 0px -256px;
+}
+.portrait-Takumi {
+	background: url(../../assets/images/portraits.png) -128px -256px;
+}
+.portrait-Kagero {
+	background: url(../../assets/images/portraits.png) -256px -256px;
+}
+.portrait-Kaden {
+	background: url(../../assets/images/portraits.png) -384px -256px;
+}
+.portrait-Ryoma {
+	background: url(../../assets/images/portraits.png) -512px -256px;
+}
+.portrait-Elise {
+	background: url(../../assets/images/portraits.png) -640px -256px;
+}
+.portrait-Effie {
+	background: url(../../assets/images/portraits.png) -768px -256px;
+}
+.portrait-Arthur {
+	background: url(../../assets/images/portraits.png) -896px -256px;
+}
+.portrait-Odin {
+	background: url(../../assets/images/portraits.png) -1024px -256px;
+}
+.portrait-Niles {
+	background: url(../../assets/images/portraits.png) -1152px -256px;
+}
+.portrait-Nyx {
+	background: url(../../assets/images/portraits.png) 0px -384px;
+}
+.portrait-Camilla {
+	background: url(../../assets/images/portraits.png) -128px -384px;
+}
+.portrait-Selena {
+	background: url(../../assets/images/portraits.png) -256px -384px;
+}
+.portrait-Beruka {
+	background: url(../../assets/images/portraits.png) -384px -384px;
+}
+.portrait-Laslow {
+	background: url(../../assets/images/portraits.png) -512px -384px;
+}
+.portrait-Peri {
+	background: url(../../assets/images/portraits.png) -640px -384px;
+}
+.portrait-Charlotte {
+	background: url(../../assets/images/portraits.png) -768px -384px;
+}
+.portrait-Benny {
+	background: url(../../assets/images/portraits.png) -896px -384px;
+}
+.portrait-Leo {
+	background: url(../../assets/images/portraits.png) -1024px -384px;
+}
+.portrait-Keaton {
+	background: url(../../assets/images/portraits.png) -1152px -384px;
+}
+.portrait-Xander {
+	background: url(../../assets/images/portraits.png) 0px -512px;
+}
+.portrait-Reina {
+	background: url(../../assets/images/portraits.png) -128px -512px;
+}
+.portrait-Scarlet {
+	background: url(../../assets/images/portraits.png) -256px -512px;
+}
+.portrait-Flora {
+	background: url(../../assets/images/portraits.png) -384px -512px;
+}
+.portrait-Shura {
+	background: url(../../assets/images/portraits.png) -512px -512px;
+}
+.portrait-Izana {
+	background: url(../../assets/images/portraits.png) -640px -512px;
+}
+.portrait-Yukimura {
+	background: url(../../assets/images/portraits.png) -768px -512px;
+}
+.portrait-Fuga {
+	background: url(../../assets/images/portraits.png) -896px -512px;
+}
+.portrait-Anna {
+	background: url(../../assets/images/portraits.png) -1024px -512px;
+}
+.portrait-Kana_M {
+	background: url(../../assets/images/portraits.png) -1152px -512px;
+}
+.portrait-Kana_F {
+	background: url(../../assets/images/portraits.png) 0px -640px;
+}
+.portrait-Shigure {
+	background: url(../../assets/images/portraits.png) -128px -640px;
+}
+.portrait-Dwyer {
+	background: url(../../assets/images/portraits.png) -256px -640px;
+}
+.portrait-Sophie {
+	background: url(../../assets/images/portraits.png) -384px -640px;
+}
+.portrait-Midori {
+	background: url(../../assets/images/portraits.png) -512px -640px;
+}
+.portrait-Shiro {
+	background: url(../../assets/images/portraits.png) -640px -640px;
+}
+.portrait-Kiragi {
+	background: url(../../assets/images/portraits.png) -768px -640px;
+}
+.portrait-Asugi {
+	background: url(../../assets/images/portraits.png) -896px -640px;
+}
+.portrait-Selkie {
+	background: url(../../assets/images/portraits.png) -1024px -640px;
+}
+.portrait-Hisame {
+	background: url(../../assets/images/portraits.png) -1152px -640px;
+}
+.portrait-Mitama {
+	background: url(../../assets/images/portraits.png) 0px -768px;
+}
+.portrait-Caeldori {
+	background: url(../../assets/images/portraits.png) -128px -768px;
+}
+.portrait-Rhajat {
+	background: url(../../assets/images/portraits.png) -256px -768px;
+}
+.portrait-Siegbert {
+	background: url(../../assets/images/portraits.png) -384px -768px;
+}
+.portrait-Forrest {
+	background: url(../../assets/images/portraits.png) -512px -768px;
+}
+.portrait-Ignatius {
+	background: url(../../assets/images/portraits.png) -640px -768px;
+}
+.portrait-Velouria {
+	background: url(../../assets/images/portraits.png) -768px -768px;
+}
+.portrait-Percy {
+	background: url(../../assets/images/portraits.png) -896px -768px;
+}
+.portrait-Ophelia {
+	background: url(../../assets/images/portraits.png) -1024px -768px;
+}
+.portrait-Soleil {
+	background: url(../../assets/images/portraits.png) -1152px -768px;
+}
+.portrait-Nina {
+	background: url(../../assets/images/portraits.png) 0px -896px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,52 @@
+<div class="description-popup">
+
+	<div style="float: left; width: 35px;">
+		<i class="icon-weaponrank icon-weaponrank-{{item.generalType}}"></i>
+		<span ng-bind="item.rank"></span>
+	</div>
+
+	<div style="float: left; width: 235px;">
+
+		<span class="weapon-attr">
+			<span class="weapon-attr-label">Mt</span>
+			<span class="weapon-attr-value" ng-bind="item.Mt"></span>
+		</span>
+
+		<span class="weapon-attr">
+			<span class="weapon-attr-label">Hit</span>
+			<span class="weapon-attr-value" ng-bind="item.Hit"></span>
+		</span>
+
+		<span class="weapon-attr">
+			<span class="weapon-attr-label">Crit</span>
+			<span class="weapon-attr-value" ng-bind="item.Crit"></span>
+		</span>
+
+		<span class="weapon-attr">
+			<span class="weapon-attr-label">Avo</span>
+			<span class="weapon-attr-value" ng-bind="item.Avo"></span>
+		</span>
+
+		<span class="weapon-attr">
+			<span class="weapon-attr-label">Rng</span>
+			<span class="weapon-attr-value" ng-bind="g.displayWeaponRange(item.range)"></span>
+		</span>
+
+		<span class="weapon-attr" ng-if="item.Ddg">
+			<span class="weapon-attr-label">Ddg</span>
+			<span class="weapon-attr-value" ng-bind="item.Ddg"></span>
+		</span>
+
+		<span class="weapon-attr" ng-if="item.effectiveAgainst">
+			<span class="weapon-attr-label">Eff</span>
+			<i ng-repeat="weakness in item.effectiveAgainst"
+				class="weapon-attr-value icon-weakness icon-weakness-{{weakness}}"></i>
+		</span>
+
+	</div>
+
+	<div>
+		<span ng-bind-html="item.description"></span>
+	</div>
+
+</div>

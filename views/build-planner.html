@@ -287,7 +287,7 @@
 					<span>{{class.name}} </span><span ng-show="class.classTier == 'tier1'">Tree</span>
 					<ul class="classtree-skill-list">
 						<li ng-repeat="(skillKey, skill) in g.model.availableSkillsByClassTree[classKey]" class="selectable-skill">
-							<i class="icon-skill icon-skill-{{g.formatSkillName(skillKey)}}" ng-click="g.toggleSkill(skillKey, skill)"></i>
+							<i class="icon-skill icon-skill-{{$root.formatSkillName(skillKey)}}" ng-click="g.toggleSkill(skillKey, skill)"></i>
 							<span ng-class="{'selected': !!g.model.selectedSkills[skillKey]}" ng-click="g.toggleSkill(skillKey, skill)">{{ skill.name }}</span>
 						</li>
 					</ul>

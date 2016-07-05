@@ -3,7 +3,7 @@
 	<head>
 		<title>Fire Emblem Fates Optimization</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-		<link rel="stylesheet" href="dist/css/normalize.css">
+		<link rel="stylesheet" href="dist/css/bootstrap.css">
 		<link rel="stylesheet" href="dist/css/main.css">
 	</head>
 	<body ng-app="FE14Stuff">
@@ -13,12 +13,14 @@
 			<ul class="nav-list">
 				<li><a ng-click="$root.changeState('buildPlanner')" ng-class="{'active': $root.activeState == 'buildPlanner'}">Build Planner</a></li>
 				<li><a ng-click="$root.changeState('charts')" ng-class="{'active': $root.activeState == 'charts'}">Charts</a></li>
+				<!-- <li><a ng-click="$root.changeState('battleSim')" ng-class="{'active': $root.activeState == 'battleSim'}">Battle Sim</a></li> -->
 			</ul>
 		</div>
 		<div id="body-wrapper" ng-controller="coreCtrl as c">
 
 			<div id="build-planner" ng-include="'views/build-planner.html'"></div>
 			<div id="charts" ng-include="'views/charts.html'"></div>
+			<div id="battle-sim" ng-include="'views/battle-sim.html'"></div>
 		</div>
 
 

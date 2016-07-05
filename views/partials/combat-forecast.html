@@ -1,0 +1,167 @@
+
+<div class="combat-forecast">
+
+	<div ng-repeat="id in ['A', 'B']" class="combat-forecast-side{{id}}">
+
+		<div class="combat-forecast-side{{id}}-name lead-unit">
+			{{ g.leadUnit[id].name }}
+		</div>
+		<div ng-if="g.leadUnit[id].supportEnabled" class="combat-forecast-side{{id}}-name support-unit">
+			{{ g.battle['support'+id].name }}
+		</div>
+
+		<div class="combat-forecast-portrait portrait portrait-{{g.leadUnit[id].unitKey}}" ng-class="{'portrait-mirror': id == 'A'}"></div>
+
+		<div class="inventory-slot inventory-slot-combat"
+			ng-click="g.scrollWeapons(g.leadUnit[id])">
+			<div class="icon-item-wrapper">
+				<i class="icon-item icon-item-{{g.leadUnit[id].equipped.specificType}}"></i>
+				<i class="icon-{{ g.wtMatchup(g.leadUnit[id]) }}"></i>
+			</div>
+			<span>{{ g.leadUnit[id].equipped.name }}</span>
+		</div>
+
+		<div class="combat-forecast-details{{id}}">
+			<div class="ahc-container">
+				<div class="ahc-wrapper">
+
+					<div class="ahc-label">Atk</div>
+					<div class="ahc-valuewrapper">
+
+						<div class="ahc-combatsingle" ng-if="!(g.leadUnit[id].supportEnabled && g.leadUnit[id].supportStance == 'Attack' && g.supportUnit[id].equipped)">
+							<div class="ahc-value">
+								<!-- If attacking or counterattacking -->
+								<span ng-if="g.battle.combatObj['lead'+id].Atk || g.battle.combatObj['lead'+id].Atk === 0"
+									ng-class="{'effective': g.battle.combatObj['lead'+id].effectiveCoeff > 1}">{{ g.battle.combatObj['lead'+id].Atk }}</span>
+
+								<!-- If unequipped or unable to counterattack -->
+								<span ng-if="g.battle.combatObj['lead'+id].Atk === null">–</span>
+							</div>
+
+							<div class="ahc-sign">
+								<span class="ahc-coeff x{{g.attackMultipleTimes(g.leadUnit[id])}}">x{{ g.attackMultipleTimes(g.leadUnit[id]) }}</span>
+							</div>
+						</div>
+
+						<div ng-if="g.leadUnit[id].supportEnabled && g.leadUnit[id].supportStance == 'Attack' && g.supportUnit[id].equipped">
+							<div class="ahc-combatlead">
+								<div class="ahc-value">
+									<span ng-if="g.battle.combatObj['lead'+id].Atk || g.battle.combatObj['lead'+id].Atk === 0" ng-class="{'effective': g.battle.combatObj['lead'+id].effectiveCoeff > 1}">{{ g.battle.combatObj['lead'+id].Atk }}</span>
+								</div>
+								<div class="ahc-sign">
+									<span class="ahc-coeff x{{g.attackMultipleTimes(g.leadUnit[id])}}">x{{ g.attackMultipleTimes(g.leadUnit[id]) }}</span>
+								</div>
+							</div>
+							<div class="ahc-combatsupport">
+								<div class="ahc-value">
+									<span>+</span>
+									<span ng-if="g.battle.combatObj['support'+id].Atk || g.battle.combatObj['support'+id].Atk === 0" ng-class="{'effective': g.battle.combatObj['support'+id].effectiveCoeff > 1}">{{ g.battle.combatObj['support'+id].Atk }}</span>
+								</div>
+								<div class="ahc-sign">
+									<span class="ahc-coeff x{{g.attackMultipleTimes(g.supportUnit[id])}}">x{{ g.attackMultipleTimes(g.supportUnit[id]) }}</span>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="ahc-wrapper">
+					<div class="ahc-label">Hit</div>
+					<div class="ahc-valuewrapper">
+
+						<div class="ahc-combatsingle" ng-if="!(g.leadUnit[id].supportEnabled && g.leadUnit[id].supportStance == 'Attack' && g.supportUnit[id].equipped)">
+							<div class="ahc-value">
+
+								<span ng-if="g.battle.combatObj['lead'+id].Hit || g.battle.combatObj['lead'+id].Hit === 0">{{ g.battle.combatObj['lead'+id].Hit }}</span>
+
+								<span ng-if="g.battle.combatObj['lead'+id].Hit === null">–</span>
+							</div>
+
+							<div class="ahc-sign" ng-show="g.battle.combatObj['lead'+id].Hit !== null">
+								<span class="ahc-percent">%</span>
+							</div>
+
+						</div>
+
+						<div ng-if="g.leadUnit[id].supportEnabled && g.leadUnit[id].supportStance == 'Attack' && g.supportUnit[id].equipped">
+							<div class="ahc-combatlead">
+								<div class="ahc-value">
+									<span ng-if="g.battle.combatObj['lead'+id].Hit || g.battle.combatObj['lead'+id].Hit === 0">{{ g.battle.combatObj['lead'+id].Hit }}</span>
+								</div>
+
+								<div class="ahc-sign">
+									<span class="ahc-percent">%</span>
+								</div>
+							</div>
+							<div class="ahc-combatsupport">
+								<div class="ahc-value">
+									<span ng-if="g.battle.combatObj['support'+id].Hit || g.battle.combatObj['support'+id].Hit === 0">{{ g.battle.combatObj['support'+id].Hit }}</span>
+								</div>
+
+								<div class="ahc-sign">
+									<span class="ahc-percent">%</span>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="ahc-wrapper">
+					<div class="ahc-label">Crit</div>
+					<div class="ahc-valuewrapper">
+
+						<div class="ahc-combatsingle" ng-if="!(g.leadUnit[id].supportEnabled && g.leadUnit[id].supportStance == 'Attack' && g.supportUnit[id].equipped)">
+							<div class="ahc-value">
+
+								<span ng-if="g.battle.combatObj['lead'+id].Crit || g.battle.combatObj['lead'+id].Crit === 0">{{ g.battle.combatObj['lead'+id].Crit }}</span>
+
+								<span ng-if="g.battle.combatObj['lead'+id].Crit === null">–</span>
+							</div>
+
+							<div class="ahc-sign" ng-show="g.battle.combatObj['lead'+id].Hit !== null">
+								<span class="ahc-percent">%</span>
+							</div>
+						</div>
+
+						<div ng-if="g.leadUnit[id].supportEnabled && g.leadUnit[id].supportStance == 'Attack' && g.supportUnit[id].equipped">
+							<div class="ahc-combatlead">
+								<div class="ahc-value">
+									<span ng-if="g.battle.combatObj['lead'+id].Crit || g.battle.combatObj['lead'+id].Crit === 0">{{ g.battle.combatObj['lead'+id].Crit }}</span>
+								</div>
+
+								<div class="ahc-sign">
+									<span class="ahc-percent">%</span>
+								</div>
+							</div>
+							<div class="ahc-combatsupport">
+								<div class="ahc-value">
+									<span ng-if="g.battle.combatObj['support'+id].Crit || g.battle.combatObj['support'+id].Crit === 0">{{ g.battle.combatObj['support'+id].Crit }}</span>
+								</div>
+
+								<div class="ahc-sign">
+									<span class="ahc-percent">%</span>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="combathp-wrapper">
+				<div class="combathp-value">
+					{{ g.leadUnit[id].currentHP }}
+				</div>
+				<div class="combathp-hp">HP</div>
+			</div>
+		</div>
+
+		<div style="text-align: center">
+			<button type="button" ng-if="g.battle.combatObj.initiator === g.leadUnit[id]"
+				ng-click="g.initiateAttack()">Attack!</button>
+		</div>
+	</div><!-- repeat A, B -->
+	
+</div>

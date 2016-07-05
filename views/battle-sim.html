@@ -1,0 +1,6 @@
+<div class="maincontent" ng-show="$root.activeState == 'battleSim'" ng-controller="battleSimCtrl as g">
+	
+<div ng-if="g.battleState == 'prep'" ng-include="'views/battle-sim-prep.html'"></div>
+<div ng-if="g.battleState == 'fight'" ng-include="'views/battle-sim-fight.html'"></div>
+
+</div>

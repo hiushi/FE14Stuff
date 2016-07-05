@@ -1,0 +1,25 @@
+<div class="load-savedunit">
+	<h4 style="text-align: center;">Saved Units</h4>
+
+	<div class="saved-unit-container">
+
+		<div ng-repeat="unit in g.savedUnits" class="saved-unit"
+			ng-class="{'selected': g.selectedSavedUnit.unit === unit}"
+			ng-click="g.selectSavedUnit(unit)"
+			uib-popover-template="'views/partials/load-savedunit-popup.html'"
+			popover-trigger="mouseenter"
+			popover-popup-delay="700"
+			popover-placement="bottom">
+			<div class="portrait portrait-{{unit.unitKey}}"></div>
+			<span ng-bind="unit.savedUnitName"></span>
+		</div>
+
+	</div>
+
+	<div class="actions">
+		<button type="button" ng-click="g.useSelectedUnit()" ng-disabled="!g.selectedSavedUnit.unit">Load</button>
+		<button type="button" ng-click="g.deleteSelectedUnit()" ng-disabled="!g.selectedSavedUnit.unit">Delete</button>
+		<button type="button" ng-click="g.closeModal('loadSavedUnitModal')">Cancel</button>
+	</div>
+
+</div>

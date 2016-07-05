@@ -1,0 +1,28 @@
+<div class="save-battleunit">
+
+	<h4 style="text-align: center;">Save Unit</h4>
+
+	<div ng-if="!g.unitToSave.saved">
+		<div class="save-battleunit-desc">
+			Please choose a short nickname/description for this unit configuration.
+		</div>
+
+		<input type="text" class="battleunit-savename" ng-model="g.unitToSave.saveName"/>
+	</div>
+	<div ng-if="g.unitToSave.saved">
+		<div class="save-battleunit-desc">
+			Unit successfully saved.
+		</div>
+	</div>
+
+	<div class="actions">
+		<div ng-if="!g.unitToSave.saved">
+			<button type="button" ng-click="g.saveUnit()">Save</button>
+			<button type="button" ng-click="g.closeModal('saveUnitModal')">Cancel</button>
+		</div>
+<!-- 		<div ng-if="g.unitToSave.saved">
+			<button type="button" ng-click="g.closeModal('saveUnitModal')">OK</button>
+		</div> -->
+	</div>
+
+</div>

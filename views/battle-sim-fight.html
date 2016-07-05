@@ -1,0 +1,154 @@
+<div class="form-row">
+
+<div ng-repeat="id in ['A', 'B']" class="unit{{id}}-info">
+	<div>{{ g.leadUnit[id].name }}</div>
+	<div>{{ g.leadUnit[id].className }}</div>
+
+
+<!-- 	<div class="hp-display">
+		<span>HP </span>
+		<span>{{ g.leadUnit[id].currentHP }}</span>
+		<span>/</span>
+		<span>{{ g.leadUnit[id].maxHP }}</span>
+	</div> -->
+
+	<div class="stats-container">
+		<div class="stat-column">
+			<div ng-repeat="stat in ['Str', 'Mag', 'Skl']" class="stat-wrapper" ng-init="unit = g.leadUnit[id]"
+				uib-popover-template="'views/partials/stat-popup.html'" popover-trigger="mouseenter" popover-popup-delay="700" popover-enable="unit.currentStats[stat] !== unit.baseStats[stat]">
+				<span class="stat-label">{{stat}} </span>
+				<span class="stat-value"
+					ng-class="{'buffed': unit.currentStats[stat] > unit.baseStats[stat], 'debuffed': unit.currentStats[stat] < unit.baseStats[stat]}">
+					{{ g.leadUnit[id].currentStats[stat] }}
+				</span>
+			</div>
+		</div>
+		<div class="stat-column">
+			<div ng-repeat="stat in ['Spd', 'Lck', 'Def', 'Res']" class="stat-wrapper" ng-init="unit = g.leadUnit[id]"
+			uib-popover-template="'views/partials/stat-popup.html'" popover-trigger="mouseenter" popover-popup-delay="700" popover-enable="unit.currentStats[stat] !== unit.baseStats[stat]">
+				<span class="stat-label">{{stat}} </span>
+				<span class="stat-value"
+					ng-class="{'buffed': unit.currentStats[stat] > unit.baseStats[stat], 'debuffed': unit.currentStats[stat] < unit.baseStats[stat]}">{{ g.leadUnit[id].currentStats[stat] }}</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="skills-container">
+		<div ng-repeat="skill in g.leadUnit[id].skills track by $index" 
+			ng-class="{'personal-skill-slot': $index == 0, 'skill-slot': $index > 0}"
+			uib-popover-template="'views/partials/skill-popup.html'" popover-trigger="mouseenter" popover-popup-delay="700" popover-enable="skill">
+				<i class="icon-skill icon-skill-{{$root.formatSkillName(skill.key)}}"></i>		
+		</div>
+	</div>
+
+
+	<div style="height: 50px; margin: 8px 0;">
+		<div class="combat-stats-container">
+			<div>Atk: {{g.leadUnit[id].combatStats.Atk === null ? "–" : g.leadUnit[id].combatStats.Atk}}</div>
+			<div>Crit: {{g.leadUnit[id].combatStats.Crit === null ? "–" : g.leadUnit[id].combatStats.Crit}}</div>
+			<div>Hit: {{g.leadUnit[id].combatStats.Hit === null ? "–" : g.leadUnit[id].combatStats.Hit}}</div>
+			<div>Avo: {{g.leadUnit[id].combatStats.Avo === null ? "–" : g.leadUnit[id].combatStats.Avo}}</div>
+
+		</div>
+
+		<div class="weaponranks-container">
+			<span ng-repeat="(weaponType, rank) in g.leadUnit[id].weaponRanks" style="margin-right: 5px;">
+				<i class="icon-weaponrank icon-weaponrank-{{weaponType}}"></i>
+				<span>{{ rank }}</span>
+			</span>
+		</div>
+
+	</div>
+
+	<div>
+		<span>Range: </span>
+		<span ng-repeat="range in g.leadUnit[id].getValidAttackRanges()">
+			<input type="radio" name="unit{{id}}-range" id="unit{{id}}-range{{range}}" ng-value="range" 
+				ng-model="g.leadUnit[id].attackRange"
+				ng-disabled="!g.isPlayersTurn(id)"
+				ng-change="g.leadUnit[id].changeAttackRange()"
+			><label for="unit{{id}}-range{{range}}" style="padding: 0 3px">{{ range }}</label>
+		</span>
+
+	</div>
+
+
+	<div class="inventory-container">
+		<div ng-repeat="item in g.leadUnit[id].inventory track by $index" 
+			class="inventory-slot inventory-slot-equip"
+			ng-click="g.leadUnit[id].equipWeapon(item, g.isPlayersTurn(id))"
+			uib-popover-template="'views/partials/weapon-popup.html'" popover-trigger="mouseenter" popover-popup-delay="700" popover-enable="item">
+
+			<div class="icon-item-wrapper">
+				<i class="icon-item icon-item-{{item.specificType}}"></i>
+				<i ng-if="g.leadUnit[id].equipped && g.leadUnit[id].equipped === item" class="icon-item icon-equip-sign"></i>
+
+			</div>
+			<span ng-class="{'disabled-item': !g.leadUnit[id].canUseWeapon(item) || (g.isPlayersTurn(id) && !g.leadUnit[id].canInitiateWithWeaponAtRange(item))}">{{ item.name }}</span>
+			<span ng-if="item.forgeLevel" class="weapon-forgedisplay" style="float: right">+{{ item.forgeLevel }}</span>
+
+			<div class="icon-weakness-wrapper">
+				<i ng-if="item.effectiveAgainst" 
+					ng-repeat="weakness in item.effectiveAgainst" 
+					class="icon-weakness icon-weakness-{{weakness}}"></i>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<button type="button" ng-click="g.openCombatForecast(g.leadUnit[id])"
+			ng-show="g.isPlayersTurn(id)">Attack</button>
+	</div>
+
+	<div>
+		<span>Terrain: </span>
+		<select ng-model="g.leadUnit[id].terrainEffect.type" 
+			ng-change="g.leadUnit[id].setTerrain()"
+			ng-options="terrainKey as terrainKey for (terrainKey, terrainStats) in g.TERRAIN_EFFECT">
+			<option value="">(None)</option>
+		</select>
+	</div>
+
+</div>
+	
+
+<div class="battle-main">
+<div ng-repeat="id in ['A', 'B']" class="battle-unit{{id}}">
+	<div class="portrait portrait-{{g.leadUnit[id].unitKey}}" ng-class="{'portrait-mirror': id == 'A'}"></div>
+	<div class="hp-display{{id}}">
+		<span>HP </span>
+		<span>{{ g.leadUnit[id].shownHP }}</span>
+		<span>/</span>
+		<span>{{ g.leadUnit[id].maxHP }}</span>
+	</div>
+	<div class="hp-bars">
+		<div ng-repeat="bar in ::g.getHPBars(g.leadUnit[id].maxHP, 'top')" id="hp-bar{{id}}-{{bar}}" class="hp-bar{{id}} hp-bar-full"></div>
+	</div>
+	<div class="hp-bars" ng-if="g.leadUnit[id].maxHP > 40">
+		<div ng-repeat="bar in ::g.getHPBars(g.leadUnit[id].maxHP, 'bottom')" id="hp-bar{{id}}-{{bar}}" class="hp-bar{{id}} hp-bar-full"></div>
+	</div>
+
+</div>
+
+	<div>
+		<span>Turn {{ g.battle.detailsObj.turn }} </span>
+		<span>| Player {{ g.battle.detailsObj.phase }} Phase</span>
+	</div>
+	<div>
+
+		<button type="button" ng-click="g.nextPlayerPhase()">Next Player Phase</button>	</div>
+
+
+	<div class="battle-log">
+		<div ng-repeat="log in g.battle.battleLog"
+			class="battle-log-{{log.id}}">
+			<span ng-bind-html="log.message"></span>
+		</div>
+	</div>
+
+</div>
+
+
+<button type="button" ng-click="g.backToPrep()">Back to Preparations</button>
+
+</div>

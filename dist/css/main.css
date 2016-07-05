@@ -21,6 +21,10 @@ body {
   font-size: 16px;
 }
 
+label {
+  font-weight: inherit;
+}
+
 #body-wrapper {
   position: absolute;
   top: 40px;
@@ -57,6 +61,7 @@ body {
 .form-heading {
   font-size: 20px;
   margin: 10px 0;
+  font-weight: 600;
 }
 
 .form-col-25 {
@@ -302,7 +307,7 @@ body {
   background: url(../../assets/images/fe14_skills.png) -312px -48px;
 }
 
-.icon-skill-Life_or_Death {
+.icon-skill-Life_and_Death {
   background: url(../../assets/images/fe14_skills.png) -336px -48px;
 }
 
@@ -650,7 +655,7 @@ body {
   background: url(../../assets/images/fe14_skills.png) -384px -144px;
 }
 
-.icon-skill-Optimist {
+.icon-skill-Optimistic {
   background: url(../../assets/images/fe14_skills.png) -408px -144px;
 }
 
@@ -771,7 +776,7 @@ body {
 }
 
 .icon-skill-Icy_Blood {
-  background: url(../../assets/images/fe14_skills.png) -128px -192px;
+  background: url(../../assets/images/fe14_skills.png) -120px -192px;
 }
 
 .icon-skill-Forager {
@@ -802,7 +807,7 @@ body {
   background: url(../../assets/images/fe14_skills.png) -288px -192px;
 }
 
-.icon-skill-Optimistic {
+.icon-skill-Optimist {
   background: url(../../assets/images/fe14_skills.png) -312px -192px;
 }
 
@@ -994,15 +999,6 @@ body {
   background: url(../../assets/images/fe14_skills.png) -432px -240px;
 }
 
-.icon-weaponrank {
-  position: relative;
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin: 0 3px;
-  vertical-align: bottom;
-}
-
 .icon-weaponrank-Sword {
   background: url(../../assets/images/misc_icons.png) 0px 0px;
 }
@@ -1035,6 +1031,596 @@ body {
   background: url(../../assets/images/misc_icons.png) -112px 0px;
 }
 
+.icon-item-Sword {
+  background: url(../../assets/images/misc_icons.png) 0px -16px;
+}
+
+.icon-item-Lance {
+  background: url(../../assets/images/misc_icons.png) -16px -16px;
+}
+
+.icon-item-Axe {
+  background: url(../../assets/images/misc_icons.png) -32px -16px;
+}
+
+.icon-item-Dagger {
+  background: url(../../assets/images/misc_icons.png) -48px -16px;
+}
+
+.icon-item-Bow {
+  background: url(../../assets/images/misc_icons.png) -64px -16px;
+}
+
+.icon-item-Tome {
+  background: url(../../assets/images/misc_icons.png) -80px -16px;
+}
+
+.icon-item-Staff {
+  background: url(../../assets/images/misc_icons.png) -96px -16px;
+}
+
+.icon-item-Beaststone {
+  background: url(../../assets/images/misc_icons.png) -112px -16px;
+}
+
+.icon-item-Saw {
+  background: url(../../assets/images/misc_icons.png) -128px -16px;
+}
+
+.icon-item-Rock {
+  background: url(../../assets/images/misc_icons.png) -144px -16px;
+}
+
+.icon-item-Potion {
+  background: url(../../assets/images/misc_icons.png) -160px -16px;
+}
+
+.icon-item-Shield {
+  background: url(../../assets/images/misc_icons.png) -176px -16px;
+}
+
+.icon-item-Katana {
+  background: url(../../assets/images/misc_icons.png) 0px -32px;
+}
+
+.icon-item-Naginata {
+  background: url(../../assets/images/misc_icons.png) -16px -32px;
+}
+
+.icon-item-Club {
+  background: url(../../assets/images/misc_icons.png) -32px -32px;
+}
+
+.icon-item-Shuriken {
+  background: url(../../assets/images/misc_icons.png) -48px -32px;
+}
+
+.icon-item-Yumi {
+  background: url(../../assets/images/misc_icons.png) -64px -32px;
+}
+
+.icon-item-Scroll {
+  background: url(../../assets/images/misc_icons.png) -80px -32px;
+}
+
+.icon-item-Rod {
+  background: url(../../assets/images/misc_icons.png) -96px -32px;
+}
+
+.icon-item-Dragonstone {
+  background: url(../../assets/images/misc_icons.png) -112px -32px;
+}
+
+.icon-item-Fist {
+  background: url(../../assets/images/misc_icons.png) -128px -32px;
+}
+
+.icon-item-Breath {
+  background: url(../../assets/images/misc_icons.png) -144px -32px;
+}
+
+.icon-item-Item {
+  background: url(../../assets/images/misc_icons.png) -160px -32px;
+}
+
+.icon-item-StatBooster {
+  background: url(../../assets/images/misc_icons.png) -176px -32px;
+}
+
+.icon-equip-sign {
+  background: url(../../assets/images/misc_icons.png) -192px -32px;
+}
+
+.icon-weakness-Beast {
+  background: url(../../assets/images/misc_icons.png) -192px -16px;
+}
+
+.icon-weakness-Flying {
+  background: url(../../assets/images/misc_icons.png) -208px -16px;
+}
+
+.icon-weakness-Armor {
+  background: url(../../assets/images/misc_icons.png) -224px -16px;
+}
+
+.icon-weakness-Dragon {
+  background: url(../../assets/images/misc_icons.png) -240px -16px;
+}
+
+.icon-weakness-Monster {
+  background: url(../../assets/images/misc_icons.png) -256px -16px;
+}
+
+.icon-wtd {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  -moz-animation: 0.7s wtdAnimation step-end infinite;
+  -webkit-animation: 0.7s wtdAnimation step-end infinite;
+  animation: 0.7s wtdAnimation step-end infinite;
+}
+@-moz-keyframes wtdAnimation {
+  0% {
+    background: url(../../assets/images/wtd.png) 0px 0px;
+  }
+  12.5% {
+    background: url(../../assets/images/wtd.png) -16px 0px;
+  }
+  25% {
+    background: url(../../assets/images/wtd.png) -32px 0px;
+  }
+  37.5% {
+    background: url(../../assets/images/wtd.png) -48px 0px;
+  }
+  50% {
+    background: url(../../assets/images/wtd.png) 0px -16px;
+  }
+  62.5% {
+    background: url(../../assets/images/wtd.png) -16px -16px;
+  }
+  75% {
+    background: url(../../assets/images/wtd.png) -32px -16px;
+  }
+  87.5% {
+    background: url(../../assets/images/wtd.png) -48px -16px;
+  }
+}
+@-webkit-keyframes wtdAnimation {
+  0% {
+    background: url(../../assets/images/wtd.png) 0px 0px;
+  }
+  12.5% {
+    background: url(../../assets/images/wtd.png) -16px 0px;
+  }
+  25% {
+    background: url(../../assets/images/wtd.png) -32px 0px;
+  }
+  37.5% {
+    background: url(../../assets/images/wtd.png) -48px 0px;
+  }
+  50% {
+    background: url(../../assets/images/wtd.png) 0px -16px;
+  }
+  62.5% {
+    background: url(../../assets/images/wtd.png) -16px -16px;
+  }
+  75% {
+    background: url(../../assets/images/wtd.png) -32px -16px;
+  }
+  87.5% {
+    background: url(../../assets/images/wtd.png) -48px -16px;
+  }
+}
+@keyframes wtdAnimation {
+  0% {
+    background: url(../../assets/images/wtd.png) 0px 0px;
+  }
+  12.5% {
+    background: url(../../assets/images/wtd.png) -16px 0px;
+  }
+  25% {
+    background: url(../../assets/images/wtd.png) -32px 0px;
+  }
+  37.5% {
+    background: url(../../assets/images/wtd.png) -48px 0px;
+  }
+  50% {
+    background: url(../../assets/images/wtd.png) 0px -16px;
+  }
+  62.5% {
+    background: url(../../assets/images/wtd.png) -16px -16px;
+  }
+  75% {
+    background: url(../../assets/images/wtd.png) -32px -16px;
+  }
+  87.5% {
+    background: url(../../assets/images/wtd.png) -48px -16px;
+  }
+}
+.icon-wta {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  -moz-animation: 0.7s wtaAnimation step-end infinite;
+  -webkit-animation: 0.7s wtaAnimation step-end infinite;
+  animation: 0.7s wtaAnimation step-end infinite;
+}
+@-moz-keyframes wtaAnimation {
+  0% {
+    background: url(../../assets/images/wta.png) 0px 0px;
+  }
+  12.5% {
+    background: url(../../assets/images/wta.png) -16px 0px;
+  }
+  25% {
+    background: url(../../assets/images/wta.png) -32px 0px;
+  }
+  37.5% {
+    background: url(../../assets/images/wta.png) -48px 0px;
+  }
+  50% {
+    background: url(../../assets/images/wta.png) 0px -16px;
+  }
+  62.5% {
+    background: url(../../assets/images/wta.png) -16px -16px;
+  }
+  75% {
+    background: url(../../assets/images/wta.png) -32px -16px;
+  }
+  87.5% {
+    background: url(../../assets/images/wta.png) -48px -16px;
+  }
+}
+@-webkit-keyframes wtaAnimation {
+  0% {
+    background: url(../../assets/images/wta.png) 0px 0px;
+  }
+  12.5% {
+    background: url(../../assets/images/wta.png) -16px 0px;
+  }
+  25% {
+    background: url(../../assets/images/wta.png) -32px 0px;
+  }
+  37.5% {
+    background: url(../../assets/images/wta.png) -48px 0px;
+  }
+  50% {
+    background: url(../../assets/images/wta.png) 0px -16px;
+  }
+  62.5% {
+    background: url(../../assets/images/wta.png) -16px -16px;
+  }
+  75% {
+    background: url(../../assets/images/wta.png) -32px -16px;
+  }
+  87.5% {
+    background: url(../../assets/images/wta.png) -48px -16px;
+  }
+}
+@keyframes wtaAnimation {
+  0% {
+    background: url(../../assets/images/wta.png) 0px 0px;
+  }
+  12.5% {
+    background: url(../../assets/images/wta.png) -16px 0px;
+  }
+  25% {
+    background: url(../../assets/images/wta.png) -32px 0px;
+  }
+  37.5% {
+    background: url(../../assets/images/wta.png) -48px 0px;
+  }
+  50% {
+    background: url(../../assets/images/wta.png) 0px -16px;
+  }
+  62.5% {
+    background: url(../../assets/images/wta.png) -16px -16px;
+  }
+  75% {
+    background: url(../../assets/images/wta.png) -32px -16px;
+  }
+  87.5% {
+    background: url(../../assets/images/wta.png) -48px -16px;
+  }
+}
+.portrait {
+  position: relative;
+  display: inline-block;
+  width: 128px;
+  height: 128px;
+}
+
+.portrait-mirror {
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.portrait-Avatar_M {
+  background: url(../../assets/images/portraits.png) 0px 0px;
+}
+
+.portrait-Avatar_F {
+  background: url(../../assets/images/portraits.png) -128px 0px;
+}
+
+.portrait-Azura {
+  background: url(../../assets/images/portraits.png) -256px 0px;
+}
+
+.portrait-Gunter {
+  background: url(../../assets/images/portraits.png) -384px 0px;
+}
+
+.portrait-Felicia {
+  background: url(../../assets/images/portraits.png) -512px 0px;
+}
+
+.portrait-Jakob {
+  background: url(../../assets/images/portraits.png) -640px 0px;
+}
+
+.portrait-Kaze {
+  background: url(../../assets/images/portraits.png) -768px 0px;
+}
+
+.portrait-Silas {
+  background: url(../../assets/images/portraits.png) -896px 0px;
+}
+
+.portrait-Mozu {
+  background: url(../../assets/images/portraits.png) -1024px 0px;
+}
+
+.portrait-Rinkah {
+  background: url(../../assets/images/portraits.png) -1152px 0px;
+}
+
+.portrait-Sakura {
+  background: url(../../assets/images/portraits.png) 0px -128px;
+}
+
+.portrait-Hana {
+  background: url(../../assets/images/portraits.png) -128px -128px;
+}
+
+.portrait-Subaki {
+  background: url(../../assets/images/portraits.png) -256px -128px;
+}
+
+.portrait-Saizo {
+  background: url(../../assets/images/portraits.png) -384px -128px;
+}
+
+.portrait-Orochi {
+  background: url(../../assets/images/portraits.png) -512px -128px;
+}
+
+.portrait-Hinoka {
+  background: url(../../assets/images/portraits.png) -640px -128px;
+}
+
+.portrait-Azama {
+  background: url(../../assets/images/portraits.png) -768px -128px;
+}
+
+.portrait-Setsuna {
+  background: url(../../assets/images/portraits.png) -896px -128px;
+}
+
+.portrait-Hayato {
+  background: url(../../assets/images/portraits.png) -1024px -128px;
+}
+
+.portrait-Oboro {
+  background: url(../../assets/images/portraits.png) -1152px -128px;
+}
+
+.portrait-Hinata {
+  background: url(../../assets/images/portraits.png) 0px -256px;
+}
+
+.portrait-Takumi {
+  background: url(../../assets/images/portraits.png) -128px -256px;
+}
+
+.portrait-Kagero {
+  background: url(../../assets/images/portraits.png) -256px -256px;
+}
+
+.portrait-Kaden {
+  background: url(../../assets/images/portraits.png) -384px -256px;
+}
+
+.portrait-Ryoma {
+  background: url(../../assets/images/portraits.png) -512px -256px;
+}
+
+.portrait-Elise {
+  background: url(../../assets/images/portraits.png) -640px -256px;
+}
+
+.portrait-Effie {
+  background: url(../../assets/images/portraits.png) -768px -256px;
+}
+
+.portrait-Arthur {
+  background: url(../../assets/images/portraits.png) -896px -256px;
+}
+
+.portrait-Odin {
+  background: url(../../assets/images/portraits.png) -1024px -256px;
+}
+
+.portrait-Niles {
+  background: url(../../assets/images/portraits.png) -1152px -256px;
+}
+
+.portrait-Nyx {
+  background: url(../../assets/images/portraits.png) 0px -384px;
+}
+
+.portrait-Camilla {
+  background: url(../../assets/images/portraits.png) -128px -384px;
+}
+
+.portrait-Selena {
+  background: url(../../assets/images/portraits.png) -256px -384px;
+}
+
+.portrait-Beruka {
+  background: url(../../assets/images/portraits.png) -384px -384px;
+}
+
+.portrait-Laslow {
+  background: url(../../assets/images/portraits.png) -512px -384px;
+}
+
+.portrait-Peri {
+  background: url(../../assets/images/portraits.png) -640px -384px;
+}
+
+.portrait-Charlotte {
+  background: url(../../assets/images/portraits.png) -768px -384px;
+}
+
+.portrait-Benny {
+  background: url(../../assets/images/portraits.png) -896px -384px;
+}
+
+.portrait-Leo {
+  background: url(../../assets/images/portraits.png) -1024px -384px;
+}
+
+.portrait-Keaton {
+  background: url(../../assets/images/portraits.png) -1152px -384px;
+}
+
+.portrait-Xander {
+  background: url(../../assets/images/portraits.png) 0px -512px;
+}
+
+.portrait-Reina {
+  background: url(../../assets/images/portraits.png) -128px -512px;
+}
+
+.portrait-Scarlet {
+  background: url(../../assets/images/portraits.png) -256px -512px;
+}
+
+.portrait-Flora {
+  background: url(../../assets/images/portraits.png) -384px -512px;
+}
+
+.portrait-Shura {
+  background: url(../../assets/images/portraits.png) -512px -512px;
+}
+
+.portrait-Izana {
+  background: url(../../assets/images/portraits.png) -640px -512px;
+}
+
+.portrait-Yukimura {
+  background: url(../../assets/images/portraits.png) -768px -512px;
+}
+
+.portrait-Fuga {
+  background: url(../../assets/images/portraits.png) -896px -512px;
+}
+
+.portrait-Anna {
+  background: url(../../assets/images/portraits.png) -1024px -512px;
+}
+
+.portrait-Kana_M {
+  background: url(../../assets/images/portraits.png) -1152px -512px;
+}
+
+.portrait-Kana_F {
+  background: url(../../assets/images/portraits.png) 0px -640px;
+}
+
+.portrait-Shigure {
+  background: url(../../assets/images/portraits.png) -128px -640px;
+}
+
+.portrait-Dwyer {
+  background: url(../../assets/images/portraits.png) -256px -640px;
+}
+
+.portrait-Sophie {
+  background: url(../../assets/images/portraits.png) -384px -640px;
+}
+
+.portrait-Midori {
+  background: url(../../assets/images/portraits.png) -512px -640px;
+}
+
+.portrait-Shiro {
+  background: url(../../assets/images/portraits.png) -640px -640px;
+}
+
+.portrait-Kiragi {
+  background: url(../../assets/images/portraits.png) -768px -640px;
+}
+
+.portrait-Asugi {
+  background: url(../../assets/images/portraits.png) -896px -640px;
+}
+
+.portrait-Selkie {
+  background: url(../../assets/images/portraits.png) -1024px -640px;
+}
+
+.portrait-Hisame {
+  background: url(../../assets/images/portraits.png) -1152px -640px;
+}
+
+.portrait-Mitama {
+  background: url(../../assets/images/portraits.png) 0px -768px;
+}
+
+.portrait-Caeldori {
+  background: url(../../assets/images/portraits.png) -128px -768px;
+}
+
+.portrait-Rhajat {
+  background: url(../../assets/images/portraits.png) -256px -768px;
+}
+
+.portrait-Siegbert {
+  background: url(../../assets/images/portraits.png) -384px -768px;
+}
+
+.portrait-Forrest {
+  background: url(../../assets/images/portraits.png) -512px -768px;
+}
+
+.portrait-Ignatius {
+  background: url(../../assets/images/portraits.png) -640px -768px;
+}
+
+.portrait-Velouria {
+  background: url(../../assets/images/portraits.png) -768px -768px;
+}
+
+.portrait-Percy {
+  background: url(../../assets/images/portraits.png) -896px -768px;
+}
+
+.portrait-Ophelia {
+  background: url(../../assets/images/portraits.png) -1024px -768px;
+}
+
+.portrait-Soleil {
+  background: url(../../assets/images/portraits.png) -1152px -768px;
+}
+
+.portrait-Nina {
+  background: url(../../assets/images/portraits.png) 0px -896px;
+}
+
 #main-nav {
   position: fixed;
   top: 0;
@@ -1044,7 +1630,7 @@ body {
   padding: 5px 20px;
   background-color: #F8FAFF;
   box-shadow: 0 3px 3px #aaa;
-  z-index: 9001;
+  z-index: 1000;
 }
 #main-nav .nav-list {
   margin: 0;
@@ -1162,10 +1748,10 @@ body {
   text-align: center;
   font-size: 16px;
 }
-#charts table.stat-table tr.row:hover {
+#charts table.stat-table tr.table-row:hover {
   background-color: #D4DFFF;
 }
-#charts table.stat-table tr.row.selected {
+#charts table.stat-table tr.table-row.selected {
   background-color: #BECFFF;
 }
 #charts .statsfilter {
@@ -1176,4 +1762,603 @@ body {
 }
 #charts .max-weaponrank {
   margin: 0 4px;
+}
+#charts .icon-weaponrank {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin: 0 3px;
+  vertical-align: bottom;
+}
+
+#battle-sim .error-message {
+  color: #ff0000;
+  font-weight: bold;
+}
+#battle-sim .unitA-info, #battle-sim .unitB-info {
+  padding: 20px;
+}
+#battle-sim .unitA-info {
+  float: left;
+  width: 25%;
+}
+#battle-sim .unitB-info {
+  float: right;
+  width: 25%;
+}
+#battle-sim .battle-main {
+  float: left;
+  padding: 20px;
+  width: 50%;
+  background: #fafafa;
+}
+#battle-sim .battle-unitA, #battle-sim .battle-unitB {
+  padding: 20px;
+  width: 50%;
+}
+#battle-sim .battle-unitA .portrait, #battle-sim .battle-unitB .portrait {
+  display: block;
+  margin: 0 auto;
+}
+#battle-sim .battle-unitA .hp-displayA, #battle-sim .battle-unitB .hp-displayA {
+  text-align: left;
+}
+#battle-sim .battle-unitA .hp-displayB, #battle-sim .battle-unitB .hp-displayB {
+  text-align: right;
+}
+#battle-sim .battle-unitA {
+  float: left;
+}
+#battle-sim .battle-unitB {
+  float: right;
+}
+#battle-sim .buffed {
+  color: #008266;
+}
+#battle-sim .debuffed {
+  color: #D04600;
+}
+#battle-sim .capped {
+  color: green;
+}
+#battle-sim .additional-stat-bonuses .panel-group {
+  width: 70%;
+}
+#battle-sim .additional-stat-bonuses select {
+  margin: 5px;
+}
+#battle-sim .stat-column {
+  float: left;
+  width: 66px;
+}
+#battle-sim .stats-container {
+  display: inline-block;
+  overflow: hidden;
+  margin: 5px;
+  vertical-align: top;
+}
+#battle-sim .stat-wrapper {
+  position: relative;
+  display: inline-block;
+  float: left;
+  margin: 0 1px 1px 0;
+  padding: 1px 7px;
+  width: 65px;
+  border-radius: 8px;
+  background-color: #E2A515;
+  color: #fff;
+  box-shadow: inset 2px 1px 2px #EAD7A2, 2px 1px 2px #aaa;
+}
+#battle-sim .stat-wrapper .stat-label {
+  float: left;
+}
+#battle-sim .stat-wrapper .stat-value {
+  float: right;
+  font-weight: bold;
+}
+#battle-sim .skills-container {
+  display: inline-block;
+  overflow: hidden;
+  width: 60px;
+  padding: 2px;
+  margin: 5px;
+  vertical-align: top;
+}
+#battle-sim .skill-slot, #battle-sim .personal-skill-slot {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+#battle-sim .personal-skill-slot {
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 0px 0px 4px #555;
+}
+#battle-sim .personal-skill-container {
+  position: absolute;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 1px 1px 2px #555;
+}
+#battle-sim .inventory-container {
+  display: inline-block;
+  overflow: hidden;
+  margin: 5px;
+  padding: 2px;
+  line-height: initial;
+}
+#battle-sim .inventory-slot {
+  position: relative;
+  padding: 1px 10px;
+  border: 1px solid #67540B;
+  border-radius: 7px;
+  background-color: #F7F0D5;
+  box-shadow: inset 2px 1px 2px #E2CF82, 0px 0px 2px #5D4A05;
+  color: #695504;
+  font-weight: bold;
+  line-height: initial;
+}
+#battle-sim .inventory-slot.inventory-slot-equip {
+  width: 200px;
+  height: 24px;
+  cursor: pointer;
+  -moz-transition: background-color 0.15s, color 0.15s;
+  -o-transition: background-color 0.15s, color 0.15s;
+  -webkit-transition: background-color 0.15s, color 0.15s;
+  transition: background-color 0.15s, color 0.15s;
+}
+#battle-sim .inventory-slot.inventory-slot-equip:hover {
+  background-color: #f3e8c0;
+  color: #504103;
+  -moz-transition: background-color 0.15s, color 0.15s;
+  -o-transition: background-color 0.15s, color 0.15s;
+  -webkit-transition: background-color 0.15s, color 0.15s;
+  transition: background-color 0.15s, color 0.15s;
+}
+#battle-sim .inventory-slot .icon-item-wrapper {
+  position: relative;
+  display: inline-block;
+  float: left;
+  width: 20px;
+  height: 100%;
+}
+#battle-sim .inventory-slot .icon-item {
+  position: absolute;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  -moz-transform: translateY(-50%) scale(1.25);
+  -ms-transform: translateY(-50%) scale(1.25);
+  -webkit-transform: translateY(-50%) scale(1.25);
+  transform: translateY(-50%) scale(1.25);
+}
+#battle-sim .inventory-slot .icon-wtd, #battle-sim .inventory-slot .icon-wta {
+  top: 8px;
+  left: 4px;
+  -moz-transform: scale(1.25);
+  -ms-transform: scale(1.25);
+  -webkit-transform: scale(1.25);
+  transform: scale(1.25);
+}
+#battle-sim .inventory-slot .icon-weakness-wrapper {
+  position: absolute;
+  display: inline-block;
+  left: 172px;
+  height: 100%;
+}
+#battle-sim .inventory-slot .icon-weakness {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  margin-right: -5px;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+#battle-sim .inventory-slot .disabled-item {
+  opacity: 0.6;
+}
+#battle-sim .inventory-slot .weapon-forgedisplay {
+  position: absolute;
+  right: 30px;
+}
+#battle-sim .prep-item-select .icon-item {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  -moz-transform: scale(1.25);
+  -ms-transform: scale(1.25);
+  -webkit-transform: scale(1.25);
+  transform: scale(1.25);
+  vertical-align: middle;
+}
+#battle-sim .popover {
+  background-color: rgba(30, 10, 10, 0.8);
+  border: none;
+  color: #fff;
+  font-family: inherit;
+  width: 300px;
+  max-width: none;
+  pointer-events: none;
+  margin-top: 0;
+}
+#battle-sim .popover > .arrow {
+  display: none;
+}
+#battle-sim .description-popup {
+  position: relative;
+  overflow: hidden;
+}
+#battle-sim .description-popup .weapon-attr {
+  margin: 2px;
+}
+#battle-sim .description-popup .weapon-attr .weapon-attr-label {
+  margin-right: 3px;
+  color: #E4980D;
+  font-weight: 600;
+}
+#battle-sim .description-popup .weapon-attr .weapon-attr-value {
+  margin-right: 3px;
+}
+#battle-sim .description-popup .weapon-attr .icon-weakness {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  vertical-align: text-top;
+}
+#battle-sim .description-popup .skill-name {
+  font-weight: 600;
+}
+#battle-sim .description-popup .stat-mod-desc {
+  margin-right: 3px;
+  font-weight: 600;
+}
+#battle-sim .icon-weaponrank {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: text-top;
+}
+#battle-sim .modal-generic {
+  padding: 20px;
+  overflow: hidden;
+}
+#battle-sim .modal-generic .actions {
+  text-align: center;
+}
+#battle-sim .modal-generic .actions button {
+  margin: 10px;
+}
+#battle-sim .load-savedunit-window .modal-dialog {
+  width: 698px;
+}
+#battle-sim .load-savedunit, #battle-sim .save-battleunit {
+  padding: 20px;
+  overflow: hidden;
+}
+#battle-sim .load-savedunit .actions, #battle-sim .save-battleunit .actions {
+  text-align: center;
+}
+#battle-sim .load-savedunit .actions button, #battle-sim .save-battleunit .actions button {
+  margin: 10px;
+}
+#battle-sim .save-battleunit-desc {
+  text-align: center;
+  margin: 20px 0;
+}
+#battle-sim .battleunit-savename {
+  display: block;
+  margin: 10px auto;
+  padding: 5px 10px;
+  width: 70%;
+  border: 1px solid #555;
+  border-radius: 3px;
+}
+#battle-sim .saved-unit-container {
+  overflow-y: scroll;
+}
+#battle-sim .saved-unit {
+  float: left;
+  padding: 11px 16px;
+  width: 164px;
+  text-align: center;
+  border: 2px solid transparent;
+  background: transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  -moz-transition: background 0.15s, border 0.15s;
+  -o-transition: background 0.15s, border 0.15s;
+  -webkit-transition: background 0.15s, border 0.15s;
+  transition: background 0.15s, border 0.15s;
+}
+#battle-sim .saved-unit .portrait {
+  display: block;
+}
+#battle-sim .saved-unit:hover {
+  background: #e2e2ec;
+}
+#battle-sim .saved-unit.selected {
+  border: 2px solid #424286;
+  background: #c6c6e6;
+}
+#battle-sim .hp-bars {
+  position: relative;
+  display: block;
+  margin: 2px 0;
+  overflow: hidden;
+}
+#battle-sim .hp-barA, #battle-sim .hp-barB {
+  height: 12px;
+  width: 4px;
+  margin-right: 1px;
+}
+#battle-sim .hp-barA {
+  float: left;
+}
+#battle-sim .hp-barB {
+  float: right;
+}
+#battle-sim .hp-bar-full {
+  background: linear-gradient(to bottom, #b1deec 30%, #4949a0 100%);
+}
+#battle-sim .hp-bar-empty {
+  background: #9e806c;
+}
+#battle-sim .combat-stats-container {
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+#battle-sim .combat-stats-container div {
+  float: left;
+  width: 50%;
+  height: 50%;
+}
+#battle-sim .weaponranks-container {
+  float: left;
+  width: 50%;
+  height: 100%;
+  padding: 10px 0;
+}
+#battle-sim .combat-forecast {
+  padding: 20px;
+  overflow: hidden;
+}
+#battle-sim .combat-forecast-sideA, #battle-sim .combat-forecast-sideB {
+  position: relative;
+  padding: 0 10px;
+}
+#battle-sim .combat-forecast-sideA {
+  float: left;
+}
+#battle-sim .combat-forecast-sideA .combat-forecast-portrait {
+  margin: 25px auto 0 30px;
+}
+#battle-sim .combat-forecast-sideA .inventory-slot-combat {
+  margin-right: auto;
+}
+#battle-sim .combat-forecast-sideB {
+  float: right;
+}
+#battle-sim .combat-forecast-sideB .combat-forecast-portrait {
+  margin: 25px 30px 0 auto;
+}
+#battle-sim .combat-forecast-sideB .inventory-slot-combat {
+  margin-left: auto;
+}
+#battle-sim .combat-forecast-sideA-name, #battle-sim .combat-forecast-sideB-name {
+  position: absolute;
+  width: 130px;
+  height: 25px;
+  left: 50%;
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  border-radius: 8px;
+  border: 1px solid #ad9434;
+  color: #fff;
+  text-align: center;
+  line-height: 23px;
+  font-weight: 600;
+  z-index: 100;
+}
+#battle-sim .lead-unit.combat-forecast-sideA-name, #battle-sim .lead-unit.combat-forecast-sideB-name {
+  top: 0;
+}
+#battle-sim .support-unit.combat-forecast-sideA-name, #battle-sim .support-unit.combat-forecast-sideB-name {
+  top: 25px;
+}
+#battle-sim .combat-forecast-sideA-name {
+  background: #0202ad;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9ImVsbGlwc2UiIGN5PSIxNDBweCIgcj0iOTAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDIwMmFkIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZTJjZjhmIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background: -moz-radial-gradient(ellipse 140px 170px, #0202ad 0%, #e2cf8f 90px);
+  background: -webkit-radial-gradient(ellipse 140px 170px, #0202ad 0%, #e2cf8f 90px);
+  background: radial-gradient(ellipse 140px 170px, #0202ad 0%, #e2cf8f 90px);
+}
+#battle-sim .combat-forecast-sideB-name {
+  background: #7d0017;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9ImVsbGlwc2UiIGN5PSIxNDBweCIgcj0iOTAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjN2QwMDE3Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZTJjZjhmIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background: -moz-radial-gradient(ellipse 140px 170px, #7d0017 0%, #e2cf8f 90px);
+  background: -webkit-radial-gradient(ellipse 140px 170px, #7d0017 0%, #e2cf8f 90px);
+  background: radial-gradient(ellipse 140px 170px, #7d0017 0%, #e2cf8f 90px);
+}
+#battle-sim .combat-forecast-portrait {
+  display: block;
+}
+#battle-sim .inventory-slot-combat {
+  width: 180px;
+  height: 24px;
+}
+#battle-sim .combat-forecast-detailsA, #battle-sim .combat-forecast-detailsB {
+  width: 250px;
+  height: 72px;
+  border: 1px solid #ad9434;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 2px #5D4A05;
+  overflow: hidden;
+}
+#battle-sim .combat-forecast-detailsA .ahc-container, #battle-sim .combat-forecast-detailsB .ahc-container {
+  width: 180px;
+  padding: 5px 10px;
+}
+#battle-sim .combat-forecast-detailsA .ahc-wrapper, #battle-sim .combat-forecast-detailsB .ahc-wrapper {
+  border: 1px solid #ad9434;
+  border-radius: 8px;
+  height: 20px;
+  line-height: 18px;
+  background-color: #F7F0D5;
+  box-shadow: inset 1px 1px 1px #E2CF82;
+  color: #695504;
+  font-weight: 600;
+}
+#battle-sim .combat-forecast-detailsA .ahc-label, #battle-sim .combat-forecast-detailsB .ahc-label {
+  width: 48px;
+  border-radius: 7px;
+  color: #fff;
+  box-shadow: inset 1px 0px 2px #EAD7A2;
+  text-align: center;
+}
+#battle-sim .combat-forecast-detailsA .ahc-valuewrapper, #battle-sim .combat-forecast-detailsB .ahc-valuewrapper {
+  width: 104px;
+}
+#battle-sim .combat-forecast-detailsA .ahc-combatsingle .ahc-value, #battle-sim .combat-forecast-detailsB .ahc-combatsingle .ahc-value {
+  float: left;
+  width: 54%;
+  text-align: right;
+}
+#battle-sim .combat-forecast-detailsA .ahc-combatsingle .ahc-sign, #battle-sim .combat-forecast-detailsB .ahc-combatsingle .ahc-sign {
+  float: left;
+  width: 46%;
+  text-align: left;
+}
+#battle-sim .combat-forecast-detailsA .ahc-combatlead, #battle-sim .combat-forecast-detailsB .ahc-combatlead {
+  float: left;
+  width: 50%;
+}
+#battle-sim .combat-forecast-detailsA .ahc-combatlead .ahc-value, #battle-sim .combat-forecast-detailsB .ahc-combatlead .ahc-value {
+  float: left;
+  width: 65%;
+  text-align: right;
+}
+#battle-sim .combat-forecast-detailsA .ahc-combatlead .ahc-sign, #battle-sim .combat-forecast-detailsB .ahc-combatlead .ahc-sign {
+  float: left;
+  width: 35%;
+  text-align: left;
+}
+#battle-sim .combat-forecast-detailsA .ahc-combatsupport, #battle-sim .combat-forecast-detailsB .ahc-combatsupport {
+  float: left;
+  width: 50%;
+}
+#battle-sim .combat-forecast-detailsA .ahc-combatsupport .ahc-value, #battle-sim .combat-forecast-detailsB .ahc-combatsupport .ahc-value {
+  float: left;
+  width: 65%;
+  text-align: right;
+}
+#battle-sim .combat-forecast-detailsA .ahc-combatsupport .ahc-sign, #battle-sim .combat-forecast-detailsB .ahc-combatsupport .ahc-sign {
+  float: left;
+  width: 35%;
+  text-align: left;
+}
+#battle-sim .combat-forecast-detailsA .ahc-value .effective, #battle-sim .combat-forecast-detailsB .ahc-value .effective {
+  color: #02a002;
+}
+#battle-sim .combat-forecast-detailsA .ahc-coeff, #battle-sim .combat-forecast-detailsB .ahc-coeff {
+  display: none;
+  padding: 0 2px;
+  margin: 0 1px;
+  border-radius: 3px;
+  vertical-align: text-top;
+  font-size: 11px;
+  line-height: 20px;
+  letter-spacing: 0.7px;
+  color: #fff;
+}
+#battle-sim .combat-forecast-detailsA .ahc-coeff.x2, #battle-sim .combat-forecast-detailsB .ahc-coeff.x2 {
+  display: inline;
+  background-color: #00b100;
+  box-shadow: inset 0px -1px 5px #025802;
+}
+#battle-sim .combat-forecast-detailsA .ahc-coeff.x4, #battle-sim .combat-forecast-detailsB .ahc-coeff.x4 {
+  display: inline;
+  background-color: #a35bff;
+  box-shadow: inset 0px -1px 5px #4200ad;
+}
+#battle-sim .combat-forecast-detailsA .ahc-percent, #battle-sim .combat-forecast-detailsB .ahc-percent {
+  font-size: 0.85em;
+}
+#battle-sim .combat-forecast-detailsA .combathp-wrapper, #battle-sim .combat-forecast-detailsB .combathp-wrapper {
+  width: 68px;
+  height: 70px;
+  padding: 12px;
+  text-align: center;
+  color: #fff;
+}
+#battle-sim .combat-forecast-detailsA .combathp-value, #battle-sim .combat-forecast-detailsB .combathp-value {
+  line-height: 30px;
+  font-size: 30px;
+}
+#battle-sim .combat-forecast-detailsA .combathp-hp, #battle-sim .combat-forecast-detailsB .combathp-hp {
+  line-height: 16px;
+  font-size: 14px;
+}
+#battle-sim .combat-forecast-detailsA {
+  background: #e2b771;
+}
+#battle-sim .combat-forecast-detailsA .ahc-container {
+  float: left;
+}
+#battle-sim .combat-forecast-detailsA .ahc-container .ahc-label {
+  float: left;
+  background: #E2A515;
+}
+#battle-sim .combat-forecast-detailsA .ahc-container .ahc-valuewrapper {
+  float: left;
+}
+#battle-sim .combat-forecast-detailsA .combathp-wrapper {
+  float: right;
+}
+#battle-sim .combat-forecast-detailsB {
+  background: #ce731e;
+}
+#battle-sim .combat-forecast-detailsB .combathp-wrapper {
+  float: left;
+}
+#battle-sim .combat-forecast-detailsB .ahc-container {
+  float: right;
+}
+#battle-sim .combat-forecast-detailsB .ahc-container .ahc-label {
+  float: right;
+  background: #e4871f;
+}
+#battle-sim .combat-forecast-detailsB .ahc-container .ahc-valuewrapper {
+  float: right;
+}
+#battle-sim .battle-log {
+  max-height: 320px;
+  overflow-y: scroll;
+}
+#battle-sim .battle-log-A, #battle-sim .battle-log-B, #battle-sim .battle-log-sys {
+  padding: 2px 20px;
+  min-height: 18px;
+}
+#battle-sim .battle-log-A {
+  text-align: left;
+  background-color: #fdebcb;
+  color: #300;
+}
+#battle-sim .battle-log-B {
+  text-align: right;
+  background-color: #ffd3ab;
+  color: #003;
 }

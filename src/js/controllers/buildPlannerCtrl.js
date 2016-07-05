@@ -12,6 +12,10 @@ app.controller('buildPlannerCtrl', ['$scope', 'utils', 'Characters', 'Classes', 
 		vm.AVATAR_MODS = Characters.AVATAR_MODS;
 		vm.AVATAR_TALENTS = Classes.AVATAR_TALENTS;
 
+		window.CHARS = CHARS;
+		window.CLASSES = CLASSES;
+		window.SKILLS = SKILLS;
+
 
 		vm.model = {
 			enableDLC: false,
@@ -321,7 +325,6 @@ app.controller('buildPlannerCtrl', ['$scope', 'utils', 'Characters', 'Classes', 
 		}
 		function setAvailableSkillsByClassTree(charKey) {
 			vm.model.availableSkillsByClassTree = getAvailableSkillsByClassTree(charKey);
-			console.log(vm.model.availableSkillsByClassTree);
 			updateSkills();
 		}
 
@@ -451,18 +454,9 @@ app.controller('buildPlannerCtrl', ['$scope', 'utils', 'Characters', 'Classes', 
 		};
 
 		vm.getVarParents = function(charKey) {
-			var fixedParentKey = vm.CHARS[charKey].parent;
-			var fixedParent = getCharacter(fixedParentKey);
-			
-			var varParentsList = Characters.getSSupports(fixedParentKey)
-				.filter(function(varParentKey) {
-					return vm.CHARS[varParentKey].gender != fixedParent.gender;
-				});
-			if (!varParentsList) return;
-
+			var varParentsList = Characters.getVarParents(charKey);
 			var varParentsMap = utils.createCharacterMap(varParentsList);
 			return varParentsMap;
-
 
 		};
 
@@ -483,9 +477,7 @@ app.controller('buildPlannerCtrl', ['$scope', 'utils', 'Characters', 'Classes', 
 			setAvailableSkillsByClassTree(vm.model.unit.key);
 		};
 
-		vm.formatSkillName = function(skillKey) {
-			return skillKey.replace(/\+/g, '');
-		};
+
 
 
 		function addClasses(classKeyList, newClassKey, unit) {
@@ -680,6 +672,64 @@ app.controller('buildPlannerCtrl', ['$scope', 'utils', 'Characters', 'Classes', 
 		}
 
 		init();
+
+
+
+		window.whoCanLearn = function(skills) {
+			console.log('Who can learn ' + skills.join(', ') + '?');
+
+			if (typeof skills === 'string') skills = [skills];
+
+			var skillToClassesMap = {};
+
+			skills.forEach(function(skill) {
+				var matchingClasses = [];
+
+				Object.keys(CLASSES).forEach(function(classKey) {
+					var unitClass = CLASSES[classKey];
+					if (unitClass.skills && unitClass.skills.indexOf(skill) > -1) {
+						matchingClasses.push(unitClass.key);
+					}
+				});
+
+				skillToClassesMap[skill] = matchingClasses;
+			});
+
+			var skillToCharactersMap = {};
+
+			Object.keys(skillToClassesMap).forEach(function(skillKey) {
+				var matchingCharacters = [];
+				var matchingClasses = skillToClassesMap[skillKey];
+
+				Object.keys(CHARS).forEach(function(charKey, i) {
+					var character = CHARS[charKey];
+					var classSet = utils.getClassSet(charKey);
+
+					for (var i=0; i<matchingClasses.length; i++) {
+						if (classSet.indexOf(matchingClasses[i]) > -1) {
+							matchingCharacters.push(charKey);
+							break;
+						}
+					}
+
+				});
+
+				skillToCharactersMap[skillKey] = matchingCharacters;
+
+			});
+
+			console.log('skillToCharactersMap');
+			console.log(skillToCharactersMap);
+
+			return utils.getArrayIntersection(Object.keys(skillToCharactersMap)
+				.map(function(skillKey) {
+					return skillToCharactersMap[skillKey];
+				})
+			);
+
+
+		};
+
 
 
 	}

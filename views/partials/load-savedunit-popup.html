@@ -1,0 +1,18 @@
+<div class="load-savedunit-popup">
+	
+	<div>
+		<span>{{ unit.name }} | Lv. {{ unit.level }} {{ unit.className }}</span>
+
+	</div>
+
+	<div>
+		Skills: 
+		<span>{{ ::g.displayCommaSeparatedNames(unit.skills) }}</span>
+	</div>
+
+	<div>
+		Inventory: 
+		<span>{{ ::g.displayCommaSeparatedNames(g.getPrepInventoryList(unit)) }}</span>
+	</div>
+
+</div>

@@ -23,6 +23,10 @@ body {
 	
 }
 
+label {
+	font-weight: inherit;
+}
+
 $nav-height: 40px;
 
 
@@ -60,6 +64,7 @@ $nav-height: 40px;
 .form-heading {
 	font-size: 20px;
 	margin: 10px 0;
+	font-weight: 600;
 	// padding: 0 30px;
 	
 	// @media screen and (max-width: 767px) {
@@ -91,10 +96,12 @@ $nav-height: 40px;
 
 @import "skill-icons";
 @import "misc-icons";
+@import "portraits";
 
 @import "nav";
 @import "build-planner";
 @import "charts";
+@import "battle-sim";
 
 
 

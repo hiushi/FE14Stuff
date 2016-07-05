@@ -12,12 +12,14 @@ app.service('Classes', function() {
 			"growths": {"HP": 15, "Str": 15, "Mag": 10, "Skl": 10, "Spd": 10, "Lck": 10, "Def": 10, "Res": 5},
 			"maxStats": {"HP": 40, "Str": 23, "Mag": 17, "Skl": 19, "Spd": 21, "Lck": 22, "Def": 21, "Res": 19},
 			"weaponRanks": {"Sword": "B", "Stone": "B"},
+			"pairUpStats": {"Str": 2, "Skl": 1, "Spd": 1, "Lck": 2},
 			"gender": "M",
 			"genderEquivalent": "Nohr_Princess",
 			"combinedDisplayName": "Nohr Prince(ss)",
 			"parallel": null,
 			"sealAccess": false,
 			"inheritAccess": true,
+			"weakness": ["Dragon"],
 		},
 
 		"Nohr_Princess": {
@@ -31,12 +33,14 @@ app.service('Classes', function() {
 			"growths": {"HP": 15, "Str": 15, "Mag": 10, "Skl": 10, "Spd": 10, "Lck": 10, "Def": 10, "Res": 5},
 			"maxStats": {"HP": 40, "Str": 23, "Mag": 17, "Skl": 19, "Spd": 21, "Lck": 22, "Def": 21, "Res": 19},
 			"weaponRanks": {"Sword": "B", "Stone": "B"},
+			"pairUpStats": {"Str": 2, "Skl": 1, "Spd": 1, "Lck": 2},
 			"gender": "F",
 			"genderEquivalent": "Nohr_Prince",
 			"combinedDisplayName": "Nohr Prince(ss)",
 			"parallel": null,
 			"sealAccess": false,
 			"inheritAccess": true,
+			"weakness": ["Dragon"],
 		},
 
 		"Hoshido_Noble": {
@@ -50,8 +54,10 @@ app.service('Classes', function() {
 			"growths": {"HP": 15, "Str": 15, "Mag": 10, "Skl": 10, "Spd": 10, "Lck": 10, "Def": 15, "Res": 0},
 			"maxStats": {"HP": 60, "Str": 34, "Mag": 28, "Skl": 29, "Spd": 30, "Lck": 33, "Def": 31, "Res": 28},
 			"weaponRanks": {"Sword": "A", "Staff": "B", "Stone": "A"},
+			"pairUpStats": {"Str": 2, "Skl": 1, "Spd": 1, "Lck": 2, "Def": 2},
 			"sealAccess": false,
 			"inheritAccess": true,
+			"weakness": ["Dragon"],
 		},
 
 		"Nohr_Noble": {
@@ -65,8 +71,10 @@ app.service('Classes', function() {
 			"growths": {"HP": 15, "Str": 10, "Mag": 15, "Skl": 5, "Spd": 15, "Lck": 5, "Def": 5, "Res": 15},
 			"maxStats": {"HP": 60, "Str": 32, "Mag": 31, "Skl": 28, "Spd": 32, "Lck": 27, "Def": 29, "Res": 32},
 			"weaponRanks": {"Sword": "A", "Tome": "B", "Stone": "A"},
+			"pairUpStats": {"Str": 2, "Mag": 2, "Skl": 1, "Spd": 1, "Res": 2},
 			"sealAccess": false,
 			"inheritAccess": true,
+			"weakness": ["Dragon"],
 		},	
 
 		"Samurai": {
@@ -80,6 +88,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 10, "Mag": 0, "Skl": 15, "Spd": 20, "Lck": 15, "Def": 0, "Res": 10},
 			"maxStats": {"HP": 40, "Str": 20, "Mag": 16, "Skl": 23, "Spd": 25, "Lck": 24, "Def": 18, "Res": 20},
 			"weaponRanks": {"Sword": "B"},
+			"pairUpStats": {"Spd": 4, "Lck": 2},
 			"parallel": "Mercenary",
 			"sealAccess": true,
 			"inheritAccess": true,
@@ -96,6 +105,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 10, "Mag": 5, "Skl": 15, "Spd": 20, "Lck": 15, "Def": 0, "Res": 10},
 			"maxStats": {"HP": 55, "Str": 30, "Mag": 28, "Skl": 32, "Spd": 35, "Lck": 33, "Def": 27, "Res": 31},
 			"weaponRanks": {"Sword": "S"},
+			"pairUpStats": {"Spd": 5, "Lck": 3},
 			"bonus": {"Crit": 10, "Avo": 10},
 			"sealAccess": true,
 			"inheritAccess": true,
@@ -112,6 +122,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 20, "Str": 15, "Mag": 0, "Skl": 10, "Spd": 10, "Lck": 10, "Def": 10, "Res": 0},
 			"maxStats": {"HP": 65, "Str": 33, "Mag": 25, "Skl": 30, "Spd": 30, "Lck": 31, "Def": 31, "Res": 28},
 			"weaponRanks": {"Sword": "A", "Lance": "B", "Axe": "B"},
+			"pairUpStats": {"Str": 2, "Skl": 2, "Spd": 2, "Def": 2},
 			"sealAccess": true,
 			"inheritAccess": true,
 		},	
@@ -127,6 +138,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 10, "Mag": 0, "Skl": 10, "Spd": 10, "Lck": 20, "Def": 10, "Res": 0},
 			"maxStats": {"HP": 35, "Str": 19, "Mag": 15, "Skl": 19, "Spd": 19, "Lck": 22, "Def": 18, "Res": 15},
 			"weaponRanks": {"Lance": "C"},
+			"pairUpStats": {"Skl": 3, "Lck": 3},
 			"parallel": "Apothecary",
 			"sealAccess": false,
 			"inheritAccess": false,
@@ -143,6 +155,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 20, "Str": 20, "Mag": 0, "Skl": 10, "Spd": 5, "Lck": 15, "Def": 10, "Res": 5},
 			"maxStats": {"HP": 65, "Str": 33, "Mag": 25, "Skl": 29, "Spd": 28, "Lck": 32, "Def": 33, "Res": 30},
 			"weaponRanks": {"Lance": "B", "Bow": "A"},
+			"pairUpStats": {"Str": 3, "Def": 3, "Res": 2},
 			"sealAccess": true,
 			"inheritAccess": true,
 		},	
@@ -158,6 +171,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 20, "Str": 20, "Mag": 0, "Skl": 10, "Spd": 10, "Lck": 5, "Def": 10, "Res": 5},
 			"maxStats": {"HP": 45, "Str": 24, "Mag": 15, "Skl": 19, "Spd": 19, "Lck": 21, "Def": 23, "Res": 20},
 			"weaponRanks": {"Bow": "B"},
+			"pairUpStats": {"Str": 3, "Def": 2, "Res": 1},
 			"parallel": null,
 			"sealAccess": true,
 			"inheritAccess": true,
@@ -174,6 +188,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 20, "Str": 20, "Mag": 10, "Skl": 0, "Spd": 10, "Lck": 0, "Def": 20, "Res": 0},
 			"maxStats": {"HP": 45, "Str": 24, "Mag": 19, "Skl": 16, "Spd": 20, "Lck": 17, "Def": 23, "Res": 18},
 			"weaponRanks": {"Axe": "B"},
+			"pairUpStats": {"Str": 4, "Def": 2},
 			"parallel": "Fighter",
 			"sealAccess": true,
 			"inheritAccess": true,
@@ -190,6 +205,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 20, "Mag": 15, "Skl": 0, "Spd": 10, "Lck": 0, "Def": 20, "Res": 5},
 			"maxStats": {"HP": 60, "Str": 34, "Mag": 28, "Skl": 25, "Spd": 30, "Lck": 25, "Def": 36, "Res": 31},
 			"weaponRanks": {"Axe": "A", "Tome": "B"},
+			"pairUpStats": {"Str": 4, "Def": 4},
 			"sealAccess": true,
 			"inheritAccess": true,
 		},	
@@ -205,6 +221,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 20, "Str": 15, "Mag": 0, "Skl": 15, "Spd": 10, "Lck": 5, "Def": 15, "Res": 0},
 			"maxStats": {"HP": 65, "Str": 33, "Mag": 25, "Skl": 32, "Spd": 31, "Lck": 30, "Def": 32, "Res": 27},
 			"weaponRanks": {"Sword": "B", "Axe": "A"},
+			"pairUpStats": {"Str": 3, "Skl": 2, "Def": 3},
 			"sealAccess": true,
 			"inheritAccess": true,
 		},	
@@ -220,6 +237,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 15, "Str": 15, "Mag": 0, "Skl": 15, "Spd": 15, "Lck": 5, "Def": 10, "Res": 5},
 			"maxStats": {"HP": 40, "Str": 22, "Mag": 15, "Skl": 23, "Spd": 22, "Lck": 21, "Def": 22, "Res": 21},
 			"weaponRanks": {"Lance": "B"},
+			"pairUpStats": {"Str": 2, "Skl": 2, "Spd": 2},
 			"parallel": "Knight",
 			"sealAccess": true,
 			"inheritAccess": true,
@@ -237,6 +255,7 @@ app.service('Classes', function() {
 			"maxStats": {"HP": 60, "Str": 34, "Mag": 25, "Skl": 33, "Spd": 32, "Lck": 29, "Def": 30, "Res": 29},
 			"weaponRanks": {"Lance": "S"},
 			"bonus": {"Crit": 10, "Ddg": 10},
+			"pairUpStats": {"Str": 3, "Skl": 3, "Spd": 2},
 			"sealAccess": true,
 			"inheritAccess": true,
 		},	
@@ -252,6 +271,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 20, "Str": 10, "Mag": 10, "Skl": 10, "Spd": 10, "Lck": 15, "Def": 5, "Res": 10},
 			"maxStats": {"HP": 65, "Str": 31, "Mag": 30, "Skl": 30, "Spd": 31, "Lck": 35, "Def": 30, "Res": 32},
 			"weaponRanks": {"Lance": "A", "Tome": "B"},
+			"pairUpStats": {"Lck": 5, "Res": 3},
 			"sealAccess": true,
 			"inheritAccess": true,
 		},	
@@ -267,6 +287,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 0, "Str": 5, "Mag": 15, "Skl": 10, "Spd": 10, "Lck": 5, "Def": 0, "Res": 10},
 			"maxStats": {"HP": 35, "Str": 17, "Mag": 22, "Skl": 20, "Spd": 23, "Lck": 19, "Def": 16, "Res": 20},
 			"weaponRanks": {"Tome": "B"},
+			"pairUpStats": {"Mag": 3, "Spd": 3},
 			"parallel": "Dark_Mage",
 			"sealAccess": true,
 			"inheritAccess": true,
@@ -283,6 +304,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 0, "Str": 0, "Mag": 20, "Skl": 10, "Spd": 15, "Lck": 0, "Def": 0, "Res": 15},
 			"maxStats": {"HP": 45, "Str": 25, "Mag": 33, "Skl": 31, "Spd": 32, "Lck": 27, "Def": 25, "Res": 31},
 			"weaponRanks": {"Tome": "A", "Staff": "B"},
+			"pairUpStats": {"Mag": 4, "Spd": 4},
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -299,6 +321,7 @@ app.service('Classes', function() {
 			"maxStats": {"HP": 35, "Str": 18, "Mag": 21, "Skl": 20, "Spd": 22, "Lck": 23, "Def": 17, "Res": 24},
 			"weaponRanks": {"Staff": "B"},
 			"bonus": {"Ddg": 10},
+			"pairUpStats": {"Mag": 2, "Lck": 2, "Res": 2},
 			"gender": "M",
 			"genderEquivalent": "Shrine_Maiden",
 			"combinedDisplayName": "Monk / Shrine Maiden",
@@ -319,6 +342,7 @@ app.service('Classes', function() {
 			"maxStats": {"HP": 35, "Str": 18, "Mag": 21, "Skl": 20, "Spd": 22, "Lck": 23, "Def": 17, "Res": 24},
 			"weaponRanks": {"Staff": "B"},
 			"bonus": {"Ddg": 10},
+			"pairUpStats": {"Mag": 2, "Lck": 2, "Res": 2},
 			"gender": "F",
 			"genderEquivalent": "Monk",
 			"combinedDisplayName": "Monk / Shrine Maiden",
@@ -338,6 +362,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 15, "Mag": 5, "Skl": 5, "Spd": 15, "Lck": 15, "Def": 10, "Res": 10},
 			"maxStats": {"HP": 55, "Str": 32, "Mag": 30, "Skl": 31, "Spd": 33, "Lck": 32, "Def": 28, "Res": 32},
 			"weaponRanks": {"Lance": "B", "Staff": "A"},
+			"pairUpStats": {"Mag": 3, "Lck": 2, "Res": 3},
 			"gender": "M",
 			"genderEquivalent": "Priestess",
 			"sealAccess": true,
@@ -355,6 +380,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 10, "Mag": 10, "Skl": 5, "Spd": 15, "Lck": 15, "Def": 0, "Res": 20},
 			"maxStats": {"HP": 50, "Str": 29, "Mag": 32, "Skl": 30, "Spd": 33, "Lck": 34, "Def": 26, "Res": 34},
 			"weaponRanks": {"Bow": "B", "Staff": "A"},
+			"pairUpStats": {"Mag": 3, "Lck": 2, "Res": 3},
 			"gender": "F",
 			"genderEquivalent": "Great_Master",
 			"sealAccess": true,
@@ -372,9 +398,12 @@ app.service('Classes', function() {
 			"growths": {"HP": 0, "Str": 10, "Mag": 0, "Skl": 10, "Spd": 15, "Lck": 20, "Def": 0, "Res": 20},
 			"maxStats": {"HP": 35, "Str": 19, "Mag": 16, "Skl": 21, "Spd": 23, "Lck": 25, "Def": 18, "Res": 25},
 			"weaponRanks": {"Lance": "B"},
+			"pairUpStats": {"Spd": 3, "Res": 3},
 			"parallel": "Wyvern_Rider",
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Flying", "Beast"],
+			"mounted": true,
 		},
 
 		"Falcon_Knight": {
@@ -388,8 +417,11 @@ app.service('Classes', function() {
 			"growths": {"HP": 0, "Str": 10, "Mag": 10, "Skl": 10, "Spd": 15, "Lck": 20, "Def": 0, "Res": 20},
 			"maxStats": {"HP": 55, "Str": 28, "Mag": 27, "Skl": 30, "Spd": 34, "Lck": 35, "Def": 27, "Res": 35},
 			"weaponRanks": {"Lance": "A", "Staff": "B"},
+			"pairUpStats": {"Spd": 3, "Res": 3, "Mov": 1},
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Flying", "Beast"],
+			"mounted": true,
 		},
 
 		"Kinshi_Knight": {
@@ -403,8 +435,11 @@ app.service('Classes', function() {
 			"growths": {"HP": 0, "Str": 5, "Mag": 0, "Skl": 15, "Spd": 15, "Lck": 15, "Def": 0, "Res": 15},
 			"maxStats": {"HP": 50, "Str": 27, "Mag": 26, "Skl": 33, "Spd": 31, "Lck": 34, "Def": 25, "Res": 31},
 			"weaponRanks": {"Lance": "B", "Bow": "A"},
+			"pairUpStats": {"Skl": 2, "Spd": 2, "Lck": 2, "Mov": 1},
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Flying", "Beast"],
+			"mounted": true,
 		},
 		
 		"Archer": {
@@ -418,6 +453,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 15, "Mag": 0, "Skl": 15, "Spd": 15, "Lck": 5, "Def": 10, "Res": 0},
 			"maxStats": {"HP": 40, "Str": 21, "Mag": 15, "Skl": 23, "Spd": 21, "Lck": 20, "Def": 20, "Res": 17},
 			"weaponRanks": {"Bow": "B"},
+			"pairUpStats": {"Str": 2, "Skl": 2, "Spd": 2},
 			"parallel": "Outlaw",
 			"sealAccess": true,
 			"inheritAccess": true,
@@ -435,6 +471,7 @@ app.service('Classes', function() {
 			"maxStats": {"HP": 55, "Str": 31, "Mag": 25, "Skl": 35, "Spd": 33, "Lck": 30, "Def": 31, "Res": 28},
 			"weaponRanks": {"Bow": "S"},
 			"bonus": {"Hit": 10, "Crit": 10},
+			"pairUpStats": {"Str": 2, "Skl": 3, "Spd": 3},
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -450,6 +487,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 5, "Str": 5, "Mag": 0, "Skl": 20, "Spd": 20, "Lck": 0, "Def": 5, "Res": 15},
 			"maxStats": {"HP": 35, "Str": 17, "Mag": 15, "Skl": 25, "Spd": 25, "Lck": 18, "Def": 19, "Res": 20},
 			"weaponRanks": {"Dagger": "B"},
+			"pairUpStats": {"Skl": 1, "Spd": 3, "Mov": 1},
 			"parallel": "Cavalier",
 			"sealAccess": true,
 			"inheritAccess": true,
@@ -467,6 +505,7 @@ app.service('Classes', function() {
 			"maxStats": {"HP": 55, "Str": 27, "Mag": 25, "Skl": 35, "Spd": 35, "Lck": 28, "Def": 26, "Res": 34},
 			"weaponRanks": {"Sword": "B", "Dagger": "S"},
 			"bonus": {"Hit": 5, "Crit": 5, "Avo": 5, "Ddg": 5},
+			"pairUpStats": {"Skl": 2, "Spd": 4, "Mov": 1},
 			"sealAccess": true,
 			"inheritAccess": true,
 		},	
@@ -482,8 +521,11 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 10, "Mag": 0, "Skl": 15, "Spd": 10, "Lck": 5, "Def": 5, "Res": 15},
 			"maxStats": {"HP": 60, "Str": 30, "Mag": 25, "Skl": 33, "Spd": 30, "Lck": 30, "Def": 31, "Res": 31},
 			"weaponRanks": {"Dagger": "A", "Bow": "B"},
+			"pairUpStats": {"Str": 2, "Skl": 2, "Def": 2, "Res": 2},
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Golem"],
+			"mounted": true,
 		},	
 
 		"Kitsune": {
@@ -497,9 +539,11 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 10, "Mag": 0, "Skl": 15, "Spd": 20, "Lck": 10, "Def": 0, "Res": 20},
 			"maxStats": {"HP": 40, "Str": 20, "Mag": 18, "Skl": 23, "Spd": 24, "Lck": 24, "Def": 18, "Res": 23},
 			"weaponRanks": {"Stone": "B"},
+			"pairUpStats": {"Spd": 4, "Lck": 2},
 			"parallel": "Apothecary",
 			"sealAccess": false,
 			"inheritAccess": true,
+			"weakness": ["Beast"],
 		},
 
 		"Nine-Tails": {
@@ -513,9 +557,11 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 10, "Mag": 0, "Skl": 15, "Spd": 20, "Lck": 10, "Def": 0, "Res": 20},
 			"maxStats": {"HP": 55, "Str": 29, "Mag": 29, "Skl": 33, "Spd": 34, "Lck": 33, "Def": 27, "Res": 34},
 			"weaponRanks": {"Stone": "S"},
+			"pairUpStats": {"Spd": 5, "Lck": 3},
 			"bonus": {"Crit": 5, "Avo": 10, "Ddg": 10},
 			"sealAccess": false,
 			"inheritAccess": true,
+			"weakness": ["Beast"],
 		},
 
 		"Cavalier": {
@@ -529,9 +575,12 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 15, "Mag": 0, "Skl": 10, "Spd": 10, "Lck": 15, "Def": 10, "Res": 5},
 			"maxStats": {"HP": 40, "Str": 22, "Mag": 15, "Skl": 21, "Spd": 20, "Lck": 24, "Def": 22, "Res": 21},
 			"weaponRanks": {"Sword": "B", "Lance": "B"},
+			"pairUpStats": {"Str": 2, "Def": 2, "Res": 2},
 			"parallel": "Ninja",
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Beast"],
+			"mounted": true,
 		},
 
 		"Paladin": {
@@ -545,8 +594,11 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 15, "Mag": 0, "Skl": 10, "Spd": 10, "Lck": 15, "Def": 10, "Res": 10},
 			"maxStats": {"HP": 60, "Str": 31, "Mag": 26, "Skl": 30, "Spd": 30, "Lck": 32, "Def": 32, "Res": 32},
 			"weaponRanks": {"Sword": "A", "Lance": "A"},
+			"pairUpStats": {"Str": 2, "Def": 2, "Res": 2, "Mov": 1},
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Beast"],
+			"mounted": true,
 		},
 
 		"Great_Knight": {
@@ -560,8 +612,11 @@ app.service('Classes', function() {
 			"growths": {"HP": 20, "Str": 20, "Mag": 0, "Skl": 10, "Spd": 5, "Lck": 5, "Def": 20, "Res": 0},
 			"maxStats": {"HP": 65, "Str": 35, "Mag": 25, "Skl": 29, "Spd": 27, "Lck": 28, "Def": 37, "Res": 28},
 			"weaponRanks": {"Sword": "B", "Lance": "A", "Axe": "B"},
+			"pairUpStats": {"Str": 2, "Def": 4, "Mov": 1},
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Beast", "Armor"],
+			"mounted": true,
 		},
 
 		"Knight": {
@@ -575,9 +630,11 @@ app.service('Classes', function() {
 			"growths": {"HP": 20, "Str": 20, "Mag": 0, "Skl": 15, "Spd": 5, "Lck": 10, "Def": 20, "Res": 0},
 			"maxStats": {"HP": 45, "Str": 24, "Mag": 15, "Skl": 22, "Spd": 17, "Lck": 22, "Def": 26, "Res": 18},
 			"weaponRanks": {"Lance": "B"},
+			"pairUpStats": {"Str": 2, "Def": 4},
 			"parallel": "Spear_Fighter",
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Armor"],
 		},
 
 		"General": {
@@ -591,8 +648,10 @@ app.service('Classes', function() {
 			"growths": {"HP": 25, "Str": 20, "Mag": 0, "Skl": 15, "Spd": 0, "Lck": 10, "Def": 20, "Res": 5},
 			"maxStats": {"HP": 70, "Str": 38, "Mag": 25, "Skl": 32, "Spd": 25, "Lck": 32, "Def": 40, "Res": 30},
 			"weaponRanks": {"Lance": "A", "Axe": "B"},
+			"pairUpStats": {"Str": 3, "Def": 5},
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Armor"],
 		},
 
 		"Fighter": {
@@ -606,6 +665,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 20, "Str": 20, "Mag": 0, "Skl": 15, "Spd": 15, "Lck": 5, "Def": 5, "Res": 0},
 			"maxStats": {"HP": 45, "Str": 25, "Mag": 15, "Skl": 23, "Spd": 22, "Lck": 21, "Def": 19, "Res": 18},
 			"weaponRanks": {"Axe": "B"},
+			"pairUpStats": {"Str": 4, "Spd": 2},
 			"parallel": "Oni_Savage",
 			"sealAccess": true,
 			"inheritAccess": true,
@@ -623,6 +683,7 @@ app.service('Classes', function() {
 			"maxStats": {"HP": 70, "Str": 40, "Mag": 25, "Skl": 32, "Spd": 33, "Lck": 25, "Def": 27, "Res": 25},
 			"weaponRanks": {"Axe": "S"},
 			"bonus": {"Crit": 20, "Ddg": -5},
+			"pairUpStats": {"Str": 5, "Spd": 3},
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -638,6 +699,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 15, "Mag": 0, "Skl": 20, "Spd": 15, "Lck": 5, "Def": 10, "Res": 5},
 			"maxStats": {"HP": 40, "Str": 22, "Mag": 15, "Skl": 24, "Spd": 22, "Lck": 20, "Def": 21, "Res": 19},
 			"weaponRanks": {"Sword": "B"},
+			"pairUpStats": {"Skl": 2, "Spd": 3, "Def": 1},
 			"parallel": "Samurai",
 			"sealAccess": true,
 			"inheritAccess": true,
@@ -654,6 +716,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 20, "Str": 15, "Mag": 0, "Skl": 20, "Spd": 15, "Lck": 5, "Def": 10, "Res": 0},
 			"maxStats": {"HP": 60, "Str": 32, "Mag": 25, "Skl": 35, "Spd": 32, "Lck": 31, "Def": 30, "Res": 27},
 			"weaponRanks": {"Sword": "A", "Axe": "B"},
+			"pairUpStats": {"Skl": 3, "Spd": 3, "Def": 2},
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -669,8 +732,11 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 10, "Mag": 0, "Skl": 15, "Spd": 15, "Lck": 10, "Def": 0, "Res": 10},
 			"maxStats": {"HP": 55, "Str": 29, "Mag": 25, "Skl": 32, "Spd": 33, "Lck": 30, "Def": 27, "Res": 32},
 			"weaponRanks": {"Sword": "B", "Bow": "A"},
+			"pairUpStats": {"Skl": 3, "Spd": 3, "Mov": 1},
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Beast"],
+			"mounted": true,
 		},
 
 		"Outlaw": {
@@ -684,6 +750,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 0, "Str": 10, "Mag": 5, "Skl": 10, "Spd": 20, "Lck": 0, "Def": 0, "Res": 20},
 			"maxStats": {"HP": 35, "Str": 19, "Mag": 18, "Skl": 20, "Spd": 24, "Lck": 18, "Def": 17, "Res": 22},
 			"weaponRanks": {"Bow": "B"},
+			"pairUpStats": {"Spd": 2, "Res": 2, "Mov": 1},
 			"parallel": "Archer",
 			"sealAccess": true,
 			"inheritAccess": true,
@@ -700,6 +767,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 0, "Str": 5, "Mag": 15, "Skl": 5, "Spd": 20, "Lck": 0, "Def": 0, "Res": 20},
 			"maxStats": {"HP": 50, "Str": 27, "Mag": 31, "Skl": 27, "Spd": 34, "Lck": 27, "Def": 25, "Res": 34},
 			"weaponRanks": {"Bow": "A", "Staff": "B"},
+			"pairUpStats": {"Spd": 4, "Res": 2, "Mov": 1},
 			"sealAccess": true,
 			"inheritAccess": true,
 		},
@@ -715,9 +783,12 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 15, "Mag": 5, "Skl": 10, "Spd": 10, "Lck": 5, "Def": 20, "Res": 0},
 			"maxStats": {"HP": 40, "Str": 22, "Mag": 17, "Skl": 21, "Spd": 20, "Lck": 19, "Def": 24, "Res": 15},
 			"weaponRanks": {"Axe": "B"},
+			"pairUpStats": {"Str": 3, "Def": 3},
 			"parallel": "Sky_Knight",
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Dragon", "Flying"],
+			"mounted": true,
 		},
 
 		"Wyvern_Lord": {
@@ -731,8 +802,11 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 15, "Mag": 0, "Skl": 15, "Spd": 10, "Lck": 5, "Def": 20, "Res": 0},
 			"maxStats": {"HP": 60, "Str": 33, "Mag": 25, "Skl": 33, "Spd": 29, "Lck": 28, "Def": 35, "Res": 26},
 			"weaponRanks": {"Lance": "B", "Axe": "A"},
+			"pairUpStats": {"Str": 3, "Def": 3, "Mov": 1},
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Dragon", "Flying"],
+			"mounted": true,
 		},
 
 		"Malig_Knight": {
@@ -746,8 +820,11 @@ app.service('Classes', function() {
 			"growths": {"HP": 0, "Str": 15, "Mag": 15, "Skl": 10, "Spd": 5, "Lck": 0, "Def": 10, "Res": 15},
 			"maxStats": {"HP": 55, "Str": 31, "Mag": 30, "Skl": 28, "Spd": 27, "Lck": 25, "Def": 31, "Res": 31},
 			"weaponRanks": {"Axe": "A", "Tome": "B"},
+			"pairUpStats": {"Mag": 2, "Def": 2, "Res": 2, "Mov": 1},
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Dragon", "Flying"],
+			"mounted": true,
 		},
 
 		"Dark_Mage": {
@@ -761,6 +838,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 0, "Str": 10, "Mag": 20, "Skl": 0, "Spd": 10, "Lck": 0, "Def": 5, "Res": 10},
 			"maxStats": {"HP": 35, "Str": 19, "Mag": 24, "Skl": 16, "Spd": 19, "Lck": 18, "Def": 19, "Res": 22},
 			"weaponRanks": {"Tome": "B"},
+			"pairUpStats": {"Mag": 3, "Res": 3},
 			"parallel": "Diviner",
 			"sealAccess": true,
 			"inheritAccess": true,
@@ -777,6 +855,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 0, "Str": 0, "Mag": 25, "Skl": 0, "Spd": 10, "Lck": 0, "Def": 5, "Res": 15},
 			"maxStats": {"HP": 50, "Str": 25, "Mag": 35, "Skl": 26, "Spd": 29, "Lck": 26, "Def": 29, "Res": 33},
 			"weaponRanks": {"Tome": "S"},
+			"pairUpStats": {"Mag": 5, "Res": 3},
 			"bonus": {"Hit": 5, "Crit": 10, "Ddg": 5},
 			"sealAccess": true,
 			"inheritAccess": true,
@@ -793,8 +872,11 @@ app.service('Classes', function() {
 			"growths": {"HP": 15, "Str": 20, "Mag": 10, "Skl": 5, "Spd": 5, "Lck": 5, "Def": 15, "Res": 5},
 			"maxStats": {"HP": 55, "Str": 32, "Mag": 31, "Skl": 28, "Spd": 27, "Lck": 31, "Def": 34, "Res": 30},
 			"weaponRanks": {"Sword": "B", "Tome": "A"},
+			"pairUpStats": {"Mag": 3, "Def": 3, "Mov": 1},
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Beast"],
+			"mounted": true,
 		},
 
 		"Troubadour_F": {
@@ -809,12 +891,15 @@ app.service('Classes', function() {
 			"maxStats": {"HP": 35, "Str": 16, "Mag": 19, "Skl": 24, "Spd": 20, "Lck": 23, "Def": 16, "Res": 21},
 			"weaponRanks": {"Staff": "B"},
 			"bonus": {"Ddg": 10},
+			"pairUpStats": {"Mag": 2, "Lck": 2, "Res": 2},
 			"gender": "F",
 			"genderEquivalent": "Troubadour_M",
 			"combinedDisplayName": "Troubadour",
 			"parallel": null,
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Beast"],
+			"mounted": true,
 		},
 
 		"Troubadour_M": {
@@ -829,12 +914,15 @@ app.service('Classes', function() {
 			"maxStats": {"HP": 35, "Str": 16, "Mag": 19, "Skl": 24, "Spd": 20, "Lck": 23, "Def": 16, "Res": 21},
 			"weaponRanks": {"Staff": "B"},
 			"bonus": {"Ddg": 10},
+			"pairUpStats": {"Mag": 2, "Lck": 2, "Res": 2},
 			"gender": "M",
 			"genderEquivalent": "Troubadour_F",
 			"combinedDisplayName": "Troubadour",
 			"parallel": null,
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Beast"],
+			"mounted": true,
 		},
 
 		"Strategist": {
@@ -848,8 +936,11 @@ app.service('Classes', function() {
 			"growths": {"HP": 0, "Str": 0, "Mag": 15, "Skl": 5, "Spd": 10, "Lck": 20, "Def": 0, "Res": 15},
 			"maxStats": {"HP": 45, "Str": 25, "Mag": 33, "Skl": 28, "Spd": 31, "Lck": 33, "Def": 25, "Res": 32},
 			"weaponRanks": {"Tome": "B", "Staff": "A"},
+			"pairUpStats": {"Mag": 2, "Lck": 2, "Res": 2, "Mov": 1},
 			"sealAccess": true,
 			"inheritAccess": true,
+			"weakness": ["Beast"],
+			"mounted": true,
 		},
 
 		"Maid": {
@@ -863,6 +954,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 0, "Str": 10, "Mag": 10, "Skl": 15, "Spd": 15, "Lck": 10, "Def": 5, "Res": 10},
 			"maxStats": {"HP": 50, "Str": 28, "Mag": 31, "Skl": 33, "Spd": 33, "Lck": 32, "Def": 29, "Res": 29},
 			"weaponRanks": {"Dagger": "B", "Staff": "S"},
+			"pairUpStats": {"Mag": 2, "Spd": 3, "Lck": 3},
 			"gender": "F",
 			"genderEquivalent": "Butler",
 			"combinedDisplayName": "Maid / Butler",
@@ -881,6 +973,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 0, "Str": 10, "Mag": 10, "Skl": 15, "Spd": 15, "Lck": 10, "Def": 5, "Res": 10},
 			"maxStats": {"HP": 50, "Str": 28, "Mag": 31, "Skl": 33, "Spd": 33, "Lck": 32, "Def": 29, "Res": 29},
 			"weaponRanks": {"Dagger": "B", "Staff": "S"},
+			"pairUpStats": {"Mag": 2, "Spd": 3, "Lck": 3},
 			"gender": "M",
 			"genderEquivalent": "Maid",
 			"combinedDisplayName": "Maid / Butler",
@@ -899,9 +992,11 @@ app.service('Classes', function() {
 			"growths": {"HP": 20, "Str": 20, "Mag": 0, "Skl": 5, "Spd": 15, "Lck": 5, "Def": 10, "Res": 0},
 			"maxStats": {"HP": 45, "Str": 24, "Mag": 15, "Skl": 18, "Spd": 22, "Lck": 17, "Def": 21, "Res": 15},
 			"weaponRanks": {"Stone": "B"},
+			"pairUpStats": {"Str": 3, "Spd": 3},
 			"parallel": "Outlaw",
 			"sealAccess": false,
 			"inheritAccess": true,
+			"weakness": ["Beast"],
 		},
 
 		"Wolfssegner": {
@@ -916,8 +1011,10 @@ app.service('Classes', function() {
 			"maxStats": {"HP": 65, "Str": 36, "Mag": 25, "Skl": 29, "Spd": 31, "Lck": 26, "Def": 32, "Res": 26},
 			"weaponRanks": {"Stone": "S"},
 			"bonus": {"Hit": 10, "Crit": 5, "Ddg": 10},
+			"pairUpStats": {"Str": 4, "Spd": 4},
 			"sealAccess": false,
 			"inheritAccess": true,
+			"weakness": ["Beast"],
 		},
 
 		"Songstress": {
@@ -931,6 +1028,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 0, "Str": 10, "Mag": 0, "Skl": 20, "Spd": 20, "Lck": 20, "Def": 0, "Res": 0},
 			"maxStats": {"HP": 45, "Str": 28, "Mag": 27, "Skl": 31, "Spd": 31, "Lck": 35, "Def": 27, "Res": 28},
 			"weaponRanks": {"Lance": "C"},
+			"pairUpStats": {"Skl": 2, "Spd": 2, "Lck": 4},
 			"gender": "F",
 			"parallel": "Troubadour_F",
 			"sealAccess": false,
@@ -948,6 +1046,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 15, "Str": 15, "Mag": 5, "Skl": 5, "Spd": 15, "Lck": 0, "Def": 5, "Res": 20},
 			"maxStats": {"HP": 55, "Str": 32, "Mag": 28, "Skl": 29, "Spd": 31, "Lck": 26, "Def": 29, "Res": 34},
 			"weaponRanks": {"Sword": "A", "Axe": "B", "Dagger": "B"},
+			"pairUpStats": {"Str": 2, "Spd": 2, "Res": 4},
 			"sealAccess": false,
 			"inheritAccess": false,
 		},
@@ -963,8 +1062,11 @@ app.service('Classes', function() {
 			"growths": {"HP": 0, "Str": 10, "Mag": 15, "Skl": 5, "Spd": 15, "Lck": 15, "Def": 0, "Res": 20},
 			"maxStats": {"HP": 45, "Str": 27, "Mag": 32, "Skl": 28, "Spd": 33, "Lck": 32, "Def": 26, "Res": 34},
 			"weaponRanks": {"Lance": "B", "Tome": "A"},
+			"pairUpStats": {"Mag": 3, "Spd": 3, "Mov": 1},
 			"sealAccess": false,
 			"inheritAccess": false,
+			"weakness": ["Flying", "Beast"],
+			"mounted": true,
 		},
 
 		"Ballistician": {
@@ -978,6 +1080,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 5, "Str": 25, "Mag": 0, "Skl": 15, "Spd": 0, "Lck": 10, "Def": 5, "Res": 5},
 			"maxStats": {"HP": 50, "Str": 39, "Mag": 25, "Skl": 31, "Spd": 25, "Lck": 32, "Def": 27, "Res": 26},
 			"weaponRanks": {"Bow": "B"},
+			"pairUpStats": {"Str": 3, "Skl": 1, "Lck": 2, "Def": 1, "Res": 1},
 			"gender": "M",
 			"sealAccess": false,
 			"inheritAccess": false,
@@ -995,6 +1098,7 @@ app.service('Classes', function() {
 			"maxStats": {"HP": 50, "Str": 25, "Mag": 36, "Skl": 27, "Spd": 34, "Lck": 28, "Def": 26, "Res": 29},
 			"weaponRanks": {"Tome": "S"},
 			"bonus": {"Crit": 10, "Avo": 10},
+			"pairUpStats": {"Mag": 5, "Spd": 3},
 			"gender": "F",
 			"sealAccess": false,
 			"inheritAccess": false,
@@ -1012,6 +1116,7 @@ app.service('Classes', function() {
 			"maxStats": {"HP": 60, "Str": 29, "Mag": 26, "Skl": 35, "Spd": 33, "Lck": 40, "Def": 30, "Res": 29},
 			"weaponRanks": {"Sword": "S"},
 			"bonus": {"Hit": 10, "Crit": 5, "Avo": 10},
+			"pairUpStats": {"Str": 2, "Spd": 3, "Lck": 3},
 			"gender": "M",
 			"sealAccess": false,
 			"inheritAccess": false,
@@ -1028,6 +1133,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 20, "Str": 20, "Mag": 0, "Skl": 5, "Spd": 5, "Lck": 10, "Def": 15, "Res": 0},
 			"maxStats": {"HP": 65, "Str": 36, "Mag": 25, "Skl": 29, "Spd": 30, "Lck": 30, "Def": 32, "Res": 27},
 			"weaponRanks": {"Sword": "A", "Axe": "B"},
+			"pairUpStats": {"Str": 5, "Def": 3},
 			"gender": "M",
 			"sealAccess": false,
 			"inheritAccess": false,
@@ -1044,6 +1150,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 15, "Str": 15, "Mag": 0, "Skl": 10, "Spd": 10, "Lck": 15, "Def": 10, "Res": 5},
 			"maxStats": {"HP": 60, "Str": 30, "Mag": 25, "Skl": 32, "Spd": 34, "Lck": 35, "Def": 29, "Res": 31},
 			"weaponRanks": {"Sword": "A", "Lance": "B"},
+			"pairUpStats": {"Spd": 4, "Lck": 4},
 			"gender": "F",
 			"sealAccess": false,
 			"inheritAccess": false,
@@ -1060,6 +1167,7 @@ app.service('Classes', function() {
 			"growths": {"HP": 10, "Str": 15, "Mag": 15, "Skl": 15, "Spd": 5, "Lck": 0, "Def": 5, "Res": 15},
 			"maxStats": {"HP": 55, "Str": 31, "Mag": 33, "Skl": 33, "Spd": 29, "Lck": 26, "Def": 28, "Res": 33},
 			"weaponRanks": {"Sword": "B", "Tome": "A"},
+			"pairUpStats": {"Str": 2, "Mag": 2, "Skl": 2, "Spd": 2},
 			"gender": "M",
 			"sealAccess": false,
 			"inheritAccess": false,
@@ -1110,6 +1218,10 @@ app.service('Classes', function() {
 
 	this.DLC_CLASSES = ["Dread_Fighter", "Dark_Falcon", "Ballistician", "Witch", "Lodestar", "Vanguard", "Great_Lord", "Grandmaster"];
 
+	Object.keys(classes).forEach(function(unitClass, idx) {
+		classes[unitClass].pk = idx;
+	});
+
 
 	this.getClasses = function() {
 		return angular.copy(classes);
@@ -1119,12 +1231,35 @@ app.service('Classes', function() {
 		return angular.copy(classes[classKey]);
 	};
 
+	this.getClassByPK = function(pk) {
+		var classKeys = Object.keys(classes);
+		for (var i=0; i<classKeys.length; i++) {
+			if (classes[classKeys[i]].pk == pk) {
+				return angular.copy(classes[classKeys[i]]);
+				break;
+			}
+		}
+	};
+
 	this.getClassByGender = function(classKey, gender) {
 		var unitClass = classes[classKey];
 		if (unitClass.gender && unitClass.gender != gender && unitClass.genderEquivalent) {
 			unitClass = classes[unitClass.genderEquivalent];
 		}
 		return angular.copy(unitClass);
+	};
+
+	this.getClassesByGender = function(gender) {
+		var unitClasses = angular.copy(classes);
+
+		Object.keys(unitClasses).forEach(function(classKey) {
+			var unitClass = unitClasses[classKey];
+			if (unitClass.gender && unitClass.gender != gender) {
+				delete unitClasses[classKey];
+			}
+		});
+
+		return unitClasses;
 	};
 
 	this.getParallelClass = function(classKey) {

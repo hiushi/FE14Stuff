@@ -1,0 +1,12 @@
+<div class="description-popup">
+	
+	<span class="stat-mod-desc">Base Value: <span ng-bind="unit.baseStats[stat]"></span></span>
+
+	<span class="stat-mod-desc" ng-repeat="statMod in unit.statMods[stat]">
+		<span ng-bind="statMod.reason"></span>
+		<span ng-class="{'buffed': statMod.value > 0, 'debuffed': statMod.value < 0}">
+			<span ng-if="statMod.value > 0">+</span><span ng-bind="statMod.value"></span>
+		</span>
+	</span>
+
+</div>

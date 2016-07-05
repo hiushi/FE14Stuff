@@ -1,0 +1,123 @@
+Boosts (or penalties) from field commands (user manually selects these before acting)
+	a. From self (only one at a time)
+		- Recovery item/tonic
+		- Capture/Kidnap
+		- Cannon
+	b. From others
+		- Healing from staff
+		- Rally Str/Mag/Skl/Spd/Lck/Def/Res/Spectrum
+		- Inspiring Song
+		- Perfect Pitch
+		- Fancy Footwork
+
+Boosts/penalties from other units' AoE skills (user manually selects these before acting, gets pushed to "Active Skills" list. User must also manually select the targets that are affected, can be ally/enemy/lead/support)
+	- Dragon Ward
+	- Amaterasu
+	- Voice of Peace
+	- Foreign Princess
+	- Heartseeker
+	- Malefic Aura
+	- Savage Blow (enemy Attack stance support only)
+	- Gentilhomme
+	- Demoiselle
+	- Inspiration
+	- Charm
+	- Solidarity
+	- Peacebringer
+	- Quiet Strength
+	- Rallying Cry
+	- Perspicacious
+	- Lily's Poise
+	- Misfortunate
+	- Rose's Thorn
+	- Fierce Mien
+	- Fortunate Son
+
+Boosts from user's own skills that only apply under certain AoE conditions (these can only be selected if the unit has the skill, but user can decide whether the necessary condition is active)
+	- Camaraderie
+	- 
+
+Phases where skill/weapon effects happen
+
+
+1. Beginning of turn
+	a1. Field healing
+		- Renewal, Camaraderie, Amaterasu, Even Better, Good Fortune, Better Odds, Relief
+		- Healing Descant, Forager, Draconic Heir, Haiku, Goody Basket,
+		- Blessed weapons, Mikoto's Yumi
+		- Terrain (e.g. Gate, Throne)
+	a2. Field damage
+		- Self-Destruct
+		- Playthings
+		- Terrain (e.g. Spikes)
+	a3. Recovery from debuff
+
+
+2. Combat (affects Combat Forecast calculations)
+	- Anything that affects...
+		- listed Atk/Mt/damage
+		- listed Hit (includes Avo)
+		- listed Crit (includes crit evade)
+		- attack speed/follow-up
+		- proc activation rate? (debatable)
+	- Examples
+		- All Blow skills, Breaker skills, Faire skills, 
+
+
+3. Offensive Proc (based on a trigger rate and not reflected in Combat Forecast)
+	- Lethality > Aether > Astra > Dragon Fang > Sol > Luna > Ignis > Rend Heaven > Vengeance
+	- Disabled for weapons that cannot proc (e.g. Bronze weapons, Javelin etc, Levin Sword etc)
+
+4. Defensive Proc (based on a trigger rate and not reflected in Combat Forecast)
+	a. Damage reduction
+		- Miracle, Pavise, Aegis, Dragon Ward
+		- Miraculous Save
+		- Votive Candle, Brynhildr
+		- Takumi's Shinai and Niles's Bow act like an enemy-induced 100% success rate Miracle
+	b. Countering
+		- Counter, Countermagic
+		- Countercurse, Icy Blood, Shuriken Mastery, Triple Threat, Divine Retribution
+
+
+5. After battle
+	a. "Permanent" changes to stats that last until end of battle
+		i. Healing/damage (technically permanent changes to current HP)
+			- Lifetaker, Morbid Celebration
+			- Poison Strike, Savage Blow, Grisly Wound, Pyrotechnics, Fearsome Blow
+		ii. Changes to base stats
+			- Taker skills
+		iii. 
+	b. Temporary stat buffs/debuffs with varying timers
+		i. Standard debuffs that recover 1/turn
+			- Seals
+			- Daggers/shurikens
+			- Self-inflicted from Silver weapons etc
+			- Trolling with Inevitable End to eliminate restriction on debuff stacking
+			- Clarity for modifying the recovery timer
+		ii. Last for x number of turns
+			- Bloodthirst, Optimist, Calm
+			- Immobilize, Toxic Brew
+		iii. Last until user's next attack
+			- Several A-rank and S-rank weapons
+
+
+6. Activate based on certain conditions
+	a. When stats reach a certain point
+
+
+
+
+Skills that are unique enough / disrupt the normal flow of battle enough to be hardcoded into battle logic
+	- Vantage
+	- Dual Guarder
+
+
+
+
+
+
+
+
+
+
+

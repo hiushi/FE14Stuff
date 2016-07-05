@@ -1,0 +1,711 @@
+#battle-sim {
+
+	.error-message {
+		color: #ff0000;
+		font-weight: bold;
+	}
+
+	%unit-info {
+		padding: 20px;
+	}
+
+	.unitA-info {
+		@extend %unit-info;
+		float: left;
+		width: 25%;
+	}
+
+	.unitB-info {
+		@extend %unit-info;
+		float: right;
+		width: 25%;
+	}
+
+	.battle-main {
+		float: left;
+		padding: 20px;
+		width: 50%;
+		background: #fafafa;
+	}
+
+	%battle-unit {
+		padding: 20px;
+		width: 50%;
+
+		.portrait {
+			display: block;
+			margin: 0 auto;
+		}
+		.hp-displayA { text-align: left; }
+		.hp-displayB { text-align: right; }
+	}
+
+	.battle-unitA {
+		@extend %battle-unit;
+		float: left;
+	}
+	.battle-unitB {
+		@extend %battle-unit;
+		float: right;
+	}
+
+	.buffed {
+		color: #008266;
+	}
+	.debuffed {
+		color: #D04600;
+	}
+	.capped {
+		color: green;
+	}
+
+
+
+
+	.additional-stat-bonuses {
+		.panel-group {
+			width: 70%;
+		}
+		select {
+			margin: 5px;
+		}
+	}
+
+
+
+
+	.stat-column {
+		float: left;
+		width: 66px;
+	}
+
+	.stats-container {
+		display: inline-block;
+		overflow: hidden;
+		margin: 5px;
+		vertical-align: top;
+	}
+	.stat-wrapper {
+		position: relative;
+		display: inline-block;
+		float: left;
+		margin: 0 1px 1px 0;
+		padding: 1px 7px;
+		width: 65px;
+		border-radius: 8px;
+		background-color: #E2A515;
+		color: #fff;
+		box-shadow: inset 2px 1px 2px #EAD7A2, 2px 1px 2px #aaa;
+
+
+		.stat-label {
+			float: left;
+		}
+
+		.stat-value {
+			float: right;
+			font-weight: bold;
+
+			// &.buffed {
+			// 	color: #008266;
+			// }
+			// &.debuffed {
+			// 	color: #D04600;
+			// }
+			// &.capped {
+			// 	color: green;
+			// }
+		}
+
+	}
+
+	.skills-container {
+		display: inline-block;
+		overflow: hidden;
+		width: 60px;
+		padding: 2px;
+		margin: 5px;
+		// text-align: center;
+		vertical-align: top;
+	}
+	.skill-slot {
+		position: relative;
+		display: inline-block;
+		width: 24px;
+		height: 24px;
+
+		.icon-skill {
+			// vertical-align: initial;
+		}
+	}
+	.personal-skill-slot {
+		@extend .skill-slot;
+		background-color: transparent;
+		border-radius: 50%;
+		box-shadow: 0px 0px 4px #555;
+
+
+	}
+
+	.personal-skill-container {
+		position: absolute;
+		background-color: transparent;
+		border-radius: 50%;
+		box-shadow: 1px 1px 2px #555;
+	}
+
+	.inventory-container {
+		display: inline-block;
+		overflow: hidden;
+		margin: 5px;
+		padding: 2px;
+		line-height: initial;
+	}
+	.inventory-slot {
+		position: relative;
+		padding: 1px 10px;
+		border: 1px solid #67540B;
+		border-radius: 7px;
+		background-color: #F7F0D5;
+		box-shadow: inset 2px 1px 2px #E2CF82, 0px 0px 2px #5D4A05;
+		color: #695504;
+		font-weight: bold;
+		line-height: initial;
+
+		&.inventory-slot-equip {
+			width: 200px;
+			height: 24px;
+			cursor: pointer;
+			@include transition(background-color 0.15s, color 0.15s);
+
+			&:hover {
+				background-color: darken(#F7F0D5, 5%);
+				color: darken(#695504, 5%);
+				@include transition(background-color 0.15s, color 0.15s);
+			}
+		}
+
+		.icon-item-wrapper {
+			position: relative;
+			display: inline-block;
+			float: left;
+			width: 20px;
+			height: 100%;
+		}
+		.icon-item {
+			position: absolute;
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			top: 50%;
+			@include transform(translateY(-50%) scale(1.25));
+		}
+		.icon-wtd, .icon-wta {
+			top: 8px;
+			left: 4px;
+			@include transform(scale(1.25));
+		}
+
+
+		.icon-weakness-wrapper {
+			// position: relative;
+			position: absolute;
+			display: inline-block;
+			left: 172px;
+			// float: right;
+			height: 100%;
+		}
+
+		.icon-weakness {
+			position: relative;
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			top: 50%;
+			margin-right: -5px;
+			@include transform(translateY(-50%));
+		}
+
+		.disabled-item {
+			opacity: 0.6;
+		}
+
+		.weapon-forgedisplay {
+			position: absolute;
+			right: 30px;
+		}
+	}
+
+	.prep-item-select {
+		.icon-item {
+			position: relative;
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			@include transform(scale(1.25));
+			vertical-align: middle;
+		}
+	}
+
+
+
+	.popover {
+		background-color: rgba(30, 10, 10, 0.80);
+		border: none;
+		color: #fff;
+		font-family: inherit;
+		width: 300px;
+		max-width: none;
+		pointer-events: none;
+
+		margin-top: 0;
+		>.arrow {
+			display: none;
+		}
+
+	}
+
+	.description-popup {
+		position: relative;
+		overflow: hidden;
+
+		.weapon-attr {
+			margin: 2px;
+
+			.weapon-attr-label {
+				margin-right: 3px;
+				color: #E4980D;
+				font-weight: 600;
+			}
+			.weapon-attr-value {
+				margin-right: 3px;
+			}
+			.icon-weakness {
+				position: relative;
+				display: inline-block;
+				width: 16px;
+				height: 16px;
+				margin: 0;
+				vertical-align: text-top;
+
+			}
+		}
+
+		.skill-name {
+			font-weight: 600;
+		}
+
+		.stat-mod-desc {
+			margin-right: 3px;
+			font-weight: 600;
+		}
+
+	}
+
+	.icon-weaponrank {
+		position: relative;
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		vertical-align: text-top;
+	}
+
+	.modal-generic {
+		padding: 20px;
+		overflow: hidden;
+
+		.actions {
+			text-align: center;
+			button {
+				margin: 10px;
+			}
+		}
+	}
+
+	.load-savedunit-window .modal-dialog {
+		width: 698px;
+	}
+
+
+	.load-savedunit, .save-battleunit {
+		padding: 20px;
+		overflow: hidden;
+
+		.actions {
+			text-align: center;
+			button {
+				margin: 10px;
+			}
+		}
+	}
+
+	.save-battleunit-desc {
+		text-align: center;
+		margin: 20px 0;
+	}
+
+	.battleunit-savename {
+		display: block;
+		margin: 10px auto;
+		padding: 5px 10px;
+		width: 70%;
+		border: 1px solid #555;
+		border-radius: 3px;
+	}
+
+	.saved-unit-container {
+		overflow-y: scroll;
+	}
+	.saved-unit {
+		float: left;
+		padding: 11px 16px;
+		width: 164px;
+		text-align: center;
+		border: 2px solid transparent;
+		background: transparent;
+		border-radius: 3px;
+		cursor: pointer;
+		@include transition(background 0.15s, border 0.15s);
+
+		.portrait {
+			display: block;
+		}
+
+		&:hover {
+			background: #e2e2ec;
+		}
+		&.selected {
+			border: 2px solid #424286;
+			background: #c6c6e6;
+		}
+	}
+
+
+
+	.hp-bars {
+		position: relative;
+		display: block;
+		margin: 2px 0;
+		overflow: hidden;
+	}
+	%hp-bar {
+		height: 12px;
+		width: 4px;
+		margin-right: 1px;
+	}
+	.hp-barA {
+		@extend %hp-bar;
+		float: left;
+	}
+	.hp-barB {
+		@extend %hp-bar;
+		float: right;
+	}
+
+	.hp-bar-full {
+		background: linear-gradient(to bottom, #b1deec 30%, #4949a0 100%);
+		// border-top: 1px solid #90b1bb;
+	}
+	.hp-bar-empty {
+		background: #9e806c;
+		// border-top: 1px solid #9e806c;
+	}
+
+
+	.combat-stats-container {
+		float: left;
+		width: 50%;
+		height: 100%;
+		// overflow: hidden;
+		div {
+			float: left;
+			width: 50%;
+			height: 50%;
+		}
+	}
+	.weaponranks-container {
+		float: left;
+		width: 50%;
+		height: 100%;
+		padding: 10px 0;
+	}
+
+	// .popover.top>.arrow:after {
+	// 	border-top-color: rgba(0, 30, 0, 0.80);
+	// }
+
+	.combat-forecast {
+		padding: 20px;
+		overflow: hidden;
+	}
+
+	%combat-forecast-side {
+		position: relative;
+		padding: 0 10px;
+	}
+
+	.combat-forecast-sideA {
+		@extend %combat-forecast-side;
+		float: left;
+
+		.combat-forecast-portrait {
+			margin: 25px auto 0 30px;
+		}
+		.inventory-slot-combat {
+			margin-right: auto;
+		}
+	}
+	.combat-forecast-sideB {
+		@extend %combat-forecast-side;
+		float: right;
+
+		.combat-forecast-portrait {
+			margin: 25px 30px 0 auto;
+		}
+		.inventory-slot-combat {
+			margin-left: auto;
+		}
+	}
+
+
+	%combat-forecast-side-name {
+		position: absolute;
+		width: 130px;
+		height: 25px;
+		left: 50%;
+		@include transform(translateX(-50%));
+		border-radius: 8px;
+		border: 1px solid #ad9434;
+		color: #fff;
+		text-align: center;
+		line-height: 23px;
+		font-weight: 600;
+		z-index: 100;
+
+		&.lead-unit {
+			top: 0;
+		}
+		&.support-unit {
+			top: 25px;
+		}
+	}
+	.combat-forecast-sideA-name {
+		@extend %combat-forecast-side-name;
+		background: #0202ad;
+		@include background(radial-gradient(ellipse 140px 170px, #0202ad 0%, #e2cf8f 90px));
+		
+
+	}
+	.combat-forecast-sideB-name {
+		@extend %combat-forecast-side-name;
+		background: #7d0017;
+		@include background(radial-gradient(ellipse 140px 170px, #7d0017 0%, #e2cf8f 90px));
+	
+	}
+
+	.combat-forecast-portrait {
+		display: block;
+	}
+
+	.inventory-slot-combat {
+		width: 180px;
+		height: 24px;
+	}
+
+
+	%combat-forecast-details {
+		width: 250px;
+		height: 72px;
+		border: 1px solid #ad9434;
+		border-radius: 5px;
+		box-shadow: inset 0px 0px 2px #5D4A05;
+		overflow: hidden;
+		.ahc-container {
+			width: 180px;
+			padding: 5px 10px;
+		}
+		.ahc-wrapper {
+			border: 1px solid #ad9434;
+			border-radius: 8px;
+			height: 20px;
+			line-height: 18px;
+			background-color: #F7F0D5;
+			box-shadow: inset 1px 1px 1px #E2CF82;
+			color: #695504;
+			font-weight: 600;
+		}
+
+		.ahc-label {
+			width: 48px;
+			border-radius: 7px;
+			color: #fff;
+			box-shadow: inset 1px 0px 2px #EAD7A2;
+			text-align: center;
+		}
+		.ahc-valuewrapper {
+			// float: left;
+			width: 104px;
+		}
+
+		.ahc-combatsingle {
+			.ahc-value {
+				float: left;
+				width: 54%;
+				text-align: right;
+			}
+			.ahc-sign {
+				float: left;
+				width: 46%;
+				text-align: left;
+			}
+
+		}
+		.ahc-combatlead {
+			float: left;
+			width: 50%;
+			.ahc-value {
+				float: left;
+				width: 65%;
+				text-align: right;
+			}
+			.ahc-sign {
+				float: left;
+				width: 35%;
+				text-align: left;
+			}
+		}
+		.ahc-combatsupport {
+			float: left;
+			width: 50%;
+			.ahc-value {
+				float: left;
+				width: 65%;
+				text-align: right;
+			}
+			.ahc-sign {
+				float: left;
+				width: 35%;
+				text-align: left;
+			}
+		}
+
+		.ahc-value {
+			.effective {
+				color: #02a002;
+			}
+		}
+
+		.ahc-coeff {
+			display: none;
+			padding: 0 2px;
+			margin: 0 1px;
+			border-radius: 3px;
+			vertical-align: text-top;
+			font-size: 11px;
+			line-height: 20px;
+			letter-spacing: 0.7px;
+			color: #fff;
+			&.x2 {
+				display: inline;
+				background-color: #00b100;
+				box-shadow: inset 0px -1px 5px #025802;
+			}
+			&.x4 {
+				display: inline;
+				background-color: #a35bff;
+				box-shadow: inset 0px -1px 5px #4200ad;
+			}
+		}
+
+		.ahc-percent {
+			font-size: 0.85em;
+		}
+		.combathp-wrapper {
+			width: 68px;
+			height: 70px;
+			padding: 12px;
+			text-align: center;
+			color: #fff;
+		}
+		.combathp-value {
+			line-height: 30px;
+			font-size: 30px;
+		}
+		.combathp-hp {
+			line-height: 16px;
+			font-size: 14px;
+		}
+
+	}
+	.combat-forecast-detailsA {
+		@extend %combat-forecast-details;
+		background: #e2b771;
+
+		.ahc-container { 
+			float: left; 
+			.ahc-label { 
+				float: left; 
+				background: #E2A515;
+			}
+			.ahc-valuewrapper {
+				float: left;
+			}
+		}
+		.combathp-wrapper { float: right; }
+	}
+	.combat-forecast-detailsB {
+		@extend %combat-forecast-details;
+		background: #ce731e;
+
+		.combathp-wrapper { float: left; }
+		.ahc-container { 
+			float: right; 
+			.ahc-label { 
+				float: right; 
+				background: #e4871f;
+			}
+			.ahc-valuewrapper {
+				float: right;
+			}
+		}
+
+	}
+
+
+
+
+	.battle-log {
+		max-height: 320px;
+		overflow-y: scroll;
+	}
+	%battle-log-side {
+		padding: 2px 20px;
+		min-height: 18px;
+	}
+	.battle-log-A {
+		@extend %battle-log-side;
+		text-align: left;
+		background-color: #fdebcb;
+		color: #300;
+	}
+	.battle-log-B {
+		@extend %battle-log-side;
+		text-align: right;
+		background-color: #ffd3ab;
+		color: #003;
+	}
+	.battle-log-sys {
+		@extend %battle-log-side;
+	}
+
+
+
+
+
+
+
+}
+
+
+
+

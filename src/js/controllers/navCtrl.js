@@ -3,7 +3,11 @@ app.controller('navCtrl', ['$rootScope', '$scope',
 
 		var vm = this;
 
-		$rootScope.activeState = 'buildPlanner';
+
+		if ($rootScope.paramMaps && $rootScope.paramMaps.state) {
+			$rootScope.activeState = $rootScope.paramMaps.state;
+		}
+		else $rootScope.activeState = 'buildPlanner';
 
 		$rootScope.changeState = function(stateName) {
 			$rootScope.activeState = stateName;

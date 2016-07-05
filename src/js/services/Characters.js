@@ -1,5 +1,16 @@
 app.service('Characters', function() {
 
+	var genericEnemy = {
+		"Enemy": {
+			"key": "Enemy",
+			"name": "Generic Enemy",
+			"gender": "M",
+			"gen": 1,
+			"mods": {"Str": 0, "Mag": 0, "Skl": 0, "Spd": 0, "Lck": 0, "Def": 0, "Res": 0},
+			"personalSkill": null,
+		}
+	};
+
 	var characters = {
 		"Avatar_M": {
 			"key": "Avatar_M",
@@ -10,6 +21,7 @@ app.service('Characters', function() {
 			"availability": "BCR",
 			"SSupport": ["Felicia", "Azura", "Mozu", "Rinkah", "Sakura", "Hana", "Orochi", "Hinoka", "Setsuna", "Oboro", "Kagero", "Reina", "Scarlet", "Sophie", "Midori", "Selkie", "Mitama", "Caeldori", "Rhajat", "Elise", "Effie", "Nyx", "Camilla", "Selena", "Beruka", "Peri", "Charlotte", "Flora", "Velouria", "Ophelia", "Soleil", "Nina", "Anna", "Niles"],
 			"APlusSupport": ["Gunter", "Jakob", "Kaze", "Silas", "Shura", "Izana", "Subaki", "Saizo", "Azama", "Hayato", "Hinata", "Takumi", "Kaden", "Ryoma", "Yukimura", "Shigure", "Dwyer", "Shiro", "Kiragi", "Asugi", "Hisame", "Arthur", "Odin", "Niles", "Laslow", "Benny", "Leo", "Keaton", "Xander", "Siegbert", "Forrest", "Ignatius", "Percy", "Fuga"],
+			"ASupport": ["Kana_F"],
 			"startingClass": "Nohr_Prince",
 			"startingLevel": 1,
 			"bases": {},
@@ -17,6 +29,7 @@ app.service('Characters', function() {
 			"mods": {},
 			"personalSkill": "Supportive",
 			"baseClass1": "Nohr_Prince",
+			"weakness": ["Dragon"],
 		},
 
 		"Avatar_F": {
@@ -28,13 +41,16 @@ app.service('Characters', function() {
 			"availability": "BCR",
 			"SSupport": ["Gunter", "Jakob", "Kaze", "Silas", "Shura", "Izana", "Subaki", "Saizo", "Azama", "Hayato", "Hinata", "Takumi", "Kaden", "Ryoma", "Yukimura", "Shigure", "Dwyer", "Shiro", "Kiragi", "Asugi", "Hisame", "Arthur", "Odin", "Niles", "Laslow", "Benny", "Leo", "Keaton", "Xander", "Siegbert", "Forrest", "Ignatius", "Percy", "Fuga", "Rhajat"],
 			"APlusSupport": ["Felicia", "Azura", "Mozu", "Rinkah", "Sakura", "Hana", "Orochi", "Hinoka", "Setsuna", "Oboro", "Kagero", "Reina", "Scarlet", "Sophie", "Midori", "Selkie", "Mitama", "Caeldori", "Rhajat", "Elise", "Effie", "Niles", "Nyx", "Camilla", "Selena", "Beruka", "Peri", "Charlotte", "Flora", "Velouria", "Ophelia", "Soleil", "Nina", "Anna"],
+			"ASupport": ["Kana_M"],
 			"startingClass": "Nohr_Princess",
 			"startingLevel": 1,
 			"bases": {},
 			"growths": {},
 			"mods": {},
 			"personalSkill": "Supportive",
+			"pairUpStats": {},
 			"baseClass1": "Nohr_Princess",
+			"weakness": ["Dragon"],
 		},
 
 		"Azura": {
@@ -46,15 +62,21 @@ app.service('Characters', function() {
 			"availability": "BCR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Ryoma", "Takumi", "Saizo", "Kaden", "Hinata", "Azama", "Subaki", "Hayato", "Xander", "Leo", "Benny", "Keaton", "Arthur", "Odin", "Laslow", "Niles"],
 			"APlusSupport": ["Hinoka", "Sakura", "Elise"],
+			"ASupport": ["Avatar_F", "Shigure", "Kana_F", "Dwyer", "Shiro", "Kiragi", "Asugi", "Hisame", "Sophie", "Midori", "Selkie", "Mitama", "Caeldori", "Rhajat", "Siegbert", "Forrest", "Ignatius", "Percy", "Velouria", "Ophelia", "Soleil", "Nina"],
 			"startingClass": "Songstress",
 			"startingLevel": 1,
 			"bases": {"HP": 16, "Str": 5, "Mag": 2, "Skl": 8, "Spd": 8, "Lck": 6, "Def": 4, "Res": 7},
 			"growths": {"HP": 25, "Str": 50, "Mag": 25, "Skl": 60, "Spd": 60, "Lck": 40, "Def": 15, "Res": 35},
 			"mods": {"Str": 0, "Mag": 0, "Skl": 1, "Spd": 3, "Lck": 0, "Def": -3, "Res": 0},
 			"personalSkill": "Healing_Descant",
+			"pairUpStats": {
+				"C": {"Spd": 1}, "B": {"Skl": 1}, "A": {"Spd": 1}, "S": {"Spd": 1, "Lck": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Ddg": 5}, "A": {"Avo": 5}, "S": {"Avo": 5, "Ddg": 5}
+			},
 			"baseClass1": "Songstress",
 			"baseClass2": "Sky_Knight",
-			"special": true
 		},
 
 		"Gunter": {
@@ -65,12 +87,19 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_F"],
 			"APlusSupport": ["Jakob"],
+			"ASupport": ["Avatar_M", "Kana_M"],
 			"startingClass": "Great_Knight",
 			"startingLevel": 3,
 			"bases": {"HP": 24, "Str": 10, "Mag": 0, "Skl": 15, "Spd": 8, "Lck": 9, "Def": 10, "Res": 4},
 			"growths": {"HP": 15, "Str": 5, "Mag": 0, "Skl": 5, "Spd": 0, "Lck": 15, "Def": 5, "Res": 5},
 			"mods": {"Str": 2, "Mag": 0, "Skl": 1, "Spd": -2, "Lck": 0, "Def": 2, "Res": -2},
 			"personalSkill": "Forceful_Partner",
+			"pairUpStats": {
+				"C": {"Def": 1}, "B": {"Str": 1}, "A": {"Skl": 1}, "S": {"Str": 1, "Def": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Crit": 3}, "B": {"Hit": 5}, "A": {"Crit": 3}, "S": {"Hit": 5, "Crit": 3}
+			},
 			"baseClass1": "Cavalier",
 			"baseClass2": "Mercenary",
 			"baseClass3": "Wyvern_Rider"
@@ -84,15 +113,21 @@ app.service('Characters', function() {
 			"availability": "BCR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Ryoma", "Takumi", "Saizo", "Kaden", "Hinata", "Azama", "Subaki", "Hayato", "Xander", "Leo", "Benny", "Keaton", "Arthur", "Odin", "Laslow", "Niles"],
 			"APlusSupport": ["Hana", "Peri", "Flora"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Shiro", "Kiragi", "Asugi", "Hisame", "Selkie", "Mitama", "Caeldori", "Rhajat", "Siegbert", "Forrest", "Ignatius", "Percy", "Velouria", "Ophelia", "Soleil", "Nina"],
 			"startingClass": "Maid",
 			"startingLevel": 1,
 			"bases": {"HP": 19, "Str": 5, "Mag": 9, "Skl": 10, "Spd": 10, "Lck": 12, "Def": 5, "Res": 9},
 			"growths": {"HP": 40, "Str": 10, "Mag": 35, "Skl": 30, "Spd": 40, "Lck": 55, "Def": 15, "Res": 35},
 			"mods": {"Str": -2, "Mag": 2, "Skl": 0, "Spd": 1, "Lck": 0, "Def": -1, "Res": 1},
 			"personalSkill": "Devoted_Partner",
+			"pairUpStats": {
+				"C": {"Spd": 1}, "B": {"Res": 1}, "A": {"Mag": 1}, "S": {"Spd": 1, "Res": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Ddg": 5}, "A": {"Avo": 5}, "S": {"Avo": 5, "Ddg": 5}
+			},
 			"baseClass1": "Troubadour_F",
 			"baseClass2": "Mercenary",
-			"special": true
 		},
 
 		"Jakob": {
@@ -103,6 +138,7 @@ app.service('Characters', function() {
 			"availability": "BCR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx"],
 			"APlusSupport": ["Gunter", "Silas", "Takumi"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Dwyer"],
 			"child": "Dwyer",
 			"startingClass": "Butler",
 			"startingLevel": 1,
@@ -110,9 +146,14 @@ app.service('Characters', function() {
 			"growths": {"HP": 50, "Str": 35, "Mag": 15, "Skl": 40, "Spd": 35, "Lck": 45, "Def": 25, "Res": 25},
 			"mods": {"Str": 2, "Mag": -2, "Skl": 2, "Spd": 0, "Lck": -1, "Def": 0, "Res": -1},
 			"personalSkill": "Evasive_Partner",
+			"pairUpStats": {
+				"C": {"Str": 1}, "B": {"Spd": 1}, "A": {"Skl": 1}, "S": {"Str": 1, "Skl": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Crit": 3}, "B": {"Ddg": 5}, "A": {"Crit": 3}, "S": {"Crit": 3, "Ddg": 5}
+			},
 			"baseClass1": "Troubadour_M",
 			"baseClass2": "Cavalier",
-			"special": true
 		},	
 
 		"Kaze": {
@@ -123,6 +164,7 @@ app.service('Characters', function() {
 			"availability": "BCR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx"],
 			"APlusSupport": ["Saizo", "Silas", "Xander"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Midori"],
 			"child": "Midori",
 			"startingClass": "Ninja",
 			"startingLevel": 3,
@@ -130,6 +172,12 @@ app.service('Characters', function() {
 			"growths": {"HP": 55, "Str": 40, "Mag": 0, "Skl": 45, "Spd": 65, "Lck": 20, "Def": 20, "Res": 35},
 			"mods": {"Str": -2, "Mag": 0, "Skl": 2, "Spd": 3, "Lck": -2, "Def": -1, "Res": 0},
 			"personalSkill": "Miraculous_Save",
+			"pairUpStats": {
+				"C": {"Spd": 1}, "B": {"Skl": 1}, "A": {"Res": 1}, "S": {"Skl": 1, "Spd": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Hit": 5}, "A": {"Avo": 5}, "S": {"Hit": 5, "Avo": 5}
+			},
 			"baseClass1": "Ninja",
 			"baseClass2": "Samurai"
 		},
@@ -142,6 +190,7 @@ app.service('Characters', function() {
 			"availability": "BCR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx"],
 			"APlusSupport": ["Ryoma", "Jakob", "Kaze"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Sophie"],
 			"child": "Sophie",
 			"startingClass": "Cavalier",
 			"startingLevel": 6,
@@ -149,6 +198,12 @@ app.service('Characters', function() {
 			"growths": {"HP": 40, "Str": 45, "Mag": 5, "Skl": 50, "Spd": 40, "Lck": 40, "Def": 40, "Res": 25},
 			"mods": {"Str": 1, "Mag": 0, "Skl": 2, "Spd": 0, "Lck": -1, "Def": 0, "Res": -1},
 			"personalSkill": "Vow_of_Friendship",
+			"pairUpStats": {
+				"C": {"Str": 1}, "B": {"Skl": 1}, "A": {"Spd": 1}, "S": {"Str": 1, "Def": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Crit": 3}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Crit": 3}
+			},
 			"baseClass1": "Cavalier",
 			"baseClass2": "Mercenary"
 		},	
@@ -161,12 +216,19 @@ app.service('Characters', function() {
 			"availability": "BCR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Ryoma", "Takumi", "Saizo", "Kaden", "Hinata", "Azama", "Subaki", "Hayato", "Xander", "Leo", "Benny", "Keaton", "Arthur", "Odin", "Laslow", "Niles"],
 			"APlusSupport": ["Oboro", "Effie", "Nyx"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Shiro", "Kiragi", "Asugi", "Hisame", "Selkie", "Mitama", "Caeldori", "Rhajat", "Siegbert", "Forrest", "Ignatius", "Percy", "Velouria", "Ophelia", "Soleil", "Nina"],
 			"startingClass": "Villager",
 			"startingLevel": 1,
 			"bases": {"HP": 16, "Str": 6, "Mag": 0, "Skl": 5, "Spd": 7, "Lck": 3, "Def": 4, "Res": 1},
 			"growths": {"HP": 40, "Str": 50, "Mag": 15, "Skl": 60, "Spd": 65, "Lck": 55, "Def": 45, "Res": 40},
 			"mods": {"Str": 0, "Mag": 0, "Skl": 1, "Spd": 1, "Lck": 1, "Def": 0, "Res": -2},
 			"personalSkill": "Forager",
+			"pairUpStats": {
+				"C": {"Skl": 1}, "B": {"Lck": 1}, "A": {"Spd": 1}, "S": {"Skl": 1, "Lck": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Ddg": 5}, "B": {"Hit": 5}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Ddg": 5}
+			},
 			"baseClass1": "Villager",
 			"baseClass2": "Archer"
 		},	
@@ -179,12 +241,19 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Ryoma", "Takumi", "Saizo", "Kaden", "Hinata", "Azama", "Subaki", "Hayato", "Benny", "Keaton"],
 			"APlusSupport": ["Orochi", "Kagero", "Oboro", "Charlotte"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Shiro", "Kiragi", "Asugi", "Hisame", "Selkie", "Mitama", "Caeldori", "Rhajat", "Ignatius", "Velouria"],
 			"startingClass": "Oni_Savage",
 			"startingLevel": 4,
 			"bases": {"HP": 20, "Str": 8, "Mag": 2, "Skl": 6, "Spd": 8, "Lck": 5, "Def": 10, "Res": 3},
 			"growths": {"HP": 20, "Str": 25, "Mag": 15, "Skl": 50, "Spd": 45, "Lck": 35, "Def": 45, "Res": 20},
 			"mods": {"Str": -1, "Mag": 0, "Skl": -2, "Spd": 1, "Lck": 0, "Def": 2, "Res": 0},
 			"personalSkill": "Fiery_Blood",
+			"pairUpStats": {
+				"C": {"Def": 1}, "B": {"Spd": 1}, "A": {"Str": 1}, "S": {"Spd": 1, "Def": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Crit": 3}, "B": {"Ddg": 5}, "A": {"Crit": 3}, "S": {"Crit": 3, "Ddg": 5}
+			},
 			"baseClass1": "Oni_Savage",
 			"baseClass2": "Ninja"
 		},
@@ -197,12 +266,19 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Saizo", "Kaden", "Hinata", "Azama", "Subaki", "Hayato", "Xander", "Leo"],
 			"APlusSupport": ["Hinoka", "Hana", "Azura", "Elise"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Takumi", "Ryoma", "Asugi", "Hisame", "Selkie", "Mitama", "Caeldori", "Rhajat", "Siegbert", "Forrest"],
 			"startingClass": "Shrine_Maiden",
 			"startingLevel": 1,
 			"bases": {"HP": 16, "Str": 3, "Mag": 6, "Skl": 5, "Spd": 7, "Lck": 9, "Def": 5, "Res": 7},
 			"growths": {"HP": 45, "Str": 30, "Mag": 50, "Skl": 40, "Spd": 40, "Lck": 55, "Def": 30, "Res": 20},
 			"mods": {"Str": 0, "Mag": 2, "Skl": -1, "Spd": 1, "Lck": 0, "Def": -1, "Res": 0},
 			"personalSkill": "Quiet_Strength",
+			"pairUpStats": {
+				"C": {"Mag": 1}, "B": {"Spd": 1}, "A": {"Lck": 1}, "S": {"Spd": 1, "Res": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Ddg": 5}, "B": {"Hit": 5}, "A": {"Ddg": 5}, "S": {"Ddg": 10}
+			},
 			"baseClass1": "Shrine_Maiden",
 			"baseClass2": "Sky_Knight"
 		},
@@ -215,12 +291,19 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Ryoma", "Takumi", "Saizo", "Kaden", "Hinata", "Azama", "Subaki", "Hayato", "Laslow", "Keaton"],
 			"APlusSupport": ["Sakura", "Setsuna", "Effie"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Shiro", "Kiragi", "Asugi", "Hisame", "Selkie", "Mitama", "Caeldori", "Rhajat", "Soleil", "Velouria"],
 			"startingClass": "Samurai",
 			"startingLevel": 5,
 			"bases": {"HP": 20, "Str": 9, "Mag": 0, "Skl": 11, "Spd": 11, "Lck": 5, "Def": 6, "Res": 9},
 			"growths": {"HP": 25, "Str": 55, "Mag": 10, "Skl": 45, "Spd": 55, "Lck": 25, "Def": 20, "Res": 30},
 			"mods": {"Str": 1, "Mag": 0, "Skl": 1, "Spd": 2, "Lck": -1, "Def": -3, "Res": 1},
 			"personalSkill": "Fearsome_Blow",
+			"pairUpStats": {
+				"C": {"Spd": 1}, "B": {"Str": 1}, "A": {"Skl": 1}, "S": {"Str": 1, "Spd": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Hit": 5}, "A": {"Avo": 5}, "S": {"Hit": 5, "Avo": 5}
+			},
 			"baseClass1": "Samurai",
 			"baseClass2": "Shrine_Maiden"
 		},
@@ -233,6 +316,7 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Selena", "Nyx"],
 			"APlusSupport": ["Azama", "Saizo", "Hinata", "Niles"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Caeldori"],
 			"child": "Caeldori",
 			"startingClass": "Sky_Knight",
 			"startingLevel": 5,
@@ -240,6 +324,12 @@ app.service('Characters', function() {
 			"growths": {"HP": 55, "Str": 30, "Mag": 20, "Skl": 50, "Spd": 20, "Lck": 25, "Def": 45, "Res": 5},
 			"mods": {"Str": -1, "Mag": 0, "Skl": 2, "Spd": -2, "Lck": -1, "Def": 3, "Res": -1},
 			"personalSkill": "Perfectionist",
+			"pairUpStats": {
+				"C": {"Def": 1}, "B": {"Skl": 1}, "A": {"Def": 1}, "S": {"Skl": 1, "Res": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Ddg": 5}, "B": {"Hit": 5}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Ddg": 5}
+			},
 			"baseClass1": "Sky_Knight",
 			"baseClass2": "Samurai"
 		},
@@ -252,6 +342,7 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Charlotte", "Beruka"],
 			"APlusSupport": ["Ryoma", "Subaki", "Kaze", "Laslow"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Asugi"],
 			"child": "Asugi",
 			"startingClass": "Ninja",
 			"startingLevel": 7,
@@ -259,6 +350,12 @@ app.service('Characters', function() {
 			"growths": {"HP": 40, "Str": 50, "Mag": 45, "Skl": 60, "Spd": 30, "Lck": 55, "Def": 45, "Res": 10},
 			"mods": {"Str": 1, "Mag": 0, "Skl": 3, "Spd": -2, "Lck": 0, "Def": 1, "Res": -2},
 			"personalSkill": "Pyrotechnics",
+			"pairUpStats": {
+				"C": {"Lck": 1}, "B": {"Spd": 1}, "A": {"Skl": 1}, "S": {"Str": 1, "Lck": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Crit": 3}, "B": {"Ddg": 5}, "A": {"Crit": 3}, "S": {"Crit": 6}
+			},
 			"baseClass1": "Ninja",
 			"baseClass2": "Samurai"
 		},
@@ -271,12 +368,19 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Ryoma", "Takumi", "Saizo", "Kaden", "Hinata", "Azama", "Subaki", "Hayato", "Laslow", "Odin"],
 			"APlusSupport": ["Rinkah", "Kagero", "Oboro", "Nyx"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Shiro", "Kiragi", "Asugi", "Hisame", "Selkie", "Mitama", "Caeldori", "Rhajat", "Soleil", "Ophelia"],
 			"startingClass": "Diviner",
 			"startingLevel": 5,
 			"bases": {"HP": 20, "Str": 0, "Mag": 9, "Skl": 11, "Spd": 7, "Lck": 6, "Def": 5, "Res": 10},
 			"growths": {"HP": 35, "Str": 5, "Mag": 65, "Skl": 50, "Spd": 15, "Lck": 35, "Def": 25, "Res": 45},
 			"mods": {"Str": 0, "Mag": 3, "Skl": 2, "Spd": -2, "Lck": -1, "Def": -2, "Res": 1},
 			"personalSkill": "Capture",
+			"pairUpStats": {
+				"C": {"Mag": 1}, "B": {"Skl": 1}, "A": {"Res": 1}, "S": {"Mag": 1, "Res": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 15}, "B": {"Avo": 5}, "A": {"Hit": 5}, "S": {"Hit": 10}
+			},
 			"baseClass1": "Diviner",
 			"baseClass2": "Apothecary"
 		},
@@ -289,12 +393,19 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Saizo", "Kaden", "Hinata", "Azama", "Subaki", "Hayato", "Xander", "Leo"],
 			"APlusSupport": ["Sakura", "Setsuna", "Azura", "Camilla"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Takumi", "Ryoma", "Asugi", "Hisame", "Selkie", "Mitama", "Caeldori", "Rhajat", "Siegbert", "Forrest"],
 			"startingClass": "Sky_Knight",
 			"startingLevel": 8,
 			"bases": {"HP": 23, "Str": 9, "Mag": 4, "Skl": 13, "Spd": 16, "Lck": 12, "Def": 9, "Res": 15},
 			"growths": {"HP": 45, "Str": 45, "Mag": 15, "Skl": 40, "Spd": 45, "Lck": 40, "Def": 35, "Res": 40},
 			"mods": {"Str": 1, "Mag": -1, "Skl": -1, "Spd": 1, "Lck": 0, "Def": -1, "Res": 2},
 			"personalSkill": "Rallying_Cry",
+			"pairUpStats": {
+				"C": {"Res": 1}, "B": {"Lck": 1}, "A": {"Str": 1}, "S": {"Spd": 1, "Res": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Crit": 3}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Crit": 3}
+			},
 			"baseClass1": "Sky_Knight",
 			"baseClass2": "Spear_Fighter"
 		},
@@ -307,6 +418,7 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Effie", "Beruka"],
 			"APlusSupport": ["Kaden", "Subaki", "Hayato", "Arthur"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Mitama"],
 			"child": "Mitama",
 			"startingClass": "Monk",
 			"startingLevel": 7,
@@ -314,6 +426,12 @@ app.service('Characters', function() {
 			"growths": {"HP": 55, "Str": 50, "Mag": 20, "Skl": 40, "Spd": 45, "Lck": 40, "Def": 40, "Res": 20},
 			"mods": {"Str": 2, "Mag": -3, "Skl": 0, "Spd": 1, "Lck": 0, "Def": 1, "Res": 0},
 			"personalSkill": "Divine_Retribution",
+			"pairUpStats": {
+				"C": {"Str": 1}, "B": {"Spd": 1}, "A": {"Def": 1}, "S": {"Str": 1, "Lck": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Ddg": 5}, "A": {"Avo": 5}, "S": {"Avo": 5, "Ddg": 5}
+			},
 			"baseClass1": "Monk",
 			"baseClass2": "Apothecary"
 		},
@@ -326,12 +444,19 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Ryoma", "Takumi", "Saizo", "Kaden", "Hinata", "Azama", "Subaki", "Hayato", "Niles", "Arthur"],
 			"APlusSupport": ["Hinoka", "Kagero", "Hana", "Selena"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Shiro", "Kiragi", "Asugi", "Hisame", "Selkie", "Mitama", "Caeldori", "Rhajat", "Nina", "Percy"],
 			"startingClass": "Archer",
 			"startingLevel": 3,
 			"bases": {"HP": 19, "Str": 8, "Mag": 0, "Skl": 9, "Spd": 10, "Lck": 6, "Def": 5, "Res": 3},
 			"growths": {"HP": 30, "Str": 20, "Mag": 0, "Skl": 30, "Spd": 60, "Lck": 30, "Def": 15, "Res": 40},
 			"mods": {"Str": 0, "Mag": 0, "Skl": 1, "Spd": 3, "Lck": -1, "Def": -1, "Res": -1},
-			"personalSkill": "Optimist",
+			"personalSkill": "Optimistic",
+			"pairUpStats": {
+				"C": {"Spd": 1}, "B": {"Spd": 1}, "A": {"Res": 1}, "S": {"Skl": 1, "Spd": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Crit": 3}, "A": {"Avo": 5}, "S": {"Avo": 10}
+			},
 			"baseClass1": "Archer",
 			"baseClass2": "Ninja"
 		},
@@ -344,6 +469,7 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Effie", "Nyx"],
 			"APlusSupport": ["Kaden", "Azama", "Benny", "Fuga"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Rhajat"],
 			"child": "Rhajat",
 			"startingClass": "Diviner",
 			"startingLevel": 1,
@@ -351,6 +477,12 @@ app.service('Characters', function() {
 			"growths": {"HP": 50, "Str": 30, "Mag": 40, "Skl": 30, "Spd": 45, "Lck": 60, "Def": 40, "Res": 20},
 			"mods": {"Str": 0, "Mag": 1, "Skl": -1, "Spd": 2, "Lck": 1, "Def": -1, "Res": -1},
 			"personalSkill": "Pride",
+			"pairUpStats": {
+				"C": {"Spd": 1}, "B": {"Lck": 1}, "A": {"Mag": 1}, "S": {"Spd": 1, "Lck": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Crit": 3}, "B": {"Avo": 5}, "A": {"Crit": 3}, "S": {"Crit": 3, "Avo": 5}
+			},
 			"baseClass1": "Diviner",
 			"baseClass2": "Oni_Savage"
 		},
@@ -363,12 +495,19 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Ryoma", "Takumi", "Saizo", "Kaden", "Hinata", "Azama", "Subaki", "Hayato", "Benny", "Niles"],
 			"APlusSupport": ["Orochi", "Rinkah", "Mozu", "Beruka"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Shiro", "Kiragi", "Asugi", "Hisame", "Selkie", "Mitama", "Caeldori", "Rhajat", "Ignatius", "Nina"],
 			"startingClass": "Spear_Fighter",
 			"startingLevel": 10,
 			"bases": {"HP": 25, "Str": 13, "Mag": 0, "Skl": 11, "Spd": 12, "Lck": 11, "Def": 13, "Res": 8},
 			"growths": {"HP": 30, "Str": 40, "Mag": 20, "Skl": 40, "Spd": 40, "Lck": 40, "Def": 40, "Res": 30},
 			"mods": {"Str": 1, "Mag": -1, "Skl": 1, "Spd": 1, "Lck": -1, "Def": 1, "Res": -1},
 			"personalSkill": "Nohr_Enmity",
+			"pairUpStats": {
+				"C": {"Str": 1}, "B": {"Def": 1}, "A": {"Spd": 1}, "S": {"Skl": 1, "Lck": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Crit": 3}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Crit": 3}
+			},
 			"baseClass1": "Spear_Fighter",
 			"baseClass2": "Apothecary"
 		},
@@ -381,6 +520,7 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Peri", "Selena"],
 			"APlusSupport": ["Takumi", "Kaden", "Subaki", "Odin"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Hisame"],
 			"child": "Hisame",
 			"startingClass": "Samurai",
 			"startingLevel": 10,
@@ -388,6 +528,12 @@ app.service('Characters', function() {
 			"growths": {"HP": 55, "Str": 35, "Mag": 0, "Skl": 25, "Spd": 15, "Lck": 45, "Def": 45, "Res": 15},
 			"mods": {"Str": 1, "Mag": 0, "Skl": -1, "Spd": -2, "Lck": 0, "Def": 2, "Res": 0},
 			"personalSkill": "Triple_Threat",
+			"pairUpStats": {
+				"C": {"Def": 1}, "B": {"Str": 1}, "A": {"Def": 1}, "S": {"Str": 1, "Lck": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Crit": 3}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Crit": 3}
+			},
 			"baseClass1": "Samurai",
 			"baseClass2": "Oni_Savage"
 		},
@@ -400,6 +546,7 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Camilla", "Elise"],
 			"APlusSupport": ["Ryoma", "Hinata", "Jakob", "Leo"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Kiragi", "Sakura", "Hinoka"],
 			"child": "Kiragi",
 			"startingClass": "Archer",
 			"startingLevel": 11,
@@ -407,6 +554,12 @@ app.service('Characters', function() {
 			"growths": {"HP": 50, "Str": 35, "Mag": 0, "Skl": 60, "Spd": 40, "Lck": 45, "Def": 35, "Res": 20},
 			"mods": {"Str": 1, "Mag": 0, "Skl": 3, "Spd": -2, "Lck": 1, "Def": 0, "Res": -2},
 			"personalSkill": "Competitive",
+			"pairUpStats": {
+				"C": {"Skl": 1}, "B": {"Spd": 1}, "A": {"Str": 1}, "S": {"Skl": 1, "Def": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Crit": 3}, "B": {"Hit": 5}, "A": {"Crit": 3}, "S": {"Hit": 5, "Crit": 3}
+			},
 			"baseClass1": "Archer",
 			"baseClass2": "Spear_Fighter"
 		},
@@ -419,12 +572,19 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Ryoma", "Takumi", "Saizo", "Kaden", "Hinata", "Azama", "Subaki", "Hayato", "Odin", "Arthur"],
 			"APlusSupport": ["Orochi", "Rinkah", "Setsuna", "Peri"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Shiro", "Kiragi", "Asugi", "Hisame", "Selkie", "Mitama", "Caeldori", "Rhajat", "Ophelia", "Percy"],
 			"startingClass": "Ninja",
 			"startingLevel": 10,
 			"bases": {"HP": 22, "Str": 15, "Mag": 0, "Skl": 10, "Spd": 12, "Lck": 7, "Def": 9, "Res": 10},
 			"growths": {"HP": 30, "Str": 65, "Mag": 0, "Skl": 20, "Spd": 50, "Lck": 30, "Def": 25, "Res": 40},
 			"mods": {"Str": 3, "Mag": 0, "Skl": -1, "Spd": -1, "Lck": 0, "Def": -1, "Res": 1},
 			"personalSkill": "Shuriken_Mastery",
+			"pairUpStats": {
+				"C": {"Str": 1}, "B": {"Res": 1}, "A": {"Str": 1}, "S": {"Spd": 1, "Res": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Crit": 3}, "B": {"Ddg": 5}, "A": {"Crit": 3}, "S": {"Crit": 3, "Ddg": 5}
+			},
 			"baseClass1": "Ninja",
 			"baseClass2": "Diviner"
 		},
@@ -437,6 +597,7 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Charlotte", "Peri"],
 			"APlusSupport": ["Hinata", "Azama", "Hayato", "Keaton"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Selkie"],
 			"child": "Selkie",
 			"startingClass": "Kitsune",
 			"startingLevel": 14,
@@ -444,8 +605,15 @@ app.service('Characters', function() {
 			"growths": {"HP": 45, "Str": 40, "Mag": 10, "Skl": 25, "Spd": 45, "Lck": 50, "Def": 35, "Res": 40},
 			"mods": {"Str": 1, "Mag": 0, "Skl": -3, "Spd": 2, "Lck": 1, "Def": -2, "Res": 2},
 			"personalSkill": "Reciprocity",
+			"pairUpStats": {
+				"C": {"Spd": 1}, "B": {"Res": 1}, "A": {"Lck": 1}, "S": {"Spd": 1, "Res": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Ddg": 5}, "B": {"Hit": 5}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Ddg": 5}
+			},
 			"baseClass1": "Kitsune",
-			"baseClass2": "Diviner"
+			"baseClass2": "Diviner",
+			"weakness": ["Beast"],
 		},
 
 		"Ryoma": {
@@ -456,6 +624,7 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Camilla", "Elise"],
 			"APlusSupport": ["Saizo", "Silas", "Takumi", "Xander"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Shiro", "Sakura", "Hinoka"],
 			"child": "Shiro",
 			"startingClass": "Swordmaster",
 			"startingLevel": 4,
@@ -463,6 +632,12 @@ app.service('Characters', function() {
 			"growths": {"HP": 50, "Str": 45, "Mag": 0, "Skl": 50, "Spd": 45, "Lck": 40, "Def": 35, "Res": 25},
 			"mods": {"Str": 1, "Mag": 0, "Skl": 2, "Spd": 1, "Lck": 1, "Def": -2, "Res": -2},
 			"personalSkill": "Bushido",
+			"pairUpStats": {
+				"C": {"Spd": 1}, "B": {"Str": 1}, "A": {"Skl": 1}, "S": {"Spd": 2}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Crit": 3}, "A": {"Avo": 5}, "S": {"Avo": 10}
+			},
 			"baseClass1": "Samurai",
 			"baseClass2": "Sky_Knight"
 		},
@@ -475,12 +650,19 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Benny", "Keaton", "Arthur", "Odin", "Laslow", "Niles", "Ryoma", "Takumi"],
 			"APlusSupport": ["Camilla", "Azura", "Effie", "Sakura"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Leo", "Xander", "Ignatius", "Percy", "Velouria", "Ophelia", "Soleil", "Nina", "Shiro", "Kiragi"],
 			"startingClass": "Troubadour_F",
 			"startingLevel": 5,
 			"bases": {"HP": 19, "Str": 2, "Mag": 11, "Skl": 5, "Spd": 10, "Lck": 14, "Def": 4, "Res": 11},
 			"growths": {"HP": 30, "Str": 5, "Mag": 65, "Skl": 25, "Spd": 55, "Lck": 70, "Def": 15, "Res": 40},
 			"mods": {"Str": -1, "Mag": 3, "Skl": -2, "Spd": 1, "Lck": 1, "Def": -3, "Res": 1},
 			"personalSkill": "Lilys_Poise",
+			"pairUpStats": {
+				"C": {"Mag": 1}, "B": {"Mag": 1}, "A": {"Lck": 1}, "S": {"Mag": 1, "Spd": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Ddg": 5}, "B": {"Hit": 5}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Ddg": 5}
+			},
 			"baseClass1": "Troubadour_F",
 			"baseClass2": "Wyvern_Rider"
 		},
@@ -493,12 +675,19 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Xander", "Leo", "Benny", "Keaton", "Arthur", "Odin", "Laslow", "Niles", "Hayato", "Azama"],
 			"APlusSupport": ["Elise", "Mozu", "Nyx", "Hana"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Siegbert", "Forrest", "Ignatius", "Percy", "Velouria", "Ophelia", "Soleil", "Nina", "Rhajat", "Mitama"],
 			"startingClass": "Knight",
 			"startingLevel": 6,
 			"bases": {"HP": 23, "Str": 13, "Mag": 0, "Skl": 8, "Spd": 5, "Lck": 10, "Def": 12, "Res": 4},
 			"growths": {"HP": 35, "Str": 60, "Mag": 0, "Skl": 35, "Spd": 50, "Lck": 50, "Def": 35, "Res": 30},
 			"mods": {"Str": 3, "Mag": 0, "Skl": -1, "Spd": 1, "Lck": 0, "Def": -1, "Res": -1},
 			"personalSkill": "Puissance",
+			"pairUpStats": {
+				"C": {"Str": 1}, "B": {"Lck": 1}, "A": {"Spd": 1}, "S": {"Str": 2}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Crit": 3}, "B": {"Ddg": 5}, "A": {"Crit": 3}, "S": {"Crit": 6}
+			},
 			"baseClass1": "Knight",
 			"baseClass2": "Troubadour_F"
 		},	
@@ -511,6 +700,7 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx", "Kagero", "Setsuna"],
 			"APlusSupport": ["Benny", "Keaton", "Niles", "Azama"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Percy"],
 			"child": "Percy",
 			"startingClass": "Fighter",
 			"startingLevel": 7,
@@ -518,6 +708,12 @@ app.service('Characters', function() {
 			"growths": {"HP": 50, "Str": 45, "Mag": 0, "Skl": 55, "Spd": 35, "Lck": 5, "Def": 45, "Res": 20},
 			"mods": {"Str": 1, "Mag": 0, "Skl": 3, "Spd": 0, "Lck": -3, "Def": 1, "Res": -1},
 			"personalSkill": "Misfortunate",
+			"pairUpStats": {
+				"C": {"Skl": 1}, "B": {"Str": 1}, "A": {"Str": 1}, "S": {"Skl": 2}
+			},
+			"supportBonus": {
+				"C": {"Hit": 15}, "B": {"Avo": 5}, "A": {"Hit": 5}, "S": {"Hit": 10}
+			},
 			"baseClass1": "Fighter",
 			"baseClass2": "Cavalier"
 		},
@@ -530,6 +726,7 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx", "Orochi", "Kagero"],
 			"APlusSupport": ["Leo", "Laslow", "Niles", "Hinata"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Ophelia"],
 			"child": "Ophelia",
 			"startingClass": "Dark_Mage",
 			"startingLevel": 5,
@@ -537,6 +734,12 @@ app.service('Characters', function() {
 			"growths": {"HP": 55, "Str": 35, "Mag": 30, "Skl": 55, "Spd": 35, "Lck": 60, "Def": 40, "Res": 20},
 			"mods": {"Str": 0, "Mag": 1, "Skl": 1, "Spd": -1, "Lck": 1, "Def": 0, "Res": -1},
 			"personalSkill": "Aching_Blood",
+			"pairUpStats": {
+				"C": {"Mag": 1}, "B": {"Str": 1}, "A": {"Lck": 1}, "S": {"Mag": 1, "Skl": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Crit": 3}, "B": {"Ddg": 5}, "A": {"Crit": 3}, "S": {"Crit": 3, "Ddg": 5}
+			},
 			"baseClass1": "Dark_Mage",
 			"baseClass2": "Samurai"
 		},
@@ -549,6 +752,7 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx", "Setsuna", "Oboro", "Avatar_M"],
 			"APlusSupport": ["Leo", "Odin", "Arthur", "Subaki"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Nina"],
 			"child": "Nina",
 			"startingClass": "Outlaw",
 			"startingLevel": 8,
@@ -556,6 +760,12 @@ app.service('Characters', function() {
 			"growths": {"HP": 40, "Str": 35, "Mag": 20, "Skl": 40, "Spd": 50, "Lck": 30, "Def": 30, "Res": 40},
 			"mods": {"Str": -2, "Mag": 0, "Skl": -1, "Spd": 3, "Lck": 0, "Def": 0, "Res": 1},
 			"personalSkill": "Kidnap",
+			"pairUpStats": {
+				"C": {"Spd": 1}, "B": {"Spd": 1}, "A": {"Res": 1}, "S": {"Mag": 1, "Res": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Crit": 3}, "A": {"Avo": 5}, "S": {"Avo": 10}
+			},
 			"baseClass1": "Outlaw",
 			"baseClass2": "Dark_Mage"
 		},
@@ -568,12 +778,19 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Xander", "Leo", "Benny", "Keaton", "Arthur", "Odin", "Laslow", "Niles", "Hayato", "Subaki"],
 			"APlusSupport": ["Mozu", "Charlotte", "Effie", "Orochi"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Siegbert", "Forrest", "Ignatius", "Percy", "Velouria", "Ophelia", "Soleil", "Nina", "Rhajat", "Caeldori"],
 			"startingClass": "Dark_Mage",
 			"startingLevel": 9,
 			"bases": {"HP": 20, "Str": 1, "Mag": 12, "Skl": 5, "Spd": 11, "Lck": 3, "Def": 4, "Res": 8},
 			"growths": {"HP": 30, "Str": 5, "Mag": 50, "Skl": 35, "Spd": 50, "Lck": 20, "Def": 15, "Res": 30},
 			"mods": {"Str": 0, "Mag": 3, "Skl": -2, "Spd": 2, "Lck": -1, "Def": -2, "Res": 1},
 			"personalSkill": "Countercurse",
+			"pairUpStats": {
+				"C": {"Mag": 1}, "B": {"Spd": 1}, "A": {"Mag": 1}, "S": {"Mag": 1, "Spd": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Crit": 3}, "B": {"Avo": 5}, "A": {"Crit": 3}, "S": {"Crit": 3, "Avo": 5}
+			},
 			"baseClass1": "Dark_Mage",
 			"baseClass2": "Outlaw"
 		},
@@ -586,12 +803,19 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Benny", "Keaton", "Arthur", "Odin", "Laslow", "Niles", "Ryoma", "Takumi"],
 			"APlusSupport": ["Elise", "Beruka", "Selena", "Hinoka"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Leo", "Xander", "Ignatius", "Percy", "Velouria", "Ophelia", "Soleil", "Nina", "Shiro", "Kiragi"],
 			"startingClass": "Malig_Knight",
 			"startingLevel": 1,
 			"bases": {"HP": 30, "Str": 19, "Mag": 11, "Skl": 15, "Spd": 19, "Lck": 12, "Def": 18, "Res": 15},
 			"growths": {"HP": 40, "Str": 50, "Mag": 25, "Skl": 50, "Spd": 55, "Lck": 25, "Def": 35, "Res": 45},
 			"mods": {"Str": 1, "Mag": -1, "Skl": 1, "Spd": 1, "Lck": -2, "Def": 1, "Res": 0},
 			"personalSkill": "Roses_Thorn",
+			"pairUpStats": {
+				"C": {"Spd": 1}, "B": {"Res": 1}, "A": {"Str": 1}, "S": {"Str": 1, "Def": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Crit": 3}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Crit": 3}
+			},
 			"baseClass1": "Wyvern_Rider",
 			"baseClass2": "Dark_Mage",
 		},
@@ -604,12 +828,19 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Xander", "Leo", "Benny", "Keaton", "Arthur", "Odin", "Laslow", "Niles", "Subaki", "Hinata"],
 			"APlusSupport": ["Camilla", "Beruka", "Peri", "Setsuna"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Siegbert", "Forrest", "Ignatius", "Percy", "Velouria", "Ophelia", "Soleil", "Nina", "Caeldori", "Hisame"],
 			"startingClass": "Mercenary",
 			"startingLevel": 10,
 			"bases": {"HP": 24, "Str": 12, "Mag": 3, "Skl": 12, "Spd": 15, "Lck": 9, "Def": 11, "Res": 8},
 			"growths": {"HP": 40, "Str": 30, "Mag": 5, "Skl": 25, "Spd": 45, "Lck": 30, "Def": 45, "Res": 30},
 			"mods": {"Str": -1, "Mag": 0, "Skl": -1, "Spd": 2, "Lck": 0, "Def": 1, "Res": 0},
 			"personalSkill": "Fierce_Rival",
+			"pairUpStats": {
+				"C": {"Spd": 1}, "B": {"Def": 1}, "A": {"Skl": 1}, "S": {"Str": 1, "Spd": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Crit": 3}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Crit": 3}
+			},
 			"baseClass1": "Mercenary",
 			"baseClass2": "Sky_Knight"
 		},
@@ -622,12 +853,19 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Xander", "Leo", "Benny", "Keaton", "Arthur", "Odin", "Laslow", "Niles", "Azama", "Saizo"],
 			"APlusSupport": ["Camilla", "Charlotte", "Selena", "Oboro"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Siegbert", "Forrest", "Ignatius", "Percy", "Velouria", "Ophelia", "Soleil", "Nina", "Mitama", "Asugi"],
 			"startingClass": "Wyvern_Rider",
 			"startingLevel": 9,
 			"bases": {"HP": 23, "Str": 13, "Mag": 0, "Skl": 14, "Spd": 9, "Lck": 10, "Def": 14, "Res": 7},
 			"growths": {"HP": 45, "Str": 30, "Mag": 10, "Skl": 55, "Spd": 30, "Lck": 45, "Def": 40, "Res": 25},
 			"mods": {"Str": -1, "Mag": 0, "Skl": 2, "Spd": -2, "Lck": 0, "Def": 2, "Res": -1},
 			"personalSkill": "Opportunist",
+			"pairUpStats": {
+				"C": {"Skl": 1}, "B": {"Def": 1}, "A": {"Skl": 1}, "S": {"Lck": 1, "Def": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Crit": 3}, "B": {"Hit": 5}, "A": {"Crit": 3}, "S": {"Hit": 5, "Crit": 3}
+			},
 			"baseClass1": "Wyvern_Rider",
 			"baseClass2": "Fighter"
 		},
@@ -640,6 +878,7 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx", "Orochi", "Hana"],
 			"APlusSupport": ["Xander", "Odin", "Keaton", "Saizo"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Soleil"],
 			"child": "Soleil",
 			"startingClass": "Mercenary",
 			"startingLevel": 12,
@@ -647,6 +886,12 @@ app.service('Characters', function() {
 			"growths": {"HP": 50, "Str": 45, "Mag": 0, "Skl": 45, "Spd": 30, "Lck": 55, "Def": 35, "Res": 25},
 			"mods": {"Str": 1, "Mag": 0, "Skl": 2, "Spd": -1, "Lck": 1, "Def": -1, "Res": -1},
 			"personalSkill": "Fancy_Footwork",
+			"pairUpStats": {
+				"C": {"Skl": 1}, "B": {"Str": 1}, "A": {"Lck": 1}, "S": {"Str": 1, "Lck": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Ddg": 5}, "B": {"Hit": 5}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Ddg": 5}
+			},
 			"baseClass1": "Mercenary",
 			"baseClass2": "Ninja"
 		},
@@ -659,12 +904,19 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Xander", "Leo", "Benny", "Keaton", "Arthur", "Odin", "Laslow", "Niles", "Hinata", "Kaden"],
 			"APlusSupport": ["Felicia", "Charlotte", "Selena", "Kagero"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Siegbert", "Forrest", "Ignatius", "Percy", "Velouria", "Ophelia", "Soleil", "Nina", "Hisame", "Selkie"],
 			"startingClass": "Cavalier",
 			"startingLevel": 10,
 			"bases": {"HP": 25, "Str": 13, "Mag": 0, "Skl": 9, "Spd": 13, "Lck": 9, "Def": 10, "Res": 10},
 			"growths": {"HP": 30, "Str": 50, "Mag": 5, "Skl": 30, "Spd": 50, "Lck": 35, "Def": 25, "Res": 45},
 			"mods": {"Str": 1, "Mag": 0, "Skl": -1, "Spd": 1, "Lck": 0, "Def": -2, "Res": 2},
 			"personalSkill": "Bloodthirst",
+			"pairUpStats": {
+				"C": {"Str": 1}, "B": {"Spd": 1}, "A": {"Res": 1}, "S": {"Str": 1, "Spd": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Crit": 3}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Crit": 3}
+			},
 			"baseClass1": "Cavalier",
 			"baseClass2": "Dark_Mage"
 		},
@@ -677,12 +929,19 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_M", "Jakob", "Silas", "Kaze", "Xander", "Leo", "Benny", "Keaton", "Arthur", "Odin", "Laslow", "Niles", "Saizo", "Kaden"],
 			"APlusSupport": ["Peri", "Beruka", "Nyx", "Rinkah"],
+			"ASupport": ["Avatar_F", "Kana_F", "Dwyer", "Sophie", "Midori", "Siegbert", "Forrest", "Ignatius", "Percy", "Velouria", "Ophelia", "Soleil", "Nina", "Asugi", "Selkie"],
 			"startingClass": "Fighter",
 			"startingLevel": 10,
 			"bases": {"HP": 28, "Str": 15, "Mag": 0, "Skl": 10, "Spd": 13, "Lck": 9, "Def": 8, "Res": 2},
 			"growths": {"HP": 65, "Str": 55, "Mag": 0, "Skl": 35, "Spd": 50, "Lck": 45, "Def": 20, "Res": 5},
 			"mods": {"Str": 3, "Mag": 0, "Skl": 0, "Spd": 2, "Lck": 0, "Def": -2, "Res": -2},
 			"personalSkill": "Unmask",
+			"pairUpStats": {
+				"C": {"Str": 1}, "B": {"Str": 1}, "A": {"Spd": 1}, "S": {"Str": 1, "Spd": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Crit": 3}, "B": {"Hit": 5}, "A": {"Crit": 3}, "S": {"Hit": 5, "Crit": 3}
+			},
 			"baseClass1": "Fighter",
 			"baseClass2": "Troubadour_F"
 		},
@@ -695,6 +954,7 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx", "Rinkah", "Oboro"],
 			"APlusSupport": ["Keaton", "Arthur", "Hayato"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Ignatius"],
 			"child": "Ignatius",
 			"startingClass": "Knight",
 			"startingLevel": 15,
@@ -702,6 +962,12 @@ app.service('Characters', function() {
 			"growths": {"HP": 50, "Str": 40, "Mag": 0, "Skl": 50, "Spd": 10, "Lck": 35, "Def": 55, "Res": 45},
 			"mods": {"Str": 0, "Mag": 0, "Skl": 0, "Spd": -3, "Lck": 0, "Def": 3, "Res": 1},
 			"personalSkill": "Fierce_Mien",
+			"pairUpStats": {
+				"C": {"Def": 1}, "B": {"Skl": 1}, "A": {"Str": 1}, "S": {"Str": 1, "Def": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Crit": 3}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Crit": 3}
+			},
 			"baseClass1": "Knight",
 			"baseClass2": "Fighter"
 		},
@@ -714,6 +980,7 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx", "Hinoka", "Sakura"],
 			"APlusSupport": ["Xander", "Odin", "Niles", "Takumi"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Forrest", "Elise", "Camilla"],
 			"child": "Forrest",
 			"startingClass": "Dark_Knight",
 			"startingLevel": 2,
@@ -721,6 +988,12 @@ app.service('Characters', function() {
 			"growths": {"HP": 45, "Str": 25, "Mag": 55, "Skl": 35, "Spd": 45, "Lck": 45, "Def": 30, "Res": 45},
 			"mods": {"Str": -2, "Mag": 2, "Skl": 0, "Spd": -2, "Lck": 0, "Def": 0, "Res": 2},
 			"personalSkill": "Pragmatic",
+			"pairUpStats": {
+				"C": {"Mag": 1}, "B": {"Res": 1}, "A": {"Spd": 1}, "S": {"Mag": 1, "Lck": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Crit": 3}, "B": {"Ddg": 5}, "A": {"Crit": 3}, "S": {"Crit": 6}
+			},
 			"baseClass1": "Dark_Mage",
 			"baseClass2": "Troubadour_M"
 		},
@@ -733,6 +1006,7 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx", "Rinkah", "Hana"],
 			"APlusSupport": ["Benny", "Arthur", "Laslow", "Kaden"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Velouria"],
 			"child": "Velouria",
 			"startingClass": "Wolfskin",
 			"startingLevel": 15,
@@ -740,8 +1014,15 @@ app.service('Characters', function() {
 			"growths": {"HP": 60, "Str": 60, "Mag": 0, "Skl": 20, "Spd": 35, "Lck": 30, "Def": 50, "Res": 25},
 			"mods": {"Str": 3, "Mag": 0, "Skl": -2, "Spd": -1, "Lck": 0, "Def": 2, "Res": -1},
 			"personalSkill": "Collector",
+			"pairUpStats": {
+				"C": {"Str": 1}, "B": {"Str": 1}, "A": {"Def": 1}, "S": {"Str": 1, "Def": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Ddg": 5}, "B": {"Hit": 5}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Ddg": 5}
+			},
 			"baseClass1": "Wolfskin",
-			"baseClass2": "Fighter"
+			"baseClass2": "Fighter",
+			"weakness": ["Beast"],
 		},
 
 		"Xander": {
@@ -752,6 +1033,7 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_F", "Felicia", "Azura", "Mozu", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx", "Hinoka", "Sakura"],
 			"APlusSupport": ["Kaze", "Laslow", "Leo", "Ryoma"],
+			"ASupport": ["Avatar_M", "Kana_M", "Shigure", "Siegbert", "Elise", "Camilla"],
 			"child": "Siegbert",
 			"startingClass": "Paladin",
 			"startingLevel": 4,
@@ -759,6 +1041,12 @@ app.service('Characters', function() {
 			"growths": {"HP": 45, "Str": 50, "Mag": 5, "Skl": 40, "Spd": 35, "Lck": 60, "Def": 40, "Res": 15},
 			"mods": {"Str": 2, "Mag": -1, "Skl": -1, "Spd": -1, "Lck": 2, "Def": 1, "Res": -2},
 			"personalSkill": "Chivalry",
+			"pairUpStats": {
+				"C": {"Str": 1}, "B": {"Lck": 1}, "A": {"Def": 1}, "S": {"Str": 1, "Lck": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Ddg": 5}, "B": {"Hit": 5}, "A": {"Ddg": 5}, "S": {"Ddg": 10}
+			},
 			"baseClass1": "Cavalier",
 			"baseClass2": "Wyvern_Rider"
 		},
@@ -770,12 +1058,19 @@ app.service('Characters', function() {
 			"gen": 1,
 			"availability": "BR",
 			"SSupport": ["Avatar_M"],
+			"ASupport": ["Avatar_F", "Kana_F"],
 			"startingClass": "Kinshi Knight",
 			"startingLevel": 1,
 			"bases": {"HP": 28, "Str": 17, "Mag": 5, "Skl": 14, "Spd": 20, "Lck": 14, "Def": 10, "Res": 13},
 			"growths": {"HP": 40, "Str": 45, "Mag": 5, "Skl": 20, "Spd": 45, "Lck": 10, "Def": 20, "Res": 10},
 			"mods": {"Str": 2, "Mag": 0, "Skl": 0, "Spd": 2, "Lck": -1, "Def": -2, "Res": -1},
 			"personalSkill": "Morbid_Celebration",
+			"pairUpStats": {
+				"C": {"Spd": 1}, "B": {"Str": 1}, "A": {"Spd": 1}, "S": {"Str": 1, "Spd": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Hit": 5}, "A": {"Avo": 5}, "S": {"Hit": 5, "Avo": 5}
+			},
 			"baseClass1": "Sky_Knight",
 			"baseClass2": "Diviner",
 			"baseClass3": "Ninja"
@@ -788,12 +1083,19 @@ app.service('Characters', function() {
 			"gen": 1,
 			"availability": "B",
 			"SSupport": ["Avatar_M"],
+			"ASupport": ["Avatar_F", "Kana_F"],
 			"startingClass": "Wyvern_Lord",
 			"startingLevel": 1,
 			"bases": {"HP": 30, "Str": 23, "Mag": 4, "Skl": 17, "Spd": 19, "Lck": 14, "Def": 22, "Res": 6},
 			"growths": {"HP": 30, "Str": 45, "Mag": 20, "Skl": 40, "Spd": 50, "Lck": 40, "Def": 25, "Res": 20},
 			"mods": {"Str": 2, "Mag": 0, "Skl": 0, "Spd": 1, "Lck": -1, "Def": 0, "Res": -2},
 			"personalSkill": "In_Extremis",
+			"pairUpStats": {
+				"C": {"Str": 1}, "B": {"Spd": 1}, "A": {"Def": 1}, "S": {"Str": 1, "Skl": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Crit": 3}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Crit": 3}
+			},
 			"baseClass1": "Wyvern_Rider",
 			"baseClass2": "Outlaw",
 			"baseClass3": "Knight"
@@ -807,12 +1109,19 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_M"],
 			"APlusSupport": ["Felicia"],
+			"ASupport": ["Avatar_F", "Kana_F"],
 			"startingClass": "Maid",
 			"startingLevel": 5,
 			"bases": {"HP": 29, "Str": 18, "Mag": 16, "Skl": 25, "Spd": 15, "Lck": 11, "Def": 14, "Res": 23},
 			"growths": {"HP": 35, "Str": 40, "Mag": 20, "Skl": 45, "Spd": 30, "Lck": 35, "Def": 30, "Res": 30},
 			"mods": {"Str": 1, "Mag": -1, "Skl": 2, "Spd": 0, "Lck": -1, "Def": 1, "Res": -1},
 			"personalSkill": "Icy_Blood",
+			"pairUpStats": {
+				"C": {"Skl": 1}, "B": {"Def": 1}, "A": {"Res": 1}, "S": {"Str": 1, "Lck": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Crit": 3}, "B": {"Hit": 5}, "A": {"Crit": 3}, "S": {"Hit": 5, "Crit": 3}
+			},
 			"baseClass1": "Troubadour_F",
 			"baseClass2": "Dark_Mage",
 			"baseClass3": "Mercenary"
@@ -825,12 +1134,19 @@ app.service('Characters', function() {
 			"gen": 1,
 			"availability": "BCR",
 			"SSupport": ["Avatar_F"],
+			"ASupport": ["Avatar_M", "Kana_M"],
 			"startingClass": "Adventurer",
 			"startingLevel": 2,
 			"bases": {"HP": 31, "Str": 18, "Mag": 10, "Skl": 21, "Spd": 24, "Lck": 13, "Def": 13, "Res": 21},
 			"growths": {"HP": 30, "Str": 25, "Mag": 10, "Skl": 20, "Spd": 35, "Lck": 30, "Def": 15, "Res": 35},
 			"mods": {"Str": -1, "Mag": 0, "Skl": -1, "Spd": 3, "Lck": -1, "Def": -2, "Res": 2},
 			"personalSkill": "Highwayman",
+			"pairUpStats": {
+				"C": {"Spd": 1}, "B": {"Res": 1}, "A": {"Res": 1}, "S": {"Spd": 1, "Res": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Ddg": 5}, "A": {"Avo": 5}, "S": {"Avo": 5, "Ddg": 5}
+			},
 			"baseClass1": "Outlaw",
 			"baseClass2": "Ninja",
 			"baseClass3": "Fighter"
@@ -843,12 +1159,19 @@ app.service('Characters', function() {
 			"gen": 1,
 			"availability": "BC",
 			"SSupport": ["Avatar_F"],
+			"ASupport": ["Avatar_M", "Kana_M"],
 			"startingClass": "Onmyoji",
 			"startingLevel": 5,
 			"bases": {"HP": 31, "Str": 8, "Mag": 23, "Skl": 25, "Spd": 18, "Lck": 17, "Def": 14, "Res": 24},
 			"growths": {"HP": 45, "Str": 15, "Mag": 35, "Skl": 55, "Spd": 30, "Lck": 45, "Def": 35, "Res": 35},
 			"mods": {"Str": 0, "Mag": 1, "Skl": 1, "Spd": -2, "Lck": 0, "Def": 0, "Res": 1},
 			"personalSkill": "Peacebringer",
+			"pairUpStats": {
+				"C": {"Skl": 1}, "B": {"Mag": 1}, "A": {"Def": 1}, "S": {"Skl": 1, "Res": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 15}, "B": {"Avo": 5}, "A": {"Hit": 5}, "S": {"Hit": 10}
+			},
 			"baseClass1": "Monk",
 			"baseClass2": "Samurai",
 			"baseClass3": "Apothecary"
@@ -861,12 +1184,19 @@ app.service('Characters', function() {
 			"gen": 1,
 			"availability": "B",
 			"SSupport": ["Avatar_F"],
+			"ASupport": ["Avatar_M", "Kana_M"],
 			"startingClass": "Mechanist",
 			"startingLevel": 10,
 			"bases": {"HP": 38, "Str": 25, "Mag": 3, "Skl": 29, "Spd": 23, "Lck": 18, "Def": 21, "Res": 22},
 			"growths": {"HP": 25, "Str": 25, "Mag": 5, "Skl": 40, "Spd": 15, "Lck": 30, "Def": 25, "Res": 30},
 			"mods": {"Str": -1, "Mag": 0, "Skl": 3, "Spd": -1, "Lck": 0, "Def": -1, "Res": 0},
 			"personalSkill": "Perspicacious",
+			"pairUpStats": {
+				"C": {"Skl": 1}, "B": {"Skl": 1}, "A": {"Str": 1}, "S": {"Skl": 1, "Spd": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Crit": 3}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Crit": 3}
+			},
 			"baseClass1": "Apothecary",
 			"baseClass2": "Samurai",
 			"baseClass3": "Monk"
@@ -880,12 +1210,19 @@ app.service('Characters', function() {
 			"availability": "R",
 			"SSupport": ["Avatar_F"],
 			"APlusSupport": ["Hayato"],
+			"ASupport": ["Avatar_M", "Kana_M"],
 			"startingClass": "Master_of_Arms",
 			"startingLevel": 10,
 			"bases": {"HP": 41, "Str": 29, "Mag": 0, "Skl": 27, "Spd": 25, "Lck": 18, "Def": 29, "Res": 15},
 			"growths": {"HP": 20, "Str": 20, "Mag": 0, "Skl": 15, "Spd": 5, "Lck": 20, "Def": 10, "Res": 10},
 			"mods": {"Str": 2, "Mag": -1, "Skl": 1, "Spd": 0, "Lck": -1, "Def": 2, "Res": -2},
 			"personalSkill": "Wind_Disciple",
+			"pairUpStats": {
+				"C": {"Def": 1}, "B": {"Str": 1}, "A": {"Skl": 1}, "S": {"Str": 1, "Def": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Crit": 3}, "A": {"Ddg": 5}, "S": {"Hit": 5, "Crit": 3}
+			},
 			"baseClass1": "Samurai",
 			"baseClass2": "Oni_Savage",
 			"baseClass3": "Monk"
@@ -898,12 +1235,19 @@ app.service('Characters', function() {
 			"gen": 1,
 			"availability": "BCR",
 			"SSupport": ["Avatar_M"],
+			"ASupport": ["Avatar_F", "Kana_F"],
 			"startingClass": "Outlaw",
 			"startingLevel": 10,
 			"bases": {"HP": 23, "Str": 9, "Mag": 11, "Skl": 10, "Spd": 14, "Lck": 15, "Def": 6, "Res": 15},
 			"growths": {"HP": 35, "Str": 30, "Mag": 55, "Skl": 30, "Spd": 40, "Lck": 70, "Def": 20, "Res": 45},
 			"mods": {"Str": -1, "Mag": 1, "Skl": 0, "Spd": -1, "Lck": 2, "Def": -2, "Res": 2},
 			"personalSkill": "Make_a_Killing",
+			"pairUpStats": {
+				"C": {"Lck": 1}, "B": {"Mag": 1}, "A": {"Lck": 1}, "S": {"Lck": 1, "Res": 1}
+			},
+			"supportBonus": {
+				"C": {"Hit": 10, "Avo": 5}, "B": {"Ddg": 5}, "A": {"Avo": 5}, "S": {"Avo": 5, "Ddg": 5}
+			},
 			"baseClass1": "Outlaw",
 			"baseClass2": "Troubadour_F",
 			"baseClass3": "Apothecary"
@@ -917,12 +1261,14 @@ app.service('Characters', function() {
 			"availability": "BCR",
 			"SSupport": ["Sophie", "Midori", "Selkie", "Mitama", "Caeldori", "Rhajat", "Velouria", "Ophelia", "Soleil", "Nina"],
 			"APlusSupport": ["Shiro", "Siegbert", "Percy"],
+			"ASupport": ["Avatar_F", "Gunter", "Jakob", "Kaze", "Silas", "Shura", "Izana", "Subaki", "Saizo", "Azama", "Hayato", "Hinata", "Takumi", "Kaden", "Ryoma", "Yukimura", "Shigure", "Dwyer", "Kiragi", "Asugi", "Hisame", "Arthur", "Odin", "Niles", "Laslow", "Benny", "Leo", "Keaton", "Xander", "Forrest", "Ignatius", "Fuga"],
 			"parent": "Avatar_F",
 			"startingClass": "Nohr_Prince",
 			"bases": {"HP": 7, "Str": 3, "Mag": 6, "Skl": 8, "Spd": 8, "Lck": 9, "Def": 5, "Res": 5},
 			"growths": {"HP": 30, "Str": 35, "Mag": 30, "Skl": 40, "Spd": 45, "Lck": 45, "Def": 25, "Res": 25},
 			"personalSkill": "Draconic_Heir",
 			"baseClass1": "Nohr_Prince",
+			"weakness": ["Dragon"],
 
 		},
 
@@ -934,12 +1280,14 @@ app.service('Characters', function() {
 			"availability": "BCR",
 			"SSupport": ["Shigure", "Dwyer", "Shiro", "Kiragi", "Asugi", "Hisame", "Siegbert", "Forrest", "Ignatius", "Percy"],
 			"APlusSupport": ["Midori", "Mitama", "Selkie", "Velouria"],
+			"ASupport": ["Avatar_M", "Shigure", "Felicia", "Azura", "Mozu", "Rinkah", "Sakura", "Hana", "Orochi", "Hinoka", "Setsuna", "Oboro", "Kagero", "Reina", "Scarlet", "Sophie", "Caeldori", "Rhajat", "Elise", "Effie", "Nyx", "Camilla", "Selena", "Beruka", "Peri", "Charlotte", "Flora", "Ophelia", "Soleil", "Nina", "Anna"],
 			"parent": "Avatar_M",
 			"startingClass": "Nohr_Princess",
 			"bases": {"HP": 7, "Str": 3, "Mag": 6, "Skl": 8, "Spd": 8, "Lck": 9, "Def": 5, "Res": 5},
 			"growths": {"HP": 30, "Str": 35, "Mag": 30, "Skl": 40, "Spd": 45, "Lck": 45, "Def": 25, "Res": 25},
 			"personalSkill": "Draconic_Heir",
 			"baseClass1": "Nohr_Princess",
+			"weakness": ["Dragon"],
 
 		},
 
@@ -951,6 +1299,7 @@ app.service('Characters', function() {
 			"availability": "BCR",
 			"SSupport": ["Avatar_F", "Kana_F", "Sophie", "Midori", "Selkie", "Mitama", "Caeldori", "Rhajat", "Velouria", "Ophelia", "Soleil", "Nina"],
 			"APlusSupport": ["Hisame", "Forrest"],
+			"ASupport": ["Avatar_M", "Azura", "Jakob", "Silas", "Kaze", "Ryoma", "Takumi", "Saizo", "Kaden", "Hinata", "Azama", "Subaki", "Hayato", "Xander", "Leo", "Benny", "Keaton", "Arthur", "Odin", "Laslow", "Niles", "Dwyer", "Shiro", "Kiragi", "Asugi", "Siegbert", "Ignatius", "Percy"],
 			"parent": "Azura",
 			"startingClass": "Sky_Knight",
 			"bases": {"HP": 9, "Str": 6, "Mag": 1, "Skl": 7, "Spd": 7, "Lck": 5, "Def": 8, "Res": 7},
@@ -969,6 +1318,7 @@ app.service('Characters', function() {
 			"availability": "BCR",
 			"SSupport": ["Avatar_F", "Kana_F", "Sophie", "Midori", "Selkie", "Mitama", "Caeldori", "Rhajat", "Velouria", "Ophelia", "Soleil", "Nina"],
 			"APlusSupport": ["Asugi", "Kiragi", "Percy"],
+			"ASupport": ["Avatar_M", "Kana_M", "Jakob", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx"],
 			"parent": "Jakob",
 			"startingClass": "Troubadour_M",
 			"bases": {"HP": 8, "Str": 7, "Mag": 7, "Skl": 2, "Spd": 6, "Lck": 4, "Def": 6, "Res": 7},
@@ -987,6 +1337,7 @@ app.service('Characters', function() {
 			"availability": "BCR",
 			"SSupport": ["Avatar_M", "Kana_M", "Shigure", "Dwyer", "Shiro", "Kiragi", "Asugi", "Hisame", "Siegbert", "Forrest", "Ignatius", "Percy"],
 			"APlusSupport": ["Caeldori", "Velouria", "Soleil"],
+			"ASupport": ["Avatar_F", "Silas", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx"],
 			"parent": "Silas",
 			"startingClass": "Cavalier",
 			"bases": {"HP": 8, "Str": 6, "Mag": 2, "Skl": 7, "Spd": 6, "Lck": 7, "Def": 4, "Res": 6},
@@ -1005,6 +1356,7 @@ app.service('Characters', function() {
 			"availability": "BCR",
 			"SSupport": ["Avatar_M", "Kana_M", "Shigure", "Dwyer", "Shiro", "Kiragi", "Asugi", "Hisame", "Siegbert", "Forrest", "Ignatius", "Percy"],
 			"APlusSupport": ["Selkie", "Kana_F", "Ophelia"],
+			"ASupport": ["Avatar_F", "Kaze", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx"],
 			"parent": "Kaze",
 			"startingClass": "Apothecary",
 			"bases": {"HP": 8, "Str": 6, "Mag": 2, "Skl": 10, "Spd": 4, "Lck": 10, "Def": 4, "Res": 2},
@@ -1023,6 +1375,7 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_F", "Kana_F", "Sophie", "Midori", "Selkie", "Mitama", "Caeldori", "Rhajat", "Ophelia", "Nina"],
 			"APlusSupport": ["Kiragi", "Asugi", "Kana_M", "Siegbert"],
+			"ASupport": ["Avatar_M", "Kana_M", "Ryoma", "Felicia", "Azura", "Mozu", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Camilla", "Elise"],
 			"parent": "Ryoma",
 			"startingClass": "Spear_Fighter",
 			"bases": {"HP": 8, "Str": 7, "Mag": 0, "Skl": 5, "Spd": 3, "Lck": 6, "Def": 8, "Res": 5},
@@ -1041,11 +1394,12 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_F", "Kana_F", "Sophie", "Midori", "Selkie", "Mitama", "Caeldori", "Rhajat", "Velouria", "Soleil"],
 			"APlusSupport": ["Shiro", "Hisame", "Dwyer", "Forrest"],
+			"ASupport": ["Avatar_M", "Kana_M", "Takumi", "Felicia", "Azura", "Mozu", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Camilla", "Elise"],
 			"parent": "Takumi",
 			"startingClass": "Archer",
 			"bases": {"HP": 7, "Str": 6, "Mag": 0, "Skl": 5, "Spd": 6, "Lck": 8, "Def": 4, "Res": 1},
 			"growths": {"HP": 45, "Str": 40, "Mag": 0, "Skl": 45, "Spd": 50, "Lck": 45, "Def": 40, "Res": 15},
-			"personalSkill": "Optimistic",
+			"personalSkill": "Optimist",
 			"baseClass1": "Archer",
 			"baseClass2": "Spear_Fighter",
 
@@ -1059,6 +1413,7 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_F", "Kana_F", "Sophie", "Midori", "Selkie", "Mitama", "Caeldori", "Rhajat", "Soleil", "Nina"],
 			"APlusSupport": ["Shiro", "Hisame", "Dwyer", "Ignatius"],
+			"ASupport": ["Avatar_M", "Kana_M", "Saizo", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Charlotte", "Beruka"],
 			"parent": "Saizo",
 			"startingClass": "Ninja",
 			"bases": {"HP": 6, "Str": 7, "Mag": 4, "Skl": 7, "Spd": 6, "Lck": 9, "Def": 4, "Res": 9},
@@ -1077,6 +1432,7 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_M", "Kana_M", "Shigure", "Dwyer", "Shiro", "Kiragi", "Asugi", "Hisame", "Ignatius", "Forrest"],
 			"APlusSupport": ["Rhajat", "Midori", "Kana_F", "Velouria"],
+			"ASupport": ["Avatar_F", "Kaden", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Charlotte", "Peri"],
 			"parent": "Kaden",
 			"startingClass": "Kitsune",
 			"bases": {"HP": 7, "Str": 4, "Mag": 3, "Skl": 6, "Spd": 7, "Lck": 10, "Def": 6, "Res": 11},
@@ -1084,6 +1440,7 @@ app.service('Characters', function() {
 			"personalSkill": "Playthings",
 			"baseClass1": "Kitsune",
 			"baseClass2": "Diviner",
+			"weakness": ["Beast"],
 
 		},
 
@@ -1095,6 +1452,7 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_F", "Kana_F", "Sophie", "Midori", "Selkie", "Mitama", "Caeldori", "Rhajat", "Velouria", "Ophelia"],
 			"APlusSupport": ["Kiragi", "Asugi", "Shigure", "Percy"],
+			"ASupport": ["Avatar_M", "Kana_M", "Hinata", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Peri", "Selena"],
 			"parent": "Hinata",
 			"startingClass": "Samurai",
 			"bases": {"HP": 6, "Str": 6, "Mag": 1, "Skl": 7, "Spd": 5, "Lck": 4, "Def": 5, "Res": 4},
@@ -1113,6 +1471,7 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_M", "Kana_M", "Shigure", "Dwyer", "Shiro", "Kiragi", "Asugi", "Hisame", "Percy", "Siegbert"],
 			"APlusSupport": ["Caeldori", "Rhajat", "Kana_F", "Soleil"],
+			"ASupport": ["Avatar_F", "Azama", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Effie", "Beruka"],
 			"parent": "Azama",
 			"startingClass": "Shrine_Maiden",
 			"bases": {"HP": 6, "Str": 7, "Mag": 6, "Skl": 6, "Spd": 8, "Lck": 10, "Def": 3, "Res": 5},
@@ -1131,6 +1490,7 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_M", "Kana_M", "Shigure", "Dwyer", "Shiro", "Kiragi", "Asugi", "Hisame", "Siegbert", "Ignatius"],
 			"APlusSupport": ["Mitama", "Rhajat", "Sophie", "Nina"],
+			"ASupport": ["Avatar_F", "Subaki", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Selena", "Nyx"],
 			"parent": "Subaki",
 			"startingClass": "Sky_Knight",
 			"bases": {"HP": 8, "Str": 8, "Mag": 3, "Skl": 5, "Spd": 6, "Lck": 9, "Def": 5, "Res": 6},
@@ -1149,6 +1509,7 @@ app.service('Characters', function() {
 			"availability": "BR",
 			"SSupport": ["Avatar_M", "Kana_M", "Shigure", "Dwyer", "Shiro", "Kiragi", "Asugi", "Hisame", "Forrest", "Percy", "Avatar_F"],
 			"APlusSupport": ["Caeldori", "Mitama", "Selkie", "Ophelia"],
+			"ASupport": ["Hayato", "Felicia", "Azura", "Mozu", "Hinoka", "Sakura", "Rinkah", "Orochi", "Kagero", "Hana", "Setsuna", "Oboro", "Effie", "Nyx"],
 			"parent": "Hayato",
 			"startingClass": "Diviner",
 			"bases": {"HP": 8, "Str": 1, "Mag": 10, "Skl": 0, "Spd": 7, "Lck": 6, "Def": 5, "Res": 12},
@@ -1167,6 +1528,7 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_F", "Kana_F", "Sophie", "Midori", "Velouria", "Ophelia", "Soleil", "Nina", "Mitama", "Caeldori"],
 			"APlusSupport": ["Kana_M", "Forrest", "Ignatius", "Shiro"],
+			"ASupport": ["Avatar_M", "Xander", "Felicia", "Azura", "Mozu", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx", "Hinoka", "Sakura"],
 			"parent": "Xander",
 			"startingClass": "Cavalier",
 			"bases": {"HP": 7, "Str": 5, "Mag": 2, "Skl": 7, "Spd": 6, "Lck": 7, "Def": 6, "Res": 3},
@@ -1185,6 +1547,7 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_F", "Kana_F", "Sophie", "Midori", "Velouria", "Ophelia", "Soleil", "Nina", "Selkie", "Rhajat"],
 			"APlusSupport": ["Siegbert", "Shigure", "Ignatius", "Kiragi"],
+			"ASupport": ["Avatar_M", "Kana_M", "Leo", "Felicia", "Azura", "Mozu", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx", "Hinoka", "Sakura"],
 			"parent": "Leo",
 			"startingClass": "Troubadour_M",
 			"bases": {"HP": 8, "Str": 5, "Mag": 9, "Skl": 1, "Spd": 4, "Lck": 5, "Def": 6, "Res": 13},
@@ -1203,6 +1566,7 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_F", "Kana_F", "Sophie", "Midori", "Velouria", "Ophelia", "Soleil", "Nina", "Selkie", "Caeldori"],
 			"APlusSupport": ["Siegbert", "Forrest", "Percy", "Asugi"],
+			"ASupport": ["Avatar_M", "Kana_M", "Benny", "Felicia", "Azura", "Mozu", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx", "Rinkah", "Oboro"],
 			"parent": "Benny",
 			"startingClass": "Knight",
 			"bases": {"HP": 8, "Str": 7, "Mag": 0, "Skl": 6, "Spd": 4, "Lck": 7, "Def": 6, "Res": 7},
@@ -1221,6 +1585,7 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_M", "Kana_M", "Shigure", "Dwyer", "Siegbert", "Forrest", "Ignatius", "Percy", "Hisame", "Kiragi"],
 			"APlusSupport": ["Sophie", "Kana_F", "Nina", "Selkie"],
+			"ASupport": ["Avatar_F", "Keaton", "Felicia", "Azura", "Mozu", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx", "Rinkah", "Hana"],
 			"parent": "Keaton",
 			"startingClass": "Wolfskin",
 			"bases": {"HP": 7, "Str": 6, "Mag": 0, "Skl": 6, "Spd": 6, "Lck": 11, "Def": 9, "Res": 8},
@@ -1228,6 +1593,7 @@ app.service('Characters', function() {
 			"personalSkill": "Goody_Basket",
 			"baseClass1": "Wolfskin",
 			"baseClass2": "Fighter",
+			"weakness": ["Beast"],
 
 		},
 
@@ -1240,6 +1606,7 @@ app.service('Characters', function() {
 			"parent": "Arthur",
 			"SSupport": ["Avatar_F", "Kana_F", "Sophie", "Midori", "Velouria", "Ophelia", "Soleil", "Nina", "Mitama", "Rhajat"],
 			"APlusSupport": ["Ignatius", "Dwyer", "Kana_M", "Hisame"],
+			"ASupport": ["Avatar_M", "Arthur", "Felicia", "Azura", "Mozu", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx", "Kagero", "Setsuna"],
 			"startingClass": "Wyvern_Rider",
 			"bases": {"HP": 6, "Str": 4, "Mag": 0, "Skl": 6, "Spd": 6, "Lck": 15, "Def": 8, "Res": 4},
 			"growths": {"HP": 30, "Str": 30, "Mag": 5, "Skl": 45, "Spd": 40, "Lck": 75, "Def": 55, "Res": 15},
@@ -1257,6 +1624,7 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_M", "Kana_M", "Shigure", "Dwyer", "Siegbert", "Forrest", "Ignatius", "Percy", "Shiro", "Hisame"],
 			"APlusSupport": ["Midori", "Soleil", "Rhajat"],
+			"ASupport": ["Avatar_F", "Odin", "Felicia", "Azura", "Mozu", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx", "Orochi", "Kagero"],
 			"parent": "Odin",
 			"startingClass": "Dark_Mage",
 			"bases": {"HP": 7, "Str": 3, "Mag": 6, "Skl": 6, "Spd": 7, "Lck": 12, "Def": 2, "Res": 5},
@@ -1275,6 +1643,7 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_M", "Kana_M", "Shigure", "Dwyer", "Siegbert", "Forrest", "Ignatius", "Percy", "Kiragi", "Asugi"],
 			"APlusSupport": ["Ophelia", "Sophie", "Nina", "Mitama"],
+			"ASupport": ["Avatar_F", "Laslow", "Felicia", "Azura", "Mozu", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx", "Orochi", "Hana"],
 			"parent": "Laslow",
 			"startingClass": "Mercenary",
 			"bases": {"HP": 6, "Str": 7, "Mag": 1, "Skl": 3, "Spd": 6, "Lck": 7, "Def": 5, "Res": 6},
@@ -1293,6 +1662,7 @@ app.service('Characters', function() {
 			"availability": "CR",
 			"SSupport": ["Avatar_M", "Kana_M", "Shigure", "Dwyer", "Siegbert", "Forrest", "Ignatius", "Percy", "Asugi", "Shiro"],
 			"APlusSupport": ["Soleil", "Velouria", "Caeldori"],
+			"ASupport": ["Avatar_F", "Niles", "Felicia", "Azura", "Mozu", "Camilla", "Elise", "Charlotte", "Effie", "Peri", "Beruka", "Selena", "Nyx", "Setsuna", "Oboro"],
 			"parent": "Niles",
 			"startingClass": "Outlaw",
 			"bases": {"HP": 5, "Str": 8, "Mag": 5, "Skl": 5, "Spd": 5, "Lck": 11, "Def": 3, "Res": 10},
@@ -1384,6 +1754,12 @@ app.service('Characters', function() {
 		}
 	};
 
+	Object.keys(characters).forEach(function(character, idx) {
+		characters[character].pk = idx+1;
+	});
+
+	var self = this;
+
 
 	this.getCharacters = function() {
 		return angular.copy(characters);
@@ -1393,6 +1769,16 @@ app.service('Characters', function() {
 		return angular.copy(characters[charKey]);
 	};
 
+	this.getCharacterByPK = function(pk) {
+		var characterKeys = Object.keys(characters);
+		for (var i=0; i<characterKeys.length; i++) {
+			if (characters[characterKeys[i]].pk == pk) {
+				return angular.copy(characters[characterKeys[i]]);
+				break;
+			}
+		}
+	};
+
 	this.getSSupports = function(charKey) {
 		return characters[charKey].SSupport;
 	};
@@ -1400,6 +1786,18 @@ app.service('Characters', function() {
 	this.getAPlusSupports = function(charKey) {
 		return characters[charKey].APlusSupport;
 	};
+
+	this.getVarParents = function(charKey) {
+		var fixedParentKey = characters[charKey].parent;
+		var fixedParent = self.getCharacter(fixedParentKey);
+
+		var varParentsList = self.getSSupports(fixedParentKey)
+			.filter(function(varParentKey) {
+				return characters[varParentKey].gender != fixedParent.gender;
+			});
+		return varParentsList;
+	};
+
 
 	this.getBaseClasses = function(charKey) {
 		var baseClasses = [];
